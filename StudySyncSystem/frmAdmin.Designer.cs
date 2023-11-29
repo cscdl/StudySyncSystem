@@ -1,7 +1,7 @@
 ﻿
 namespace StudySyncSystem
 {
-    partial class frmMainStudySync
+    partial class frmAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainStudySync));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.btnPicUser = new System.Windows.Forms.PictureBox();
@@ -51,28 +51,8 @@ namespace StudySyncSystem
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.dayContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel53 = new System.Windows.Forms.Panel();
-            this.picnext = new System.Windows.Forms.PictureBox();
-            this.picPrevious = new System.Windows.Forms.PictureBox();
-            this.lblMonthYear = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.btnAddNotes = new System.Windows.Forms.Button();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.btnUploadFile = new System.Windows.Forms.Button();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pnlMain2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -86,13 +66,6 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel53.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picnext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPrevious)).BeginInit();
-            this.panel54.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panel56.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,7 +78,7 @@ namespace StudySyncSystem
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(885, 50);
-            this.panel1.TabIndex = 34;
+            this.panel1.TabIndex = 35;
             // 
             // label9
             // 
@@ -126,7 +99,6 @@ namespace StudySyncSystem
             this.btnPicUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPicUser.TabIndex = 3;
             this.btnPicUser.TabStop = false;
-            this.btnPicUser.Click += new System.EventHandler(this.btnPicUser_Click);
             // 
             // picBoxDashboard
             // 
@@ -163,7 +135,7 @@ namespace StudySyncSystem
             this.pnlSideBar.MinimumSize = new System.Drawing.Size(43, 480);
             this.pnlSideBar.Name = "pnlSideBar";
             this.pnlSideBar.Size = new System.Drawing.Size(200, 480);
-            this.pnlSideBar.TabIndex = 35;
+            this.pnlSideBar.TabIndex = 36;
             // 
             // panel2
             // 
@@ -202,7 +174,7 @@ namespace StudySyncSystem
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click_1);
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // panel6
             // 
@@ -272,7 +244,7 @@ namespace StudySyncSystem
             this.btnSettings.TabIndex = 5;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click_1);
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // panel5
             // 
@@ -304,247 +276,31 @@ namespace StudySyncSystem
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Location = new System.Drawing.Point(208, 57);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(667, 465);
+            this.pnlMain.TabIndex = 37;
             // 
             // tmrSideBar
             // 
             this.tmrSideBar.Interval = 20;
             this.tmrSideBar.Tick += new System.EventHandler(this.tmrSideBar_Tick);
             // 
-            // pnlMain
-            // 
-            this.pnlMain.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlMain.Location = new System.Drawing.Point(206, 59);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(350, 447);
-            this.pnlMain.TabIndex = 36;
-            // 
-            // dayContainer
-            // 
-            this.dayContainer.Location = new System.Drawing.Point(10, 60);
-            this.dayContainer.Name = "dayContainer";
-            this.dayContainer.Size = new System.Drawing.Size(287, 247);
-            this.dayContainer.TabIndex = 37;
-            // 
-            // panel53
-            // 
-            this.panel53.Controls.Add(this.picnext);
-            this.panel53.Controls.Add(this.picPrevious);
-            this.panel53.Controls.Add(this.lblMonthYear);
-            this.panel53.Controls.Add(this.label7);
-            this.panel53.Controls.Add(this.label6);
-            this.panel53.Controls.Add(this.label5);
-            this.panel53.Controls.Add(this.label4);
-            this.panel53.Controls.Add(this.label3);
-            this.panel53.Controls.Add(this.label2);
-            this.panel53.Controls.Add(this.label1);
-            this.panel53.Controls.Add(this.dayContainer);
-            this.panel53.Location = new System.Drawing.Point(568, 101);
-            this.panel53.Name = "panel53";
-            this.panel53.Size = new System.Drawing.Size(306, 315);
-            this.panel53.TabIndex = 38;
-            // 
-            // picnext
-            // 
-            this.picnext.Image = ((System.Drawing.Image)(resources.GetObject("picnext.Image")));
-            this.picnext.Location = new System.Drawing.Point(277, 13);
-            this.picnext.Name = "picnext";
-            this.picnext.Size = new System.Drawing.Size(20, 20);
-            this.picnext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picnext.TabIndex = 46;
-            this.picnext.TabStop = false;
-            this.picnext.Click += new System.EventHandler(this.picnext_Click);
-            // 
-            // picPrevious
-            // 
-            this.picPrevious.Image = ((System.Drawing.Image)(resources.GetObject("picPrevious.Image")));
-            this.picPrevious.Location = new System.Drawing.Point(10, 13);
-            this.picPrevious.Name = "picPrevious";
-            this.picPrevious.Size = new System.Drawing.Size(20, 20);
-            this.picPrevious.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picPrevious.TabIndex = 3;
-            this.picPrevious.TabStop = false;
-            this.picPrevious.Click += new System.EventHandler(this.picPrevious_Click);
-            // 
-            // lblMonthYear
-            // 
-            this.lblMonthYear.AutoSize = true;
-            this.lblMonthYear.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonthYear.Location = new System.Drawing.Point(111, 16);
-            this.lblMonthYear.Name = "lblMonthYear";
-            this.lblMonthYear.Size = new System.Drawing.Size(49, 15);
-            this.lblMonthYear.TabIndex = 45;
-            this.lblMonthYear.Text = "label8";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 43);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 14);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Mon";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(92, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 14);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "Tue";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(133, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 14);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Wed";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(174, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 14);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Thu";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(215, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 14);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Fri";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 14);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "Sat";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 14);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Sun";
-            // 
-            // panel54
-            // 
-            this.panel54.Controls.Add(this.pictureBox6);
-            this.panel54.Controls.Add(this.btnAddNotes);
-            this.panel54.Location = new System.Drawing.Point(633, 422);
-            this.panel54.Name = "panel54";
-            this.panel54.Size = new System.Drawing.Size(172, 37);
-            this.panel54.TabIndex = 39;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(6, 6);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 4;
-            this.pictureBox6.TabStop = false;
-            // 
-            // btnAddNotes
-            // 
-            this.btnAddNotes.FlatAppearance.BorderSize = 0;
-            this.btnAddNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNotes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNotes.Location = new System.Drawing.Point(37, 6);
-            this.btnAddNotes.Name = "btnAddNotes";
-            this.btnAddNotes.Size = new System.Drawing.Size(130, 25);
-            this.btnAddNotes.TabIndex = 5;
-            this.btnAddNotes.Text = "Add New Notes";
-            this.btnAddNotes.UseVisualStyleBackColor = true;
-            this.btnAddNotes.Click += new System.EventHandler(this.btnAddNotes_Click);
-            // 
-            // panel56
-            // 
-            this.panel56.Controls.Add(this.btnUploadFile);
-            this.panel56.Controls.Add(this.pictureBox8);
-            this.panel56.Location = new System.Drawing.Point(633, 465);
-            this.panel56.Name = "panel56";
-            this.panel56.Size = new System.Drawing.Size(172, 37);
-            this.panel56.TabIndex = 41;
-            // 
-            // btnUploadFile
-            // 
-            this.btnUploadFile.FlatAppearance.BorderSize = 0;
-            this.btnUploadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUploadFile.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadFile.Location = new System.Drawing.Point(37, 6);
-            this.btnUploadFile.Name = "btnUploadFile";
-            this.btnUploadFile.Size = new System.Drawing.Size(130, 25);
-            this.btnUploadFile.TabIndex = 6;
-            this.btnUploadFile.Text = "Upload a File";
-            this.btnUploadFile.UseVisualStyleBackColor = true;
-            this.btnUploadFile.Click += new System.EventHandler(this.btnUploadFile_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(6, 6);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 4;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pnlMain2
-            // 
-            this.pnlMain2.Location = new System.Drawing.Point(200, 50);
-            this.pnlMain2.Name = "pnlMain2";
-            this.pnlMain2.Size = new System.Drawing.Size(685, 480);
-            this.pnlMain2.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(657, 74);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 16);
-            this.label8.TabIndex = 42;
-            this.label8.Text = "C A L E N D A R";
-            // 
-            // frmMainStudySync
+            // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 530);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.panel56);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.panel53);
             this.Controls.Add(this.pnlSideBar);
-            this.Controls.Add(this.panel54);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlMain2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmMainStudySync";
+            this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMainStudySync";
-            this.Load += new System.EventHandler(this.frmMainStudySync_Load);
+            this.Text = "frmAdmin";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).EndInit();
@@ -559,62 +315,33 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel53.ResumeLayout(false);
-            this.panel53.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picnext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPrevious)).EndInit();
-            this.panel54.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panel56.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox btnPicUser;
         private System.Windows.Forms.PictureBox picBoxDashboard;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FlowLayoutPanel pnlSideBar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Timer tmrSideBar;
+        private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button btnManageCategories;
+        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.FlowLayoutPanel dayContainer;
-        private System.Windows.Forms.Panel panel53;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel54;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Panel panel56;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lblMonthYear;
-        private System.Windows.Forms.PictureBox picPrevious;
-        private System.Windows.Forms.PictureBox picnext;
-        private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.Button btnManageCategories;
-        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnAddNotes;
-        private System.Windows.Forms.Button btnUploadFile;
-        private System.Windows.Forms.Panel pnlMain2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox btnPicUser;
+        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Timer tmrSideBar;
     }
 }

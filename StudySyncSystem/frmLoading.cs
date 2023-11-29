@@ -29,9 +29,8 @@ namespace StudySyncSystem
             {
                 timerLoading.Stop();
 
-                frmLogin login = new frmLogin();
-                login.Show();
-
+                frmLoginAndRegister loginandregister = new frmLoginAndRegister();
+                loginandregister.Show();
                 this.Hide();
             }
         }

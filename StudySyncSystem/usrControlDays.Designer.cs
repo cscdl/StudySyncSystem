@@ -48,6 +48,7 @@ namespace StudySyncSystem
             this.Controls.Add(this.lblDays);
             this.Name = "usrControlDays";
             this.Size = new System.Drawing.Size(35, 35);
+            this.Load += new System.EventHandler(this.usrControlDays_Load);
             this.Click += new System.EventHandler(this.usrControlDays_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

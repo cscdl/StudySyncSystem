@@ -21,6 +21,7 @@ namespace StudySyncSystem
         {
             frmViewTask viewTask = new frmViewTask();
             viewTask.ShowDialog();
+           
         }
 
         private void btnViewNotes_Click(object sender, EventArgs e)

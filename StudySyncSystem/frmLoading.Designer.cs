@@ -57,6 +57,7 @@ namespace StudySyncSystem
             // 
             // timerLoading
             // 
+            this.timerLoading.Interval = 80;
             this.timerLoading.Tick += new System.EventHandler(this.timerLoading_Tick);
             // 
             // lblPercent

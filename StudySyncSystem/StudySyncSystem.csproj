@@ -53,6 +53,24 @@
     <Compile Include="frmAddNotes.Designer.cs">
       <DependentUpon>frmAddNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddTasks.Designer.cs">
+      <DependentUpon>frmAddTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminDashboard.Designer.cs">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,11 +83,11 @@
     <Compile Include="frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="frmLoginAndRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="frmLoginAndRegister.Designer.cs">
+      <DependentUpon>frmLoginAndRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainStudySync.cs">
       <SubType>Form</SubType>
@@ -77,17 +95,17 @@
     <Compile Include="frmMainStudySync.Designer.cs">
       <DependentUpon>frmMainStudySync.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRegister.Designer.cs">
-      <DependentUpon>frmRegister.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmUploadFile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUploadFile.Designer.cs">
       <DependentUpon>frmUploadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserProfile.Designer.cs">
+      <DependentUpon>frmUserProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="frmViewFiles.cs">
       <SubType>Form</SubType>
@@ -124,23 +142,32 @@
     <EmbeddedResource Include="frmAddNotes.resx">
       <DependentUpon>frmAddNotes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddTasks.resx">
+      <DependentUpon>frmAddTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminDashboard.resx">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="frmLoginAndRegister.resx">
+      <DependentUpon>frmLoginAndRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainStudySync.resx">
       <DependentUpon>frmMainStudySync.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegister.resx">
-      <DependentUpon>frmRegister.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmUploadFile.resx">
       <DependentUpon>frmUploadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserProfile.resx">
+      <DependentUpon>frmUserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewFiles.resx">
       <DependentUpon>frmViewFiles.cs</DependentUpon>

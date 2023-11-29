@@ -27,10 +27,13 @@ namespace StudySyncSystem
         {
             static_day = lblDays.Text;
 
-            static_day = lblDays.Text;
+            frmAddTasks addTasks = new frmAddTasks();
+            addTasks.ShowDialog();
+        }
 
-            //frmAddTasks addTasks = new frmAddTasks();
-            //addTasks.ShowDialog();
+        private void usrControlDays_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

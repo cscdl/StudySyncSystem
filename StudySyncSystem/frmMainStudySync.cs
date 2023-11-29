@@ -97,7 +97,6 @@ namespace StudySyncSystem
 
             mainStudySync.Show();
         }
-
         private void tmrSideBar_Tick(object sender, EventArgs e)
         {
             if (SideBarExpand)
@@ -118,11 +117,6 @@ namespace StudySyncSystem
                     tmrSideBar.Stop();
                 }
             }
-        }
-
-        private void picBoxClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void picBoxDashboard_Click(object sender, EventArgs e)
@@ -216,9 +210,14 @@ namespace StudySyncSystem
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Hide();
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
+            frmLoginAndRegister loginandregister = new frmLoginAndRegister();
+            loginandregister.ShowDialog();
             
+        }
+
+        private void btnPicUser_Click(object sender, EventArgs e)
+        {
+            loadform(new frmUserProfile());
         }
 
         private void btnUploadFile_Click(object sender, EventArgs e)
