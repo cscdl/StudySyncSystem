@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StudySyncSystem
 {
-    public partial class frmDashboard : Form
+    public partial class frmUserDashboard : Form
     {
-        public frmDashboard()
+        public frmUserDashboard()
         {
             InitializeComponent();
         }
@@ -21,7 +21,6 @@ namespace StudySyncSystem
         {
             frmViewTask viewTask = new frmViewTask();
             viewTask.ShowDialog();
-           
         }
 
         private void btnViewNotes_Click(object sender, EventArgs e)

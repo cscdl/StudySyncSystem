@@ -98,5 +98,10 @@ namespace StudySyncSystem
         {
             loadform(new frmAdminDashboard());
         }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            loadform(new frmAbout());
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace StudySyncSystem
             // 
             // txtTitle
             // 
+            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTitle.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(84, 64);
@@ -55,6 +56,7 @@ namespace StudySyncSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(22, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
@@ -63,6 +65,7 @@ namespace StudySyncSystem
             // 
             // txtDate
             // 
+            this.txtDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDate.Location = new System.Drawing.Point(84, 28);
@@ -74,6 +77,7 @@ namespace StudySyncSystem
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(30, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
@@ -82,6 +86,7 @@ namespace StudySyncSystem
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
@@ -92,6 +97,7 @@ namespace StudySyncSystem
             // 
             // comboBox2
             // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
@@ -104,6 +110,7 @@ namespace StudySyncSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(247, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 16);
@@ -112,6 +119,7 @@ namespace StudySyncSystem
             // 
             // comboBox3
             // 
+            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
@@ -122,6 +130,7 @@ namespace StudySyncSystem
             // 
             // comboBox4
             // 
+            this.comboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox4.FormattingEnabled = true;
@@ -134,7 +143,7 @@ namespace StudySyncSystem
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
             this.btnCancel.Location = new System.Drawing.Point(343, 149);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 26);
@@ -147,7 +156,7 @@ namespace StudySyncSystem
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.ForeColor = System.Drawing.Color.Yellow;
             this.btnSave.Location = new System.Drawing.Point(182, 149);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 26);
@@ -159,6 +168,7 @@ namespace StudySyncSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(517, 200);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -171,8 +181,9 @@ namespace StudySyncSystem
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.label3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAddTasks";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddTasks";
             this.Load += new System.EventHandler(this.frmAddTasks_Load);
             this.ResumeLayout(false);

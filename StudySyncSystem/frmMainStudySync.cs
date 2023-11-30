@@ -220,6 +220,24 @@ namespace StudySyncSystem
             loadform(new frmUserProfile());
         }
 
+        private void btnViewTask_Click(object sender, EventArgs e)
+        {
+            frmViewTask viewTask = new frmViewTask();
+            viewTask.ShowDialog();
+        }
+
+        private void btnViewNotes_Click(object sender, EventArgs e)
+        {
+            frmViewNotes viewNotes = new frmViewNotes();
+            viewNotes.ShowDialog();
+        }
+
+        private void btnViewFiles_Click(object sender, EventArgs e)
+        {
+            frmViewFiles viewFiles = new frmViewFiles();
+            viewFiles.ShowDialog();
+        }
+
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
             loadform(new frmUploadFile());
@@ -227,7 +245,7 @@ namespace StudySyncSystem
 
         private void btnDashboard_Click_1(object sender, EventArgs e)
         {
-            loadform(new frmDashboard());
+            
         }
 
         

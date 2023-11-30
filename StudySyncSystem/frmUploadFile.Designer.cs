@@ -41,6 +41,7 @@ namespace StudySyncSystem
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnUpload);
@@ -56,7 +57,7 @@ namespace StudySyncSystem
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
             this.btnCancel.Location = new System.Drawing.Point(11, 343);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
@@ -69,7 +70,7 @@ namespace StudySyncSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(8, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 15);
@@ -80,7 +81,7 @@ namespace StudySyncSystem
             // 
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpload.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpload.ForeColor = System.Drawing.Color.Black;
+            this.btnUpload.ForeColor = System.Drawing.Color.Yellow;
             this.btnUpload.Location = new System.Drawing.Point(11, 311);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(277, 26);
@@ -101,6 +102,7 @@ namespace StudySyncSystem
             // 
             // txtTitle
             // 
+            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(63, 28);
@@ -112,7 +114,7 @@ namespace StudySyncSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(8, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 15);

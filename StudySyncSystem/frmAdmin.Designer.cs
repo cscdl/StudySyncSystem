@@ -45,6 +45,9 @@ namespace StudySyncSystem
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnManageCategories = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -62,6 +65,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -86,9 +91,9 @@ namespace StudySyncSystem
             this.label9.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(759, 17);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 16);
+            this.label9.Size = new System.Drawing.Size(48, 16);
             this.label9.TabIndex = 43;
-            this.label9.Text = "Username";
+            this.label9.Text = "Admin";
             // 
             // btnPicUser
             // 
@@ -127,6 +132,7 @@ namespace StudySyncSystem
             this.pnlSideBar.Controls.Add(this.panel3);
             this.pnlSideBar.Controls.Add(this.panel6);
             this.pnlSideBar.Controls.Add(this.panel7);
+            this.pnlSideBar.Controls.Add(this.panel8);
             this.pnlSideBar.Controls.Add(this.panel4);
             this.pnlSideBar.Controls.Add(this.panel5);
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -211,14 +217,46 @@ namespace StudySyncSystem
             // 
             this.panel7.Location = new System.Drawing.Point(3, 100);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(190, 280);
+            this.panel7.Size = new System.Drawing.Size(190, 249);
             this.panel7.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.pictureBox6);
+            this.panel8.Controls.Add(this.btnAbout);
+            this.panel8.Location = new System.Drawing.Point(3, 355);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(190, 32);
+            this.panel8.TabIndex = 6;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 4;
+            this.pictureBox6.TabStop = false;
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbout.Location = new System.Drawing.Point(0, 1);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(178, 25);
+            this.btnAbout.TabIndex = 5;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.btnSettings);
-            this.panel4.Location = new System.Drawing.Point(3, 386);
+            this.panel4.Location = new System.Drawing.Point(3, 393);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(190, 32);
             this.panel4.TabIndex = 5;
@@ -250,7 +288,7 @@ namespace StudySyncSystem
             // 
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.btnLogout);
-            this.panel5.Location = new System.Drawing.Point(3, 424);
+            this.panel5.Location = new System.Drawing.Point(3, 431);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(190, 32);
             this.panel5.TabIndex = 5;
@@ -279,6 +317,7 @@ namespace StudySyncSystem
             // 
             // pnlMain
             // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.Location = new System.Drawing.Point(208, 57);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(667, 465);
@@ -311,6 +350,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -343,5 +384,8 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Timer tmrSideBar;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
