@@ -46,6 +46,7 @@ namespace StudySyncSystem
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.btnGOTOLogin = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpRegBirthday = new System.Windows.Forms.DateTimePicker();
             this.txtRegMobilenumber = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@ namespace StudySyncSystem
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.dtpRegBirthday = new System.Windows.Forms.DateTimePicker();
             this.pnlLogin.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -283,6 +283,14 @@ namespace StudySyncSystem
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(290, 395);
             this.panel2.TabIndex = 60;
+            // 
+            // dtpRegBirthday
+            // 
+            this.dtpRegBirthday.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRegBirthday.Location = new System.Drawing.Point(7, 289);
+            this.dtpRegBirthday.Name = "dtpRegBirthday";
+            this.dtpRegBirthday.Size = new System.Drawing.Size(276, 21);
+            this.dtpRegBirthday.TabIndex = 75;
             // 
             // txtRegMobilenumber
             // 
@@ -507,14 +515,6 @@ namespace StudySyncSystem
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 51;
             this.pictureBox3.TabStop = false;
-            // 
-            // dtpRegBirthday
-            // 
-            this.dtpRegBirthday.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpRegBirthday.Location = new System.Drawing.Point(7, 289);
-            this.dtpRegBirthday.Name = "dtpRegBirthday";
-            this.dtpRegBirthday.Size = new System.Drawing.Size(276, 21);
-            this.dtpRegBirthday.TabIndex = 75;
             // 
             // frmLoginAndRegister
             // 

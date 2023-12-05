@@ -70,6 +70,7 @@ namespace StudySyncSystem
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnlMain2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -81,6 +82,7 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnlMain.SuspendLayout();
             this.panel53.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picnext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrevious)).BeginInit();
@@ -277,6 +279,7 @@ namespace StudySyncSystem
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Controls.Add(this.label10);
             this.pnlMain.Location = new System.Drawing.Point(206, 59);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(350, 460);
@@ -490,6 +493,18 @@ namespace StudySyncSystem
             this.label8.TabIndex = 42;
             this.label8.Text = "C A L E N D A R";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(42, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(270, 310);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "     W A G\r\n    K A Y O \r\n    P A L O\r\n     M A G\r\nD A T A B A S E \r\n  P L E A S " +
+    "E \r\n     M A G \r\n    R E S T\r\n     D I N\r\nT E N K Z S :)))";
+            // 
             // frmMainStudySync
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,6 +535,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.panel53.ResumeLayout(false);
             this.panel53.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picnext)).EndInit();
@@ -574,5 +591,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox btnPicUser;
+        private System.Windows.Forms.Label label10;
     }
 }

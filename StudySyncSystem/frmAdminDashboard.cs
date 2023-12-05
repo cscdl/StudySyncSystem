@@ -18,5 +18,16 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
+        private void btnViewUsersAndAdmins_Click(object sender, EventArgs e)
+        {
+            frmViewUsersAndAdmins usersAndAdmins = new frmViewUsersAndAdmins();
+            usersAndAdmins.ShowDialog();
         }
+
+        private void btnViewActivityLogs_Click(object sender, EventArgs e)
+        {
+            frmViewActivityLogs activityLogs = new frmViewActivityLogs();
+            activityLogs.ShowDialog();
+        }
+    }
 }

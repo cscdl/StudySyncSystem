@@ -29,16 +29,21 @@ namespace StudySyncSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminDashboard));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewActivityLogs = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnViewUsers = new System.Windows.Forms.Button();
+            this.btnViewUsersAndAdmins = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -66,6 +71,7 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(85)))));
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.btnViewActivityLogs);
             this.panel1.Location = new System.Drawing.Point(341, 145);
             this.panel1.Name = "panel1";
@@ -84,28 +90,31 @@ namespace StudySyncSystem
             this.btnViewActivityLogs.TabIndex = 5;
             this.btnViewActivityLogs.Text = "View Activity Logs";
             this.btnViewActivityLogs.UseVisualStyleBackColor = true;
+            this.btnViewActivityLogs.Click += new System.EventHandler(this.btnViewActivityLogs_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel2.Controls.Add(this.btnViewUsers);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.btnViewUsersAndAdmins);
             this.panel2.Location = new System.Drawing.Point(52, 145);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 120);
             this.panel2.TabIndex = 6;
             // 
-            // btnViewUsers
+            // btnViewUsersAndAdmins
             // 
-            this.btnViewUsers.FlatAppearance.BorderSize = 0;
-            this.btnViewUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewUsers.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewUsers.ForeColor = System.Drawing.Color.White;
-            this.btnViewUsers.Location = new System.Drawing.Point(40, 85);
-            this.btnViewUsers.Name = "btnViewUsers";
-            this.btnViewUsers.Size = new System.Drawing.Size(170, 25);
-            this.btnViewUsers.TabIndex = 5;
-            this.btnViewUsers.Text = "View Users";
-            this.btnViewUsers.UseVisualStyleBackColor = true;
+            this.btnViewUsersAndAdmins.FlatAppearance.BorderSize = 0;
+            this.btnViewUsersAndAdmins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewUsersAndAdmins.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewUsersAndAdmins.ForeColor = System.Drawing.Color.White;
+            this.btnViewUsersAndAdmins.Location = new System.Drawing.Point(40, 85);
+            this.btnViewUsersAndAdmins.Name = "btnViewUsersAndAdmins";
+            this.btnViewUsersAndAdmins.Size = new System.Drawing.Size(170, 25);
+            this.btnViewUsersAndAdmins.TabIndex = 5;
+            this.btnViewUsersAndAdmins.Text = "View Users and Admins";
+            this.btnViewUsersAndAdmins.UseVisualStyleBackColor = true;
+            this.btnViewUsersAndAdmins.Click += new System.EventHandler(this.btnViewUsersAndAdmins_Click);
             // 
             // panel3
             // 
@@ -118,6 +127,26 @@ namespace StudySyncSystem
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(643, 441);
             this.panel3.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(89, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(90, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // frmAdminDashboard
             // 
@@ -133,6 +162,8 @@ namespace StudySyncSystem
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,7 +175,9 @@ namespace StudySyncSystem
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnViewActivityLogs;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnViewUsers;
+        private System.Windows.Forms.Button btnViewUsersAndAdmins;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

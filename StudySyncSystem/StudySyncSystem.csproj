@@ -53,6 +53,12 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewActivityLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewActivityLogs.Designer.cs">
+      <DependentUpon>frmViewActivityLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddAdminAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     <Compile Include="frmViewTask.Designer.cs">
       <DependentUpon>frmViewTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewUsersAndAdmins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewUsersAndAdmins.Designer.cs">
+      <DependentUpon>frmViewUsersAndAdmins.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="usrControlBlank.cs">
@@ -159,6 +171,9 @@
     </Compile>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewActivityLogs.resx">
+      <DependentUpon>frmViewActivityLogs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddAdminAccount.resx">
       <DependentUpon>frmAddAdminAccount.cs</DependentUpon>
@@ -204,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewTask.resx">
       <DependentUpon>frmViewTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewUsersAndAdmins.resx">
+      <DependentUpon>frmViewUsersAndAdmins.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
