@@ -77,12 +77,13 @@ namespace StudySyncSystem
             // 
             // txtEditPassword
             // 
-            this.txtEditPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtEditPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEditPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtEditPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEditPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditPassword.Location = new System.Drawing.Point(173, 342);
+            this.txtEditPassword.ForeColor = System.Drawing.Color.White;
+            this.txtEditPassword.Location = new System.Drawing.Point(173, 341);
             this.txtEditPassword.Name = "txtEditPassword";
-            this.txtEditPassword.Size = new System.Drawing.Size(300, 14);
+            this.txtEditPassword.Size = new System.Drawing.Size(300, 21);
             this.txtEditPassword.TabIndex = 41;
             // 
             // label8
@@ -98,12 +99,13 @@ namespace StudySyncSystem
             // 
             // txtEditUsername
             // 
-            this.txtEditUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtEditUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEditUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtEditUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEditUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditUsername.Location = new System.Drawing.Point(173, 301);
+            this.txtEditUsername.ForeColor = System.Drawing.Color.White;
+            this.txtEditUsername.Location = new System.Drawing.Point(173, 300);
             this.txtEditUsername.Name = "txtEditUsername";
-            this.txtEditUsername.Size = new System.Drawing.Size(300, 14);
+            this.txtEditUsername.Size = new System.Drawing.Size(300, 21);
             this.txtEditUsername.TabIndex = 39;
             // 
             // label7
@@ -130,12 +132,14 @@ namespace StudySyncSystem
             // 
             // txtMobilenumber
             // 
-            this.txtMobilenumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtMobilenumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMobilenumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtMobilenumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMobilenumber.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMobilenumber.Location = new System.Drawing.Point(173, 213);
+            this.txtMobilenumber.ForeColor = System.Drawing.Color.White;
+            this.txtMobilenumber.Location = new System.Drawing.Point(173, 212);
             this.txtMobilenumber.Name = "txtMobilenumber";
-            this.txtMobilenumber.Size = new System.Drawing.Size(300, 14);
+            this.txtMobilenumber.ReadOnly = true;
+            this.txtMobilenumber.Size = new System.Drawing.Size(300, 21);
             this.txtMobilenumber.TabIndex = 36;
             // 
             // label5
@@ -151,12 +155,14 @@ namespace StudySyncSystem
             // 
             // txtBirthday
             // 
-            this.txtBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtBirthday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtBirthday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBirthday.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBirthday.Location = new System.Drawing.Point(173, 172);
+            this.txtBirthday.ForeColor = System.Drawing.Color.White;
+            this.txtBirthday.Location = new System.Drawing.Point(173, 171);
             this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(300, 14);
+            this.txtBirthday.ReadOnly = true;
+            this.txtBirthday.Size = new System.Drawing.Size(300, 21);
             this.txtBirthday.TabIndex = 34;
             // 
             // label4
@@ -172,12 +178,14 @@ namespace StudySyncSystem
             // 
             // txtAddress
             // 
-            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(173, 131);
+            this.txtAddress.ForeColor = System.Drawing.Color.White;
+            this.txtAddress.Location = new System.Drawing.Point(173, 130);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(300, 14);
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.Size = new System.Drawing.Size(300, 21);
             this.txtAddress.TabIndex = 32;
             // 
             // label3
@@ -193,12 +201,14 @@ namespace StudySyncSystem
             // 
             // txtFullname
             // 
-            this.txtFullname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtFullname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFullname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtFullname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullname.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullname.Location = new System.Drawing.Point(173, 90);
+            this.txtFullname.ForeColor = System.Drawing.Color.White;
+            this.txtFullname.Location = new System.Drawing.Point(173, 89);
             this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(300, 14);
+            this.txtFullname.ReadOnly = true;
+            this.txtFullname.Size = new System.Drawing.Size(300, 21);
             this.txtFullname.TabIndex = 30;
             // 
             // label2
@@ -214,12 +224,14 @@ namespace StudySyncSystem
             // 
             // txtUsername
             // 
-            this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(173, 49);
+            this.txtUsername.ForeColor = System.Drawing.Color.White;
+            this.txtUsername.Location = new System.Drawing.Point(173, 48);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(300, 14);
+            this.txtUsername.ReadOnly = true;
+            this.txtUsername.Size = new System.Drawing.Size(300, 21);
             this.txtUsername.TabIndex = 28;
             // 
             // label1

@@ -33,24 +33,24 @@ namespace StudySyncSystem
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.richTxtNewNote = new System.Windows.Forms.RichTextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtInsertFile = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.panel1.Controls.Add(this.txtInsertFile);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnUpload);
-            this.panel1.Controls.Add(this.richTxtNewNote);
             this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(25, 23);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 400);
+            this.panel1.Size = new System.Drawing.Size(326, 423);
             this.panel1.TabIndex = 1;
             // 
             // btnCancel
@@ -58,7 +58,7 @@ namespace StudySyncSystem
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCancel.Location = new System.Drawing.Point(11, 343);
+            this.btnCancel.Location = new System.Drawing.Point(25, 343);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
             this.btnCancel.TabIndex = 11;
@@ -71,7 +71,7 @@ namespace StudySyncSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(8, 61);
+            this.label2.Location = new System.Drawing.Point(22, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 15);
             this.label2.TabIndex = 10;
@@ -82,30 +82,20 @@ namespace StudySyncSystem
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpload.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.Color.Yellow;
-            this.btnUpload.Location = new System.Drawing.Point(11, 311);
+            this.btnUpload.Location = new System.Drawing.Point(25, 311);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(277, 26);
             this.btnUpload.TabIndex = 9;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
             // 
-            // richTxtNewNote
-            // 
-            this.richTxtNewNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.richTxtNewNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTxtNewNote.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTxtNewNote.Location = new System.Drawing.Point(11, 79);
-            this.richTxtNewNote.Name = "richTxtNewNote";
-            this.richTxtNewNote.Size = new System.Drawing.Size(277, 216);
-            this.richTxtNewNote.TabIndex = 8;
-            this.richTxtNewNote.Text = "";
-            // 
             // txtTitle
             // 
-            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
+            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(63, 28);
+            this.txtTitle.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.ForeColor = System.Drawing.Color.White;
+            this.txtTitle.Location = new System.Drawing.Point(77, 28);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(225, 22);
             this.txtTitle.TabIndex = 7;
@@ -115,11 +105,23 @@ namespace StudySyncSystem
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 31);
+            this.label1.Location = new System.Drawing.Point(22, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Title:";
+            // 
+            // txtInsertFile
+            // 
+            this.txtInsertFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtInsertFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInsertFile.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInsertFile.ForeColor = System.Drawing.Color.White;
+            this.txtInsertFile.Location = new System.Drawing.Point(25, 80);
+            this.txtInsertFile.Multiline = true;
+            this.txtInsertFile.Name = "txtInsertFile";
+            this.txtInsertFile.Size = new System.Drawing.Size(277, 213);
+            this.txtInsertFile.TabIndex = 12;
             // 
             // frmUploadFile
             // 
@@ -143,8 +145,8 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnUpload;
-        private System.Windows.Forms.RichTextBox richTxtNewNote;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtInsertFile;
     }
 }

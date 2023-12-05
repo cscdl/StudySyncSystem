@@ -35,9 +35,10 @@ namespace StudySyncSystem
             // lblDays
             // 
             this.lblDays.AutoSize = true;
+            this.lblDays.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDays.Location = new System.Drawing.Point(3, 6);
             this.lblDays.Name = "lblDays";
-            this.lblDays.Size = new System.Drawing.Size(19, 13);
+            this.lblDays.Size = new System.Drawing.Size(21, 14);
             this.lblDays.TabIndex = 1;
             this.lblDays.Text = "00";
             // 

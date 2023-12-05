@@ -32,13 +32,13 @@ namespace StudySyncSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //frmMainStudySync mss = new frmMainStudySync();
-            //mss.ShowDialog();
-            //this.Hide();
-
-            frmAdmin a = new frmAdmin();
-            a.ShowDialog();
+            frmMainStudySync mss = new frmMainStudySync();
+            mss.ShowDialog();
             this.Hide();
+
+            //frmAdmin a = new frmAdmin();
+            //a.ShowDialog();
+            //this.Hide();
 
         }
 

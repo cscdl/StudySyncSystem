@@ -44,10 +44,19 @@ namespace StudySyncSystem
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlRegister = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnGOTOLogin = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtRegMobilenumber = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtRegAddress = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtRegLastname = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRegFirstname = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.chckShowPassword1 = new System.Windows.Forms.CheckBox();
             this.txtRegUsername = new System.Windows.Forms.TextBox();
@@ -57,16 +66,7 @@ namespace StudySyncSystem
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.txtRegFirstname = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtRegLastname = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtRegAddress = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtRegBirthday = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtRegMobilenumber = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.dtpRegBirthday = new System.Windows.Forms.DateTimePicker();
             this.pnlLogin.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -251,46 +251,6 @@ namespace StudySyncSystem
             this.pnlRegister.Size = new System.Drawing.Size(600, 395);
             this.pnlRegister.TabIndex = 54;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.panel2.Controls.Add(this.txtRegMobilenumber);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.txtRegBirthday);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.txtRegAddress);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.txtRegLastname);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtRegFirstname);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Location = new System.Drawing.Point(310, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 395);
-            this.panel2.TabIndex = 60;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(29, 338);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 14);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "Already have an account?";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(290, 124);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 64;
-            this.pictureBox4.TabStop = false;
-            // 
             // btnGOTOLogin
             // 
             this.btnGOTOLogin.FlatAppearance.BorderSize = 0;
@@ -304,6 +264,145 @@ namespace StudySyncSystem
             this.btnGOTOLogin.Text = "Login here";
             this.btnGOTOLogin.UseVisualStyleBackColor = true;
             this.btnGOTOLogin.Click += new System.EventHandler(this.btnGOTOLogin_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.panel2.Controls.Add(this.dtpRegBirthday);
+            this.panel2.Controls.Add(this.txtRegMobilenumber);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.txtRegAddress);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.txtRegLastname);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.txtRegFirstname);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.pictureBox4);
+            this.panel2.Location = new System.Drawing.Point(310, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(290, 395);
+            this.panel2.TabIndex = 60;
+            // 
+            // txtRegMobilenumber
+            // 
+            this.txtRegMobilenumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.txtRegMobilenumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRegMobilenumber.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegMobilenumber.ForeColor = System.Drawing.Color.White;
+            this.txtRegMobilenumber.Location = new System.Drawing.Point(7, 337);
+            this.txtRegMobilenumber.Name = "txtRegMobilenumber";
+            this.txtRegMobilenumber.Size = new System.Drawing.Size(276, 21);
+            this.txtRegMobilenumber.TabIndex = 74;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(4, 318);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 15);
+            this.label13.TabIndex = 73;
+            this.label13.Text = "Mobile Number*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(4, 270);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 15);
+            this.label12.TabIndex = 71;
+            this.label12.Text = "Birthday*";
+            // 
+            // txtRegAddress
+            // 
+            this.txtRegAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.txtRegAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRegAddress.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegAddress.ForeColor = System.Drawing.Color.White;
+            this.txtRegAddress.Location = new System.Drawing.Point(7, 241);
+            this.txtRegAddress.Name = "txtRegAddress";
+            this.txtRegAddress.Size = new System.Drawing.Size(276, 21);
+            this.txtRegAddress.TabIndex = 70;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(4, 222);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 15);
+            this.label11.TabIndex = 69;
+            this.label11.Text = "Address*";
+            // 
+            // txtRegLastname
+            // 
+            this.txtRegLastname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.txtRegLastname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRegLastname.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegLastname.ForeColor = System.Drawing.Color.White;
+            this.txtRegLastname.Location = new System.Drawing.Point(7, 193);
+            this.txtRegLastname.Name = "txtRegLastname";
+            this.txtRegLastname.Size = new System.Drawing.Size(276, 21);
+            this.txtRegLastname.TabIndex = 68;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(4, 174);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(77, 15);
+            this.label10.TabIndex = 67;
+            this.label10.Text = "Last Name*";
+            // 
+            // txtRegFirstname
+            // 
+            this.txtRegFirstname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.txtRegFirstname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRegFirstname.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegFirstname.ForeColor = System.Drawing.Color.White;
+            this.txtRegFirstname.Location = new System.Drawing.Point(7, 145);
+            this.txtRegFirstname.Name = "txtRegFirstname";
+            this.txtRegFirstname.Size = new System.Drawing.Size(276, 21);
+            this.txtRegFirstname.TabIndex = 66;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(4, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 15);
+            this.label7.TabIndex = 65;
+            this.label7.Text = "First Name*";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(290, 124);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 64;
+            this.pictureBox4.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(29, 338);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(175, 14);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Already have an account?";
             // 
             // btnRegister
             // 
@@ -409,123 +508,21 @@ namespace StudySyncSystem
             this.pictureBox3.TabIndex = 51;
             this.pictureBox3.TabStop = false;
             // 
-            // txtRegFirstname
+            // dtpRegBirthday
             // 
-            this.txtRegFirstname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.txtRegFirstname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRegFirstname.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegFirstname.ForeColor = System.Drawing.Color.White;
-            this.txtRegFirstname.Location = new System.Drawing.Point(7, 145);
-            this.txtRegFirstname.Name = "txtRegFirstname";
-            this.txtRegFirstname.Size = new System.Drawing.Size(276, 21);
-            this.txtRegFirstname.TabIndex = 66;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(4, 126);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 15);
-            this.label7.TabIndex = 65;
-            this.label7.Text = "First Name*";
-            // 
-            // txtRegLastname
-            // 
-            this.txtRegLastname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.txtRegLastname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRegLastname.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegLastname.ForeColor = System.Drawing.Color.White;
-            this.txtRegLastname.Location = new System.Drawing.Point(7, 193);
-            this.txtRegLastname.Name = "txtRegLastname";
-            this.txtRegLastname.Size = new System.Drawing.Size(276, 21);
-            this.txtRegLastname.TabIndex = 68;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(4, 174);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 15);
-            this.label10.TabIndex = 67;
-            this.label10.Text = "Last Name*";
-            // 
-            // txtRegAddress
-            // 
-            this.txtRegAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.txtRegAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRegAddress.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegAddress.ForeColor = System.Drawing.Color.White;
-            this.txtRegAddress.Location = new System.Drawing.Point(7, 241);
-            this.txtRegAddress.Name = "txtRegAddress";
-            this.txtRegAddress.Size = new System.Drawing.Size(276, 21);
-            this.txtRegAddress.TabIndex = 70;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(4, 222);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 15);
-            this.label11.TabIndex = 69;
-            this.label11.Text = "Address*";
-            // 
-            // txtRegBirthday
-            // 
-            this.txtRegBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.txtRegBirthday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRegBirthday.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegBirthday.ForeColor = System.Drawing.Color.White;
-            this.txtRegBirthday.Location = new System.Drawing.Point(7, 289);
-            this.txtRegBirthday.Name = "txtRegBirthday";
-            this.txtRegBirthday.Size = new System.Drawing.Size(276, 21);
-            this.txtRegBirthday.TabIndex = 72;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(4, 270);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 15);
-            this.label12.TabIndex = 71;
-            this.label12.Text = "Birthday*";
-            // 
-            // txtRegMobilenumber
-            // 
-            this.txtRegMobilenumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
-            this.txtRegMobilenumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRegMobilenumber.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegMobilenumber.ForeColor = System.Drawing.Color.White;
-            this.txtRegMobilenumber.Location = new System.Drawing.Point(7, 337);
-            this.txtRegMobilenumber.Name = "txtRegMobilenumber";
-            this.txtRegMobilenumber.Size = new System.Drawing.Size(276, 21);
-            this.txtRegMobilenumber.TabIndex = 74;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(4, 318);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 15);
-            this.label13.TabIndex = 73;
-            this.label13.Text = "Mobile Number*";
+            this.dtpRegBirthday.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRegBirthday.Location = new System.Drawing.Point(7, 289);
+            this.dtpRegBirthday.Name = "dtpRegBirthday";
+            this.dtpRegBirthday.Size = new System.Drawing.Size(276, 21);
+            this.dtpRegBirthday.TabIndex = 75;
             // 
             // frmLoginAndRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 395);
-            this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlLogin);
+            this.Controls.Add(this.pnlRegister);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLoginAndRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -577,7 +574,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox txtRegMobilenumber;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtRegBirthday;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtRegAddress;
         private System.Windows.Forms.Label label11;
@@ -585,5 +581,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRegFirstname;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtpRegBirthday;
     }
 }

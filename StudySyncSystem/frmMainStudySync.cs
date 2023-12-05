@@ -22,6 +22,7 @@ namespace StudySyncSystem
         {
             InitializeComponent();
             InitializeUI("UIMode");
+            
         }
 
         private void displayDays()
@@ -134,6 +135,11 @@ namespace StudySyncSystem
             dayContainer.Controls.Clear();
 
             month--;
+            if (month < 1)
+            {
+                month = 12;
+                year--;
+            }
 
             string monthName = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             lblMonthYear.Text = monthName + " " + year;
@@ -168,6 +174,11 @@ namespace StudySyncSystem
             dayContainer.Controls.Clear();
 
             month++;
+            if (month > 12)
+            {
+                month = 1;
+                year++;
+            }
 
             string monthName = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             lblMonthYear.Text = monthName + " " + year;

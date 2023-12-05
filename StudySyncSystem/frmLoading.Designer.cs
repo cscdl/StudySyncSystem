@@ -41,7 +41,7 @@ namespace StudySyncSystem
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(13, -32);
+            this.pictureBox1.Location = new System.Drawing.Point(13, -26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(364, 204);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -58,13 +58,12 @@ namespace StudySyncSystem
             // 
             // timerLoading
             // 
-            this.timerLoading.Interval = 80;
             this.timerLoading.Tick += new System.EventHandler(this.timerLoading_Tick);
             // 
             // lblPercent
             // 
             this.lblPercent.AutoSize = true;
-            this.lblPercent.BackColor = System.Drawing.Color.Black;
+            this.lblPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.lblPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPercent.ForeColor = System.Drawing.Color.White;
             this.lblPercent.Location = new System.Drawing.Point(172, 139);
