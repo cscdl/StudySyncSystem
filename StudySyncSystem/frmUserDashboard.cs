@@ -17,16 +17,16 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        private void btnViewTask_Click(object sender, EventArgs e)
-        {
-            frmViewTask viewTask = new frmViewTask();
-            viewTask.ShowDialog();
-        }
-
         private void btnViewNotes_Click(object sender, EventArgs e)
         {
             frmViewNotes viewNotes = new frmViewNotes();
             viewNotes.ShowDialog();
+        }
+
+        private void btnViewTask_Click(object sender, EventArgs e)
+        {
+            frmViewTask viewTask = new frmViewTask();
+            viewTask.ShowDialog();
         }
 
         private void btnViewFiles_Click(object sender, EventArgs e)

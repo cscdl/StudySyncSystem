@@ -30,8 +30,6 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
@@ -44,8 +42,6 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.cbCategory);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnSave);
@@ -56,28 +52,6 @@ namespace StudySyncSystem
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 400);
             this.panel1.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(8, 64);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 16);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Category:";
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbCategory.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(94, 61);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(194, 24);
-            this.cbCategory.TabIndex = 28;
             // 
             // btnCancel
             // 
@@ -96,8 +70,8 @@ namespace StudySyncSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(8, 102);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(8, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 10;
@@ -120,9 +94,9 @@ namespace StudySyncSystem
             this.richTxtNewNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.richTxtNewNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTxtNewNote.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTxtNewNote.Location = new System.Drawing.Point(11, 120);
+            this.richTxtNewNote.Location = new System.Drawing.Point(11, 86);
             this.richTxtNewNote.Name = "richTxtNewNote";
-            this.richTxtNewNote.Size = new System.Drawing.Size(277, 175);
+            this.richTxtNewNote.Size = new System.Drawing.Size(277, 209);
             this.richTxtNewNote.TabIndex = 8;
             this.richTxtNewNote.Text = "";
             // 
@@ -172,7 +146,5 @@ namespace StudySyncSystem
         private System.Windows.Forms.RichTextBox richTxtNewNote;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbCategory;
     }
 }

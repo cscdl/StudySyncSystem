@@ -90,6 +90,43 @@ namespace StudySyncSystem
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1:00",
+            "1:30",
+            "1:45",
+            "2:00",
+            "2:30",
+            "2:45",
+            "3:00",
+            "3:30",
+            "3:45",
+            "4:00",
+            "4:30",
+            "4:45",
+            "5:00",
+            "5:30",
+            "5:45",
+            "6:00",
+            "6:30",
+            "6:45",
+            "7:00",
+            "7:30",
+            "7:45",
+            "8:00",
+            "8:30",
+            "8:45",
+            "9:00",
+            "9:30",
+            "9:45",
+            "10:00",
+            "10:30",
+            "10:45",
+            "11:00",
+            "11:30",
+            "11:45",
+            "12:00",
+            "12:30",
+            "12:45"});
             this.comboBox1.Location = new System.Drawing.Point(25, 104);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 24);
@@ -101,6 +138,9 @@ namespace StudySyncSystem
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
             this.comboBox2.Location = new System.Drawing.Point(131, 104);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(100, 24);
@@ -123,6 +163,9 @@ namespace StudySyncSystem
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
             this.comboBox3.Location = new System.Drawing.Point(393, 104);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(100, 24);
@@ -134,6 +177,43 @@ namespace StudySyncSystem
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "1:00",
+            "1:30",
+            "1:45",
+            "2:00",
+            "2:30",
+            "2:45",
+            "3:00",
+            "3:30",
+            "3:45",
+            "4:00",
+            "4:30",
+            "4:45",
+            "5:00",
+            "5:30",
+            "5:45",
+            "6:00",
+            "6:30",
+            "6:45",
+            "7:00",
+            "7:30",
+            "7:45",
+            "8:00",
+            "8:30",
+            "8:45",
+            "9:00",
+            "9:30",
+            "9:45",
+            "10:00",
+            "10:30",
+            "10:45",
+            "11:00",
+            "11:30",
+            "11:45",
+            "12:00",
+            "12:30",
+            "12:45"});
             this.comboBox4.Location = new System.Drawing.Point(287, 104);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(100, 24);

@@ -103,5 +103,10 @@ namespace StudySyncSystem
         {
             loadform(new frmAbout());
         }
+
+        private void btnAddAdminAccount_Click(object sender, EventArgs e)
+        {
+            loadform(new frmAddAdminAccount());
+        }
     }
 }

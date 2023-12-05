@@ -17,9 +17,20 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
+        DataTable todoListNotes = new DataTable();
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmViewNotes_Load(object sender, EventArgs e)
+        {
+            // create columns for task
+            todoListNotes.Columns.Add("Title");
+            todoListNotes.Columns.Add("Notes");
+
+            dataGridView1.DataSource = todoListNotes;
         }
     }
 }

@@ -17,9 +17,22 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        DataTable todoListTask = new DataTable();
+
+        private void btnClose_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmViewTask_Load(object sender, EventArgs e)
+        {
+            // create columns for task
+            todoListTask.Columns.Add("Task Name");
+            todoListTask.Columns.Add("Date Started");
+            todoListTask.Columns.Add("End Date");
+            todoListTask.Columns.Add("Status");
+
+            dataGridView1.DataSource = todoListTask;
         }
     }
 }

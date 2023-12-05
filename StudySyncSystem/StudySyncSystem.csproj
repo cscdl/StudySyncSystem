@@ -53,6 +53,12 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddAdminAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddAdminAccount.Designer.cs">
+      <DependentUpon>frmAddAdminAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddNotes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     </Compile>
     <Compile Include="frmAdminDashboard.Designer.cs">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminProfile.Designer.cs">
+      <DependentUpon>frmAdminProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLoading.cs">
       <SubType>Form</SubType>
@@ -148,6 +160,9 @@
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddAdminAccount.resx">
+      <DependentUpon>frmAddAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddNotes.resx">
       <DependentUpon>frmAddNotes.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminDashboard.resx">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminProfile.resx">
+      <DependentUpon>frmAdminProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>

@@ -43,7 +43,7 @@ namespace StudySyncSystem
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.btnManageCategories = new System.Windows.Forms.Button();
+            this.btnAddAdminAccount = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -131,16 +131,16 @@ namespace StudySyncSystem
             this.pnlSideBar.Controls.Add(this.panel2);
             this.pnlSideBar.Controls.Add(this.panel3);
             this.pnlSideBar.Controls.Add(this.panel6);
-            this.pnlSideBar.Controls.Add(this.panel7);
             this.pnlSideBar.Controls.Add(this.panel8);
             this.pnlSideBar.Controls.Add(this.panel4);
+            this.pnlSideBar.Controls.Add(this.panel7);
             this.pnlSideBar.Controls.Add(this.panel5);
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSideBar.Location = new System.Drawing.Point(0, 50);
             this.pnlSideBar.MaximumSize = new System.Drawing.Size(200, 480);
             this.pnlSideBar.MinimumSize = new System.Drawing.Size(43, 480);
             this.pnlSideBar.Name = "pnlSideBar";
-            this.pnlSideBar.Size = new System.Drawing.Size(200, 480);
+            this.pnlSideBar.Size = new System.Drawing.Size(43, 480);
             this.pnlSideBar.TabIndex = 36;
             // 
             // panel2
@@ -162,9 +162,9 @@ namespace StudySyncSystem
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
@@ -185,7 +185,7 @@ namespace StudySyncSystem
             // panel6
             // 
             this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Controls.Add(this.btnManageCategories);
+            this.panel6.Controls.Add(this.btnAddAdminAccount);
             this.panel6.Location = new System.Drawing.Point(3, 62);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(190, 32);
@@ -194,37 +194,38 @@ namespace StudySyncSystem
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox5.Location = new System.Drawing.Point(6, 6);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
             // 
-            // btnManageCategories
+            // btnAddAdminAccount
             // 
-            this.btnManageCategories.FlatAppearance.BorderSize = 0;
-            this.btnManageCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageCategories.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageCategories.Location = new System.Drawing.Point(1, 1);
-            this.btnManageCategories.Name = "btnManageCategories";
-            this.btnManageCategories.Size = new System.Drawing.Size(178, 25);
-            this.btnManageCategories.TabIndex = 7;
-            this.btnManageCategories.Text = "     Manage Categories";
-            this.btnManageCategories.UseVisualStyleBackColor = true;
+            this.btnAddAdminAccount.FlatAppearance.BorderSize = 0;
+            this.btnAddAdminAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAdminAccount.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAdminAccount.Location = new System.Drawing.Point(3, 3);
+            this.btnAddAdminAccount.Name = "btnAddAdminAccount";
+            this.btnAddAdminAccount.Size = new System.Drawing.Size(178, 25);
+            this.btnAddAdminAccount.TabIndex = 7;
+            this.btnAddAdminAccount.Text = "     Add Admin Account";
+            this.btnAddAdminAccount.UseVisualStyleBackColor = true;
+            this.btnAddAdminAccount.Click += new System.EventHandler(this.btnAddAdminAccount_Click);
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(3, 100);
+            this.panel7.Location = new System.Drawing.Point(3, 176);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(190, 249);
+            this.panel7.Size = new System.Drawing.Size(190, 242);
             this.panel7.TabIndex = 6;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.pictureBox6);
             this.panel8.Controls.Add(this.btnAbout);
-            this.panel8.Location = new System.Drawing.Point(3, 355);
+            this.panel8.Location = new System.Drawing.Point(3, 100);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(190, 32);
             this.panel8.TabIndex = 6;
@@ -232,9 +233,9 @@ namespace StudySyncSystem
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox6.Location = new System.Drawing.Point(6, 5);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 4;
             this.pictureBox6.TabStop = false;
@@ -244,7 +245,7 @@ namespace StudySyncSystem
             this.btnAbout.FlatAppearance.BorderSize = 0;
             this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAbout.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbout.Location = new System.Drawing.Point(0, 1);
+            this.btnAbout.Location = new System.Drawing.Point(0, 3);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(178, 25);
             this.btnAbout.TabIndex = 5;
@@ -256,7 +257,7 @@ namespace StudySyncSystem
             // 
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.btnSettings);
-            this.panel4.Location = new System.Drawing.Point(3, 393);
+            this.panel4.Location = new System.Drawing.Point(3, 138);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(190, 32);
             this.panel4.TabIndex = 5;
@@ -264,9 +265,9 @@ namespace StudySyncSystem
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -276,11 +277,11 @@ namespace StudySyncSystem
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.Location = new System.Drawing.Point(0, 1);
+            this.btnSettings.Location = new System.Drawing.Point(0, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(178, 25);
             this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
+            this.btnSettings.Text = "Dark Mode";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
@@ -288,7 +289,7 @@ namespace StudySyncSystem
             // 
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.btnLogout);
-            this.panel5.Location = new System.Drawing.Point(3, 431);
+            this.panel5.Location = new System.Drawing.Point(3, 424);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(190, 32);
             this.panel5.TabIndex = 5;
@@ -296,9 +297,9 @@ namespace StudySyncSystem
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(6, 1);
+            this.pictureBox4.Location = new System.Drawing.Point(6, 5);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
@@ -374,7 +375,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button btnManageCategories;
+        private System.Windows.Forms.Button btnAddAdminAccount;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;

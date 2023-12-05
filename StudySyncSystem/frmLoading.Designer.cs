@@ -41,18 +41,19 @@ namespace StudySyncSystem
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(13, -32);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(460, 255);
+            this.pictureBox1.Size = new System.Drawing.Size(364, 204);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 240);
+            this.progressBar1.ForeColor = System.Drawing.Color.Yellow;
+            this.progressBar1.Location = new System.Drawing.Point(0, 157);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(460, 15);
+            this.progressBar1.Size = new System.Drawing.Size(389, 15);
             this.progressBar1.TabIndex = 1;
             // 
             // timerLoading
@@ -63,9 +64,10 @@ namespace StudySyncSystem
             // lblPercent
             // 
             this.lblPercent.AutoSize = true;
-            this.lblPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lblPercent.BackColor = System.Drawing.Color.Black;
             this.lblPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPercent.Location = new System.Drawing.Point(206, 222);
+            this.lblPercent.ForeColor = System.Drawing.Color.White;
+            this.lblPercent.Location = new System.Drawing.Point(172, 139);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(41, 15);
             this.lblPercent.TabIndex = 2;
@@ -75,7 +77,8 @@ namespace StudySyncSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 255);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(389, 173);
             this.Controls.Add(this.lblPercent);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pictureBox1);

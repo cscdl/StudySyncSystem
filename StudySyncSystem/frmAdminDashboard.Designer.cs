@@ -65,7 +65,7 @@ namespace StudySyncSystem
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(85)))));
             this.panel1.Controls.Add(this.btnViewActivityLogs);
             this.panel1.Location = new System.Drawing.Point(341, 145);
             this.panel1.Name = "panel1";
@@ -77,7 +77,7 @@ namespace StudySyncSystem
             this.btnViewActivityLogs.FlatAppearance.BorderSize = 0;
             this.btnViewActivityLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewActivityLogs.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewActivityLogs.ForeColor = System.Drawing.Color.Black;
+            this.btnViewActivityLogs.ForeColor = System.Drawing.Color.White;
             this.btnViewActivityLogs.Location = new System.Drawing.Point(40, 85);
             this.btnViewActivityLogs.Name = "btnViewActivityLogs";
             this.btnViewActivityLogs.Size = new System.Drawing.Size(170, 25);
@@ -87,7 +87,7 @@ namespace StudySyncSystem
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
             this.panel2.Controls.Add(this.btnViewUsers);
             this.panel2.Location = new System.Drawing.Point(52, 145);
             this.panel2.Name = "panel2";
@@ -99,7 +99,7 @@ namespace StudySyncSystem
             this.btnViewUsers.FlatAppearance.BorderSize = 0;
             this.btnViewUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewUsers.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnViewUsers.ForeColor = System.Drawing.Color.White;
             this.btnViewUsers.Location = new System.Drawing.Point(40, 85);
             this.btnViewUsers.Name = "btnViewUsers";
             this.btnViewUsers.Size = new System.Drawing.Size(170, 25);
