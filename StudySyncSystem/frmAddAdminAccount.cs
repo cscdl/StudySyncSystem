@@ -16,5 +16,6 @@ namespace StudySyncSystem
         {
             InitializeComponent();
         }
+
     }
 }

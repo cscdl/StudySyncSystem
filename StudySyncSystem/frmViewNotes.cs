@@ -17,7 +17,7 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        DataTable todoListNotes = new DataTable();20, 9
+        DataTable todoListNotes = new DataTable();
         private void frmViewNotes_Load(object sender, EventArgs e)
         {
             // create columns for task

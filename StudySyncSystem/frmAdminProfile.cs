@@ -19,6 +19,11 @@ namespace StudySyncSystem
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
             Close();
         }
     }

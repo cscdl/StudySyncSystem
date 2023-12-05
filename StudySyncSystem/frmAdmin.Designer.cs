@@ -44,13 +44,13 @@ namespace StudySyncSystem
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnAddAdminAccount = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnAbout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -104,6 +104,7 @@ namespace StudySyncSystem
             this.btnPicUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPicUser.TabIndex = 3;
             this.btnPicUser.TabStop = false;
+            this.btnPicUser.Click += new System.EventHandler(this.btnPicUser_Click);
             // 
             // picBoxDashboard
             // 
@@ -214,13 +215,6 @@ namespace StudySyncSystem
             this.btnAddAdminAccount.UseVisualStyleBackColor = true;
             this.btnAddAdminAccount.Click += new System.EventHandler(this.btnAddAdminAccount_Click);
             // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(3, 176);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(190, 242);
-            this.panel7.TabIndex = 6;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.pictureBox6);
@@ -285,6 +279,13 @@ namespace StudySyncSystem
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(3, 176);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(190, 242);
+            this.panel7.TabIndex = 6;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.pictureBox4);
@@ -315,6 +316,7 @@ namespace StudySyncSystem
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pnlMain
             // 

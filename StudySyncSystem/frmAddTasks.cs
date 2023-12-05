@@ -19,7 +19,7 @@ namespace StudySyncSystem
 
         private void frmAddTasks_Load(object sender, EventArgs e)
         {
-            txtDate.Text = frmMainStudySync.static_month + "/" + usrControlDays.static_day + "/" + frmMainStudySync.static_year;
+            lblDate.Text = frmMainStudySync.static_month + "/" + usrControlDays.static_day + "/" + frmMainStudySync.static_year;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -108,5 +108,17 @@ namespace StudySyncSystem
         {
             loadform(new frmAddAdminAccount());
         }
+
+        private void btnPicUser_Click(object sender, EventArgs e)
+        {
+            loadform(new frmAdminProfile());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmLoginAndRegister loginandregister = new frmLoginAndRegister();
+            loginandregister.ShowDialog();
+        }
     }
 }
