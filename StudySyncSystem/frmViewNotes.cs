@@ -17,13 +17,7 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        DataTable todoListNotes = new DataTable();
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        DataTable todoListNotes = new DataTable();20, 9
         private void frmViewNotes_Load(object sender, EventArgs e)
         {
             // create columns for task
@@ -31,6 +25,11 @@ namespace StudySyncSystem
             todoListNotes.Columns.Add("Notes");
 
             dataGridView1.DataSource = todoListNotes;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

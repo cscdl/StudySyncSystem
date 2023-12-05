@@ -19,11 +19,6 @@ namespace StudySyncSystem
 
         DataTable todoListFiles = new DataTable();
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void frmViewFiles_Load(object sender, EventArgs e)
         {
             // create columns for task
@@ -31,6 +26,11 @@ namespace StudySyncSystem
             todoListFiles.Columns.Add("File");
 
             dataGridView1.DataSource = todoListFiles;
+        }
+
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
