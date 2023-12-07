@@ -188,6 +188,7 @@ namespace StudySyncSystem
             this.chckShowPassword1.TabIndex = 66;
             this.chckShowPassword1.Text = "Show Password";
             this.chckShowPassword1.UseVisualStyleBackColor = true;
+            this.chckShowPassword1.CheckedChanged += new System.EventHandler(this.chckShowPassword1_CheckedChanged);
             // 
             // txtRegUsername
             // 

@@ -34,5 +34,11 @@ namespace StudySyncSystem
             frmViewFiles viewFiles = new frmViewFiles();
             viewFiles.ShowDialog();
         }
+
+        private void btnPendingTask_Click(object sender, EventArgs e)
+        {
+            frmViewPendingTask viewPendingTask = new frmViewPendingTask();
+            viewPendingTask.ShowDialog();
+        }
     }
 }

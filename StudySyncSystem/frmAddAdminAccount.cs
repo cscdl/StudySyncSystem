@@ -17,5 +17,18 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
+        private void chckShowPassword1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckShowPassword1.Checked == true)
+            {
+                txtRegPassword.UseSystemPasswordChar = false;
+                txtRegConfirmPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtRegPassword.UseSystemPasswordChar = true;
+                txtRegConfirmPassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

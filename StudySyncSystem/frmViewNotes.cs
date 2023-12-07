@@ -31,5 +31,11 @@ namespace StudySyncSystem
         {
             Close();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmEditNotes editNotes = new frmEditNotes();
+            editNotes.ShowDialog();
+        }
     }
 }

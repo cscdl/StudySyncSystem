@@ -50,6 +50,7 @@ namespace StudySyncSystem
             this.btnLogout = new System.Windows.Forms.Button();
             this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.dayContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel53 = new System.Windows.Forms.Panel();
             this.picnext = new System.Windows.Forms.PictureBox();
@@ -70,7 +71,6 @@ namespace StudySyncSystem
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnlMain2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -90,6 +90,7 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel56.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.pnlMain2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -158,7 +159,7 @@ namespace StudySyncSystem
             this.pnlSideBar.MaximumSize = new System.Drawing.Size(200, 480);
             this.pnlSideBar.MinimumSize = new System.Drawing.Size(43, 480);
             this.pnlSideBar.Name = "pnlSideBar";
-            this.pnlSideBar.Size = new System.Drawing.Size(43, 480);
+            this.pnlSideBar.Size = new System.Drawing.Size(200, 480);
             this.pnlSideBar.TabIndex = 35;
             // 
             // panel2
@@ -285,6 +286,18 @@ namespace StudySyncSystem
             this.pnlMain.Size = new System.Drawing.Size(350, 460);
             this.pnlMain.TabIndex = 36;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(42, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(270, 310);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "     W A G\r\n    K A Y O \r\n    P A L O\r\n     M A G\r\nD A T A B A S E \r\n  P L E A S " +
+    "E \r\n     M A G \r\n    R E S T\r\n     D I N,\r\nT E N K Z S :)))";
+            // 
             // dayContainer
             // 
             this.dayContainer.Location = new System.Drawing.Point(10, 60);
@@ -305,7 +318,7 @@ namespace StudySyncSystem
             this.panel53.Controls.Add(this.label2);
             this.panel53.Controls.Add(this.label1);
             this.panel53.Controls.Add(this.dayContainer);
-            this.panel53.Location = new System.Drawing.Point(568, 101);
+            this.panel53.Location = new System.Drawing.Point(568, 97);
             this.panel53.Name = "panel53";
             this.panel53.Size = new System.Drawing.Size(306, 315);
             this.panel53.TabIndex = 38;
@@ -416,7 +429,7 @@ namespace StudySyncSystem
             // 
             this.panel54.Controls.Add(this.pictureBox6);
             this.panel54.Controls.Add(this.btnAddNotes);
-            this.panel54.Location = new System.Drawing.Point(633, 422);
+            this.panel54.Location = new System.Drawing.Point(433, 375);
             this.panel54.Name = "panel54";
             this.panel54.Size = new System.Drawing.Size(172, 37);
             this.panel54.TabIndex = 39;
@@ -448,7 +461,7 @@ namespace StudySyncSystem
             // 
             this.panel56.Controls.Add(this.btnUploadFile);
             this.panel56.Controls.Add(this.pictureBox8);
-            this.panel56.Location = new System.Drawing.Point(633, 465);
+            this.panel56.Location = new System.Drawing.Point(433, 414);
             this.panel56.Name = "panel56";
             this.panel56.Size = new System.Drawing.Size(172, 37);
             this.panel56.TabIndex = 41;
@@ -478,6 +491,8 @@ namespace StudySyncSystem
             // 
             // pnlMain2
             // 
+            this.pnlMain2.Controls.Add(this.panel56);
+            this.pnlMain2.Controls.Add(this.panel54);
             this.pnlMain2.Location = new System.Drawing.Point(200, 50);
             this.pnlMain2.Name = "pnlMain2";
             this.pnlMain2.Size = new System.Drawing.Size(685, 480);
@@ -487,23 +502,11 @@ namespace StudySyncSystem
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(657, 74);
+            this.label8.Location = new System.Drawing.Point(657, 85);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 16);
             this.label8.TabIndex = 42;
             this.label8.Text = "C A L E N D A R";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(42, 73);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(270, 310);
-            this.label10.TabIndex = 43;
-            this.label10.Text = "     W A G\r\n    K A Y O \r\n    P A L O\r\n     M A G\r\nD A T A B A S E \r\n  P L E A S " +
-    "E \r\n     M A G \r\n    R E S T\r\n     D I N\r\nT E N K Z S :)))";
             // 
             // frmMainStudySync
             // 
@@ -511,11 +514,9 @@ namespace StudySyncSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 530);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.panel56);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panel53);
             this.Controls.Add(this.pnlSideBar);
-            this.Controls.Add(this.panel54);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlMain2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -545,6 +546,7 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel56.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.pnlMain2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

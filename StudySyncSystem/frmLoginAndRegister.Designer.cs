@@ -67,6 +67,8 @@ namespace StudySyncSystem
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            this.btnClose2 = new System.Windows.Forms.PictureBox();
             this.pnlLogin.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -75,6 +77,8 @@ namespace StudySyncSystem
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLogin
@@ -97,6 +101,7 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.btnGOTORegister);
@@ -268,6 +273,7 @@ namespace StudySyncSystem
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(29)))), ((int)(((byte)(61)))));
+            this.panel2.Controls.Add(this.btnClose2);
             this.panel2.Controls.Add(this.dtpRegBirthday);
             this.panel2.Controls.Add(this.txtRegMobilenumber);
             this.panel2.Controls.Add(this.label13);
@@ -516,6 +522,28 @@ namespace StudySyncSystem
             this.pictureBox3.TabIndex = 51;
             this.pictureBox3.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(262, 8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(20, 20);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnClose.TabIndex = 64;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnClose2
+            // 
+            this.btnClose2.Image = ((System.Drawing.Image)(resources.GetObject("btnClose2.Image")));
+            this.btnClose2.Location = new System.Drawing.Point(262, 8);
+            this.btnClose2.Name = "btnClose2";
+            this.btnClose2.Size = new System.Drawing.Size(20, 20);
+            this.btnClose2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnClose2.TabIndex = 66;
+            this.btnClose2.TabStop = false;
+            this.btnClose2.Click += new System.EventHandler(this.btnClose2_Click);
+            // 
             // frmLoginAndRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,6 +567,8 @@ namespace StudySyncSystem
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +612,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.TextBox txtRegFirstname;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpRegBirthday;
+        private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.PictureBox btnClose2;
     }
 }

@@ -56,6 +56,9 @@ namespace StudySyncSystem
             this.btnLogout = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.btnManageCategories = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -71,6 +74,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -131,6 +136,7 @@ namespace StudySyncSystem
             // 
             this.pnlSideBar.Controls.Add(this.panel2);
             this.pnlSideBar.Controls.Add(this.panel3);
+            this.pnlSideBar.Controls.Add(this.panel9);
             this.pnlSideBar.Controls.Add(this.panel6);
             this.pnlSideBar.Controls.Add(this.panel8);
             this.pnlSideBar.Controls.Add(this.panel4);
@@ -141,7 +147,7 @@ namespace StudySyncSystem
             this.pnlSideBar.MaximumSize = new System.Drawing.Size(200, 480);
             this.pnlSideBar.MinimumSize = new System.Drawing.Size(43, 480);
             this.pnlSideBar.Name = "pnlSideBar";
-            this.pnlSideBar.Size = new System.Drawing.Size(43, 480);
+            this.pnlSideBar.Size = new System.Drawing.Size(200, 480);
             this.pnlSideBar.TabIndex = 36;
             // 
             // panel2
@@ -187,7 +193,7 @@ namespace StudySyncSystem
             // 
             this.panel6.Controls.Add(this.pictureBox5);
             this.panel6.Controls.Add(this.btnAddAdminAccount);
-            this.panel6.Location = new System.Drawing.Point(3, 62);
+            this.panel6.Location = new System.Drawing.Point(3, 100);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(190, 32);
             this.panel6.TabIndex = 6;
@@ -219,7 +225,7 @@ namespace StudySyncSystem
             // 
             this.panel8.Controls.Add(this.pictureBox6);
             this.panel8.Controls.Add(this.btnAbout);
-            this.panel8.Location = new System.Drawing.Point(3, 100);
+            this.panel8.Location = new System.Drawing.Point(3, 138);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(190, 32);
             this.panel8.TabIndex = 6;
@@ -251,7 +257,7 @@ namespace StudySyncSystem
             // 
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.btnSettings);
-            this.panel4.Location = new System.Drawing.Point(3, 138);
+            this.panel4.Location = new System.Drawing.Point(3, 176);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(190, 32);
             this.panel4.TabIndex = 5;
@@ -281,16 +287,16 @@ namespace StudySyncSystem
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(3, 176);
+            this.panel7.Location = new System.Drawing.Point(3, 214);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(190, 242);
+            this.panel7.Size = new System.Drawing.Size(190, 217);
             this.panel7.TabIndex = 6;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.btnLogout);
-            this.panel5.Location = new System.Drawing.Point(3, 424);
+            this.panel5.Location = new System.Drawing.Point(3, 437);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(190, 32);
             this.panel5.TabIndex = 5;
@@ -331,6 +337,38 @@ namespace StudySyncSystem
             this.tmrSideBar.Interval = 20;
             this.tmrSideBar.Tick += new System.EventHandler(this.tmrSideBar_Tick);
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.pictureBox7);
+            this.panel9.Controls.Add(this.btnManageCategories);
+            this.panel9.Location = new System.Drawing.Point(3, 62);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(190, 32);
+            this.panel9.TabIndex = 8;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 4;
+            this.pictureBox7.TabStop = false;
+            // 
+            // btnManageCategories
+            // 
+            this.btnManageCategories.FlatAppearance.BorderSize = 0;
+            this.btnManageCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageCategories.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageCategories.Location = new System.Drawing.Point(3, 3);
+            this.btnManageCategories.Name = "btnManageCategories";
+            this.btnManageCategories.Size = new System.Drawing.Size(178, 25);
+            this.btnManageCategories.TabIndex = 7;
+            this.btnManageCategories.Text = "     Manage Categories";
+            this.btnManageCategories.UseVisualStyleBackColor = true;
+            this.btnManageCategories.Click += new System.EventHandler(this.btnManageCategories_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +397,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +430,8 @@ namespace StudySyncSystem
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button btnAbout;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Button btnManageCategories;
     }
 }

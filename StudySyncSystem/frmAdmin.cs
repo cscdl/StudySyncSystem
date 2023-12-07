@@ -120,5 +120,10 @@ namespace StudySyncSystem
             frmLoginAndRegister loginandregister = new frmLoginAndRegister();
             loginandregister.ShowDialog();
         }
+
+        private void btnManageCategories_Click(object sender, EventArgs e)
+        {
+            loadform(new frmManageCategory());
+        }
     }
 }

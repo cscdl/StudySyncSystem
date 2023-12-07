@@ -32,13 +32,13 @@ namespace StudySyncSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmMainStudySync mss = new frmMainStudySync();
-            mss.ShowDialog();
-            this.Hide();
-
-            //frmAdmin a = new frmAdmin();
-            //a.ShowDialog();
+            //frmMainStudySync mss = new frmMainStudySync();
+            //mss.ShowDialog();
             //this.Hide();
+
+            frmAdmin a = new frmAdmin();
+            a.ShowDialog();
+            this.Hide();
 
         }
 
@@ -64,7 +64,7 @@ namespace StudySyncSystem
 
         private void chckShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            if (chckShowPassword1.Checked == true)
+            if (chckShowPassword.Checked == true)
             {
                 txtPassword.UseSystemPasswordChar = false;
             }
@@ -74,5 +74,14 @@ namespace StudySyncSystem
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClose2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }       
 }

@@ -37,9 +37,9 @@ namespace StudySyncSystem
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -75,9 +75,9 @@ namespace StudySyncSystem
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(20, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 21;
-            this.label1.Text = "TASK";
+            this.label1.Text = "T A S K";
             // 
             // button1
             // 
@@ -142,17 +142,17 @@ namespace StudySyncSystem
             this.txtSearch.Size = new System.Drawing.Size(307, 22);
             this.txtSearch.TabIndex = 20;
             // 
-            // button2
+            // button4
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Yellow;
-            this.button2.Location = new System.Drawing.Point(289, 318);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 26);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Yellow;
+            this.button4.Location = new System.Drawing.Point(14, 318);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(125, 26);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "New";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -166,17 +166,17 @@ namespace StudySyncSystem
             this.button3.Text = "Edit";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button2
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Yellow;
-            this.button4.Location = new System.Drawing.Point(14, 318);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 26);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "New";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Yellow;
+            this.button2.Location = new System.Drawing.Point(289, 318);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(125, 26);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Delete";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmViewTask
             // 

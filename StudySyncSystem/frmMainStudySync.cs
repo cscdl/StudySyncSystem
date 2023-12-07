@@ -249,6 +249,11 @@ namespace StudySyncSystem
             viewFiles.ShowDialog();
         }
 
+        private void btnEditNotes_Click(object sender, EventArgs e)
+        {
+            loadform(new frmEditNotes());
+        }
+
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
             loadform(new frmUploadFile());

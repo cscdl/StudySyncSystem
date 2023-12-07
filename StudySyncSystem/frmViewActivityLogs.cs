@@ -17,9 +17,19 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
+        DataTable activityLog = new DataTable();
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmViewActivityLogs_Load(object sender, EventArgs e)
+        {
+            // create columns for activity log
+            activityLog.Columns.Add("Title");
+            activityLog.Columns.Add("Date Created");
+
+            dgvActivityLogs.DataSource = activityLog;
         }
     }
 }
