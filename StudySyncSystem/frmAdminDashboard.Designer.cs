@@ -39,44 +39,44 @@ namespace StudySyncSystem
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnViewUsersAndAdmins = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.adminName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnViewAllNotes = new System.Windows.Forms.Button();
-            this.adminName = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(48, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 16);
+            this.label2.Size = new System.Drawing.Size(101, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Welcome back,";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(48, 53);
+            this.label1.Location = new System.Drawing.Point(47, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.Size = new System.Drawing.Size(117, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "DASHBOARD";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.btnViewActivityLogs);
             this.panel1.Location = new System.Drawing.Point(340, 125);
@@ -98,7 +98,7 @@ namespace StudySyncSystem
             // 
             this.btnViewActivityLogs.FlatAppearance.BorderSize = 0;
             this.btnViewActivityLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewActivityLogs.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewActivityLogs.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewActivityLogs.ForeColor = System.Drawing.Color.White;
             this.btnViewActivityLogs.Location = new System.Drawing.Point(40, 85);
             this.btnViewActivityLogs.Name = "btnViewActivityLogs";
@@ -132,7 +132,7 @@ namespace StudySyncSystem
             // 
             this.btnViewUsersAndAdmins.FlatAppearance.BorderSize = 0;
             this.btnViewUsersAndAdmins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewUsersAndAdmins.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewUsersAndAdmins.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewUsersAndAdmins.ForeColor = System.Drawing.Color.White;
             this.btnViewUsersAndAdmins.Location = new System.Drawing.Point(40, 85);
             this.btnViewUsersAndAdmins.Name = "btnViewUsersAndAdmins";
@@ -156,19 +156,20 @@ namespace StudySyncSystem
             this.panel3.Size = new System.Drawing.Size(643, 441);
             this.panel3.TabIndex = 7;
             // 
-            // pictureBox3
+            // adminName
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(90, 9);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
+            this.adminName.AutoSize = true;
+            this.adminName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminName.ForeColor = System.Drawing.Color.White;
+            this.adminName.Location = new System.Drawing.Point(150, 72);
+            this.adminName.Name = "adminName";
+            this.adminName.Size = new System.Drawing.Size(13, 18);
+            this.adminName.TabIndex = 10;
+            this.adminName.Text = "-";
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(85)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
             this.panel4.Controls.Add(this.btnViewAllNotes);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Location = new System.Drawing.Point(201, 262);
@@ -180,7 +181,7 @@ namespace StudySyncSystem
             // 
             this.btnViewAllNotes.FlatAppearance.BorderSize = 0;
             this.btnViewAllNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewAllNotes.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewAllNotes.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewAllNotes.ForeColor = System.Drawing.Color.White;
             this.btnViewAllNotes.Location = new System.Drawing.Point(40, 85);
             this.btnViewAllNotes.Name = "btnViewAllNotes";
@@ -190,16 +191,15 @@ namespace StudySyncSystem
             this.btnViewAllNotes.UseVisualStyleBackColor = true;
             this.btnViewAllNotes.Click += new System.EventHandler(this.btnViewAllNotes_Click);
             // 
-            // adminName
+            // pictureBox3
             // 
-            this.adminName.AutoSize = true;
-            this.adminName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminName.ForeColor = System.Drawing.Color.White;
-            this.adminName.Location = new System.Drawing.Point(155, 72);
-            this.adminName.Name = "adminName";
-            this.adminName.Size = new System.Drawing.Size(15, 16);
-            this.adminName.TabIndex = 10;
-            this.adminName.Text = "-";
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(90, 9);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
             // 
             // frmAdminDashboard
             // 
@@ -217,8 +217,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }

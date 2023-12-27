@@ -61,16 +61,16 @@ namespace StudySyncSystem
             this.richTxtNewNote.ForeColor = System.Drawing.Color.White;
             this.richTxtNewNote.Location = new System.Drawing.Point(26, 90);
             this.richTxtNewNote.Name = "richTxtNewNote";
-            this.richTxtNewNote.Size = new System.Drawing.Size(277, 227);
+            this.richTxtNewNote.Size = new System.Drawing.Size(277, 259);
             this.richTxtNewNote.TabIndex = 12;
             this.richTxtNewNote.Text = "";
             // 
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCancel.Location = new System.Drawing.Point(26, 366);
+            this.btnCancel.Location = new System.Drawing.Point(26, 387);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
             this.btnCancel.TabIndex = 11;
@@ -93,9 +93,9 @@ namespace StudySyncSystem
             // 
             this.btnSave.BackColor = System.Drawing.Color.Yellow;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.btnSave.Location = new System.Drawing.Point(26, 334);
+            this.btnSave.Location = new System.Drawing.Point(26, 355);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(277, 26);
             this.btnSave.TabIndex = 9;

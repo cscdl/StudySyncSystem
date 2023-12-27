@@ -332,8 +332,7 @@ namespace StudySyncSystem
 
         private void btnCalculator_Click(object sender, EventArgs e)
         {
-            frmCalculator calculator = new frmCalculator();
-            calculator.ShowDialog();
+            loadform(new frmCalculator());
         }
 
         private void pnlMain_Paint(object sender, PaintEventArgs e)

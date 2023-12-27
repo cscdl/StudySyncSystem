@@ -213,9 +213,9 @@ namespace StudySyncSystem
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(16, 198);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 16);
+            this.label2.Size = new System.Drawing.Size(87, 16);
             this.label2.TabIndex = 56;
-            this.label2.Text = "Password";
+            this.label2.Text = "Password :";
             // 
             // label8
             // 
@@ -224,9 +224,9 @@ namespace StudySyncSystem
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(16, 144);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 16);
+            this.label8.Size = new System.Drawing.Size(87, 16);
             this.label8.TabIndex = 55;
-            this.label8.Text = "Username";
+            this.label8.Text = "Username :";
             // 
             // pictureBox1
             // 
