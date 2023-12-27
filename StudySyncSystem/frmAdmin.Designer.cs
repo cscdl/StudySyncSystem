@@ -32,6 +32,7 @@ namespace StudySyncSystem
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.adminName = new System.Windows.Forms.Label();
             this.btnPicUser = new System.Windows.Forms.PictureBox();
             this.picBoxDashboard = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,7 +59,6 @@ namespace StudySyncSystem
             this.btnLogout = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
-            this.adminName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -89,6 +89,16 @@ namespace StudySyncSystem
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(885, 50);
             this.panel1.TabIndex = 35;
+            // 
+            // adminName
+            // 
+            this.adminName.AutoSize = true;
+            this.adminName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminName.Location = new System.Drawing.Point(806, 19);
+            this.adminName.Name = "adminName";
+            this.adminName.Size = new System.Drawing.Size(13, 18);
+            this.adminName.TabIndex = 44;
+            this.adminName.Text = "-";
             // 
             // btnPicUser
             // 
@@ -170,8 +180,8 @@ namespace StudySyncSystem
             // 
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.Location = new System.Drawing.Point(0, 3);
+            this.btnDashboard.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Location = new System.Drawing.Point(9, 3);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(178, 25);
             this.btnDashboard.TabIndex = 0;
@@ -202,8 +212,8 @@ namespace StudySyncSystem
             // 
             this.btnManageCategories.FlatAppearance.BorderSize = 0;
             this.btnManageCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageCategories.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageCategories.Location = new System.Drawing.Point(3, 3);
+            this.btnManageCategories.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageCategories.Location = new System.Drawing.Point(4, 3);
             this.btnManageCategories.Name = "btnManageCategories";
             this.btnManageCategories.Size = new System.Drawing.Size(178, 25);
             this.btnManageCategories.TabIndex = 7;
@@ -234,8 +244,8 @@ namespace StudySyncSystem
             // 
             this.btnAddAdminAccount.FlatAppearance.BorderSize = 0;
             this.btnAddAdminAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAdminAccount.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAdminAccount.Location = new System.Drawing.Point(3, 3);
+            this.btnAddAdminAccount.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAdminAccount.Location = new System.Drawing.Point(7, 3);
             this.btnAddAdminAccount.Name = "btnAddAdminAccount";
             this.btnAddAdminAccount.Size = new System.Drawing.Size(178, 25);
             this.btnAddAdminAccount.TabIndex = 7;
@@ -266,8 +276,8 @@ namespace StudySyncSystem
             // 
             this.btnAbout.FlatAppearance.BorderSize = 0;
             this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbout.Location = new System.Drawing.Point(0, 3);
+            this.btnAbout.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbout.Location = new System.Drawing.Point(10, 3);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(178, 25);
             this.btnAbout.TabIndex = 5;
@@ -298,8 +308,8 @@ namespace StudySyncSystem
             // 
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.Location = new System.Drawing.Point(0, 3);
+            this.btnSettings.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Location = new System.Drawing.Point(11, 3);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(178, 25);
             this.btnSettings.TabIndex = 5;
@@ -337,7 +347,7 @@ namespace StudySyncSystem
             // 
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(3, 3);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(178, 25);
@@ -358,16 +368,6 @@ namespace StudySyncSystem
             // 
             this.tmrSideBar.Interval = 20;
             this.tmrSideBar.Tick += new System.EventHandler(this.tmrSideBar_Tick);
-            // 
-            // adminName
-            // 
-            this.adminName.AutoSize = true;
-            this.adminName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminName.Location = new System.Drawing.Point(806, 19);
-            this.adminName.Name = "adminName";
-            this.adminName.Size = new System.Drawing.Size(15, 16);
-            this.adminName.TabIndex = 44;
-            this.adminName.Text = "-";
             // 
             // frmAdmin
             // 
