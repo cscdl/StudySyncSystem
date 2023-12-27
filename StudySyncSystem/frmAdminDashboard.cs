@@ -13,9 +13,18 @@ namespace StudySyncSystem
 {
     public partial class frmAdminDashboard : Form
     {
+        private string loggedInUserFirstName;
+
         public frmAdminDashboard()
         {
             InitializeComponent();
+        }
+
+        public void SetLoggedInUserFirstName(string firstName)
+        {
+            loggedInUserFirstName = firstName;
+            adminName.Text = loggedInUserFirstName;
+
         }
 
         private void btnViewUsersAndAdmins_Click(object sender, EventArgs e)
@@ -28,6 +37,12 @@ namespace StudySyncSystem
         {
             frmViewActivityLogs activityLogs = new frmViewActivityLogs();
             activityLogs.ShowDialog();
+        }
+
+        private void btnViewAllNotes_Click(object sender, EventArgs e)
+        {
+            frmAdminViewAllNotes allNotes = new frmAdminViewAllNotes();
+            allNotes.ShowDialog();
         }
     }
 }

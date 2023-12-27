@@ -2,31 +2,52 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static StudySyncSystem.frmMainStudySync;
 
 namespace StudySyncSystem
 {
     public partial class frmUserDashboard : Form
     {
-        public frmUserDashboard()
+        private string loggedInUsername;
+        private int loggedInUserID;
+
+        public frmUserDashboard(int userID)
         {
             InitializeComponent();
+            loggedInUserID = userID;
+
+            UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
+
+
         }
+        public void UpdateUsernameLabel(string username)
+        {
+            loggedInUsername = username;
+            lblUsername.Text = loggedInUsername;
+        }
+
+
 
         private void btnViewNotes_Click(object sender, EventArgs e)
         {
-            frmViewNotes viewNotes = new frmViewNotes();
-            viewNotes.ShowDialog();
+            frmViewNotes viewNotesForm = new frmViewNotes();
+            viewNotesForm.SetLoggedInUserID(loggedInUserID);
+            viewNotesForm.ShowDialog();
         }
+
+
 
         private void btnViewTask_Click(object sender, EventArgs e)
         {
-            frmViewTask viewTask = new frmViewTask();
-            viewTask.ShowDialog();
+            frmViewTask viewTaskForm = new frmViewTask();
+            viewTaskForm.SetLoggedInUserID(loggedInUserID);
+            viewTaskForm.ShowDialog();
         }
 
         private void btnViewFiles_Click(object sender, EventArgs e)
@@ -40,5 +61,7 @@ namespace StudySyncSystem
             frmViewPendingTask viewPendingTask = new frmViewPendingTask();
             viewPendingTask.ShowDialog();
         }
+
+
     }
 }

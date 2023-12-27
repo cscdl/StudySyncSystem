@@ -53,11 +53,35 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminViewAllNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminViewAllNotes.Designer.cs">
+      <DependentUpon>frmAdminViewAllNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalculator.Designer.cs">
+      <DependentUpon>frmCalculator.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditNotes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEditNotes.Designer.cs">
       <DependentUpon>frmEditNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditTasks.Designer.cs">
+      <DependentUpon>frmEditTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputCategory.Designer.cs">
+      <DependentUpon>frmInputCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageCategory.cs">
       <SubType>Form</SubType>
@@ -190,8 +214,20 @@
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminViewAllNotes.resx">
+      <DependentUpon>frmAdminViewAllNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalculator.resx">
+      <DependentUpon>frmCalculator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditNotes.resx">
       <DependentUpon>frmEditNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTasks.resx">
+      <DependentUpon>frmEditTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputCategory.resx">
+      <DependentUpon>frmInputCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageCategory.resx">
       <DependentUpon>frmManageCategory.cs</DependentUpon>

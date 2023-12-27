@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -15,14 +16,53 @@ namespace StudySyncSystem
 {
     public partial class frmMainStudySync : Form
     {
+        private string loggedInUsername;
+        private int loggedInUserID;
+
         bool SideBarExpand;
         int month, year;
         public static int static_month, static_year;
-        public frmMainStudySync()
+        public frmMainStudySync(int userID)
         {
             InitializeComponent();
             InitializeUI("UIMode");
-            
+            loggedInUserID = userID;
+            UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
+        }
+        public static class DatabaseHelper
+        {
+            // Your other database-related methods go here
+
+            public static string GetFirstNameForUserID(int userID)
+            {
+                string firstName = string.Empty;
+
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT FirstName FROM tblUserInfo WHERE UserID = @UserID";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            object result = cmd.ExecuteScalar();
+
+                            if (result != null)
+                            {
+                                firstName = result.ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving first name: " + ex.Message);
+                }
+
+                return firstName;
+            }
         }
 
         private void displayDays()
@@ -52,7 +92,7 @@ namespace StudySyncSystem
 
             for (int i = 1; i <= days; i++)
             {
-                usrControlDays usrDays = new usrControlDays();
+                usrControlDays usrDays = new usrControlDays(loggedInUserID);
                 usrDays.days(i);
                 dayContainer.Controls.Add(usrDays);
             }
@@ -60,30 +100,38 @@ namespace StudySyncSystem
 
         private void InitializeUI(string key)
         {
-            try
-            {
-                var uiMode = ConfigurationManager.AppSettings[key];
+            var uiMode = ConfigurationManager.AppSettings[key];
 
-                if (uiMode == "light")
-                {
-                    btnSettings.Text = "Dark Mode";
-                    this.ForeColor = Color.FromArgb(0, 8, 20);
-                    this.BackColor = Color.FromArgb(239,229,220);
-                    ConfigurationManager.AppSettings[key] = "dark";
-                }
-                else
-                {
-                    btnSettings.Text = "Light Mode";
-                    this.ForeColor = Color.FromArgb(239, 229, 220);
-                    this.BackColor = Color.FromArgb(0, 8, 20);
-                    ConfigurationManager.AppSettings[key] = "light";
-                }
-            }
-            catch (Exception e)
+            if (uiMode == "light")
             {
-                throw;
+                btnSettings.Text = "Dark Mode";
+                ApplyDarkModeColors();
+                ConfigurationManager.AppSettings[key] = "dark";
+            }
+            else
+            {
+                btnSettings.Text = "Light Mode";
+                ApplyLightModeColors();
+                ConfigurationManager.AppSettings[key] = "light";
             }
         }
+
+        private void ApplyDarkModeColors()
+        {
+            this.ForeColor = Color.FromArgb(0, 8, 20);
+            this.BackColor = Color.FromArgb(115, 160, 195);
+
+            // Apply dark mode colors to other controls if needed
+        }
+
+        private void ApplyLightModeColors()
+        {
+            this.ForeColor = Color.FromArgb(255, 255, 255);
+            this.BackColor = Color.FromArgb(0, 8, 20);
+
+            // Apply light mode colors to other controls if needed
+        }
+
         public void loadform(object Form)
         {
             if (this.pnlMain.Controls.Count > 0)
@@ -163,7 +211,7 @@ namespace StudySyncSystem
 
             for (int i = 1; i <= days; i++)
             {
-                usrControlDays usrDays = new usrControlDays();
+                usrControlDays usrDays = new usrControlDays(loggedInUserID);
                 usrDays.days(i);
                 dayContainer.Controls.Add(usrDays);
             }
@@ -202,7 +250,7 @@ namespace StudySyncSystem
 
             for (int i = 1; i <= days; i++)
             {
-                usrControlDays usrDays = new usrControlDays();
+                usrControlDays usrDays = new usrControlDays(loggedInUserID);
                 usrDays.days(i);
                 dayContainer.Controls.Add(usrDays);
             }
@@ -215,15 +263,25 @@ namespace StudySyncSystem
 
         private void btnAddNotes_Click(object sender, EventArgs e)
         {
-            loadform(new frmAddNotes());
+            // Create the form
+            frmAddNotes addNotesForm = new frmAddNotes();
+
+            // Set the user ID property
+            addNotesForm.LoggedInUserID = loggedInUserID;
+
+
+            // Show the form
+            loadform(addNotesForm);
         }
+
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Hide();
             frmLoginAndRegister loginandregister = new frmLoginAndRegister();
             loginandregister.ShowDialog();
-            
+
         }
 
         private void btnPicUser_Click(object sender, EventArgs e)
@@ -249,11 +307,6 @@ namespace StudySyncSystem
             viewFiles.ShowDialog();
         }
 
-        private void btnEditNotes_Click(object sender, EventArgs e)
-        {
-            loadform(new frmEditNotes());
-        }
-
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
             loadform(new frmUploadFile());
@@ -261,10 +314,45 @@ namespace StudySyncSystem
 
         private void btnDashboard_Click_1(object sender, EventArgs e)
         {
-            loadform(new frmUserDashboard());
+            int userID = GetLoggedInUserID();
+            string firstName = DatabaseHelper.GetFirstNameForUserID(userID);
+
+            // Assuming your frmUserDashboard has a method to update the username label
+            frmUserDashboard userDash = new frmUserDashboard(userID);
+            userDash.UpdateUsernameLabel(firstName);
+            loadform(userDash);
         }
 
-        
+
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnCalculator_Click(object sender, EventArgs e)
+        {
+            frmCalculator calculator = new frmCalculator();
+            calculator.ShowDialog();
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        public int GetLoggedInUserID()
+        {
+            return loggedInUserID;
+        }
+
+
+
+        public void UpdateUsernameLabel(string username)
+        {
+            loggedInUsername = username;
+            lblUsername.Text = loggedInUsername;
+        }
 
     }
 }

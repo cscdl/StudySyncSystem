@@ -12,10 +12,14 @@ namespace StudySyncSystem
 {
     public partial class usrControlDays : UserControl
     {
+        private int loggedInUserID;
         public static string static_day;
-        public usrControlDays()
+
+
+        public usrControlDays(int userID)
         {
             InitializeComponent();
+            loggedInUserID = userID;
         }
 
         public void days(int numday)
@@ -27,8 +31,13 @@ namespace StudySyncSystem
         {
             static_day = lblDays.Text;
 
-            frmAddTasks addTasks = new frmAddTasks();
-            addTasks.ShowDialog();
+            // Create the form
+            frmAddTasks addTasksForm = new frmAddTasks();
+
+            // Set the user ID property
+            addTasksForm.LoggedInUserID = loggedInUserID;
+
+            addTasksForm.Show();
         }
 
         private void usrControlDays_Load(object sender, EventArgs e)

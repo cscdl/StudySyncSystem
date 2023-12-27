@@ -30,10 +30,10 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNewNote = new System.Windows.Forms.TextBox();
+            this.richTxtEditNote = new System.Windows.Forms.RichTextBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -42,10 +42,10 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.txtNewNote);
+            this.panel1.Controls.Add(this.richTxtEditNote);
             this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtTitle);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -53,30 +53,43 @@ namespace StudySyncSystem
             this.panel1.Size = new System.Drawing.Size(326, 423);
             this.panel1.TabIndex = 1;
             // 
-            // txtNewNote
+            // richTxtEditNote
             // 
-            this.txtNewNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.txtNewNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNewNote.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNewNote.ForeColor = System.Drawing.Color.White;
-            this.txtNewNote.Location = new System.Drawing.Point(26, 88);
-            this.txtNewNote.Multiline = true;
-            this.txtNewNote.Name = "txtNewNote";
-            this.txtNewNote.Size = new System.Drawing.Size(277, 207);
-            this.txtNewNote.TabIndex = 12;
+            this.richTxtEditNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.richTxtEditNote.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTxtEditNote.ForeColor = System.Drawing.Color.White;
+            this.richTxtEditNote.Location = new System.Drawing.Point(26, 86);
+            this.richTxtEditNote.Name = "richTxtEditNote";
+            this.richTxtEditNote.Size = new System.Drawing.Size(277, 227);
+            this.richTxtEditNote.TabIndex = 15;
+            this.richTxtEditNote.Text = "";
             // 
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCancel.Location = new System.Drawing.Point(26, 343);
+            this.btnCancel.Location = new System.Drawing.Point(26, 362);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
-            this.btnCancel.TabIndex = 11;
+            this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Yellow;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.btnSave.Location = new System.Drawing.Point(26, 330);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(277, 26);
+            this.btnSave.TabIndex = 13;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label2
             // 
@@ -88,18 +101,6 @@ namespace StudySyncSystem
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "Edit Note:";
-            // 
-            // btnSave
-            // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSave.Location = new System.Drawing.Point(26, 311);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(277, 26);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // txtTitle
             // 
@@ -130,6 +131,7 @@ namespace StudySyncSystem
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(350, 447);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditNotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -143,11 +145,11 @@ namespace StudySyncSystem
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNewNote;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox richTxtEditNote;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
     }
 }

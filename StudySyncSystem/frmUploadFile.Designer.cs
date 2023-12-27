@@ -29,24 +29,26 @@ namespace StudySyncSystem
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtInsertFile = new System.Windows.Forms.TextBox();
+            this.listView = new System.Windows.Forms.ListView();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.txtInsertFile);
+            this.panel1.Controls.Add(this.listView);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnUpload);
-            this.panel1.Controls.Add(this.txtTitle);
+            this.panel1.Controls.Add(this.txtPath);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -58,7 +60,7 @@ namespace StudySyncSystem
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCancel.Location = new System.Drawing.Point(25, 343);
+            this.btnCancel.Location = new System.Drawing.Point(25, 377);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
             this.btnCancel.TabIndex = 11;
@@ -71,7 +73,7 @@ namespace StudySyncSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, 61);
+            this.label2.Location = new System.Drawing.Point(22, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 15);
             this.label2.TabIndex = 10;
@@ -82,46 +84,53 @@ namespace StudySyncSystem
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpload.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.Color.Yellow;
-            this.btnUpload.Location = new System.Drawing.Point(25, 311);
+            this.btnUpload.Location = new System.Drawing.Point(25, 345);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(277, 26);
             this.btnUpload.TabIndex = 9;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // txtTitle
+            // txtPath
             // 
-            this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitle.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.ForeColor = System.Drawing.Color.White;
-            this.txtTitle.Location = new System.Drawing.Point(77, 28);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(225, 22);
-            this.txtTitle.TabIndex = 7;
+            this.txtPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPath.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPath.ForeColor = System.Drawing.Color.White;
+            this.txtPath.Location = new System.Drawing.Point(77, 307);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(225, 22);
+            this.txtPath.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(22, 31);
+            this.label1.Location = new System.Drawing.Point(22, 310);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 15);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Title:";
+            this.label1.Text = "Path :";
             // 
-            // txtInsertFile
+            // listView
             // 
-            this.txtInsertFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.txtInsertFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInsertFile.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInsertFile.ForeColor = System.Drawing.Color.White;
-            this.txtInsertFile.Location = new System.Drawing.Point(25, 80);
-            this.txtInsertFile.Multiline = true;
-            this.txtInsertFile.Name = "txtInsertFile";
-            this.txtInsertFile.Size = new System.Drawing.Size(277, 213);
-            this.txtInsertFile.TabIndex = 12;
+            this.listView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(25, 31);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(277, 270);
+            this.listView.TabIndex = 12;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.List;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            // 
+            // imageList
+            // 
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(32, 32);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // frmUploadFile
             // 
@@ -145,8 +154,9 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnUpload;
-        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtInsertFile;
+        private System.Windows.Forms.ListView listView;
+        private System.Windows.Forms.ImageList imageList;
     }
 }

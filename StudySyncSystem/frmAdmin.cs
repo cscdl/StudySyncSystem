@@ -13,6 +13,7 @@ namespace StudySyncSystem
 {
     public partial class frmAdmin : Form
     {
+        private string loggedInUsername;
         bool SideBarExpand;
         public frmAdmin()
         {
@@ -36,30 +37,36 @@ namespace StudySyncSystem
         }
         private void InitializeUI(string key)
         {
-            try
-            {
-                var uiMode = ConfigurationManager.AppSettings[key];
+            var uiMode = ConfigurationManager.AppSettings[key];
 
-                if (uiMode == "light")
-                {
-                    btnSettings.Text = "Dark Mode";
-                    this.ForeColor = Color.FromArgb(0, 8, 20);
-                    this.BackColor = Color.FromArgb(239, 229, 220);
-                    ConfigurationManager.AppSettings[key] = "dark";
-                }
-                else
-                {
-                    btnSettings.Text = "Light Mode";
-                    this.ForeColor = Color.FromArgb(239, 229, 220);
-                    this.BackColor = Color.FromArgb(0, 8, 20);
-                    ConfigurationManager.AppSettings[key] = "light";
-                }
-            }
-            catch (Exception e)
+            if (uiMode == "light")
             {
-                throw;
+                btnSettings.Text = "Dark Mode";
+                ApplyDarkModeColors();
+                ConfigurationManager.AppSettings[key] = "dark";
             }
+            else
+            {
+                btnSettings.Text = "Light Mode";
+                ApplyLightModeColors();
+                ConfigurationManager.AppSettings[key] = "light";
+            }
+        }
 
+        private void ApplyDarkModeColors()
+        {
+            this.ForeColor = Color.FromArgb(0, 8, 20);
+            this.BackColor = Color.FromArgb(115, 160, 195);
+
+            // Apply dark mode colors to other controls if needed
+        }
+
+        private void ApplyLightModeColors()
+        {
+            this.ForeColor = Color.FromArgb(255, 255, 255);
+            this.BackColor = Color.FromArgb(0, 8, 20);
+
+            // Apply light mode colors to other controls if needed
         }
 
         private void tmrSideBar_Tick(object sender, EventArgs e)
@@ -123,7 +130,18 @@ namespace StudySyncSystem
 
         private void btnManageCategories_Click(object sender, EventArgs e)
         {
-            loadform(new frmManageCategory());
+            // Assuming isAdmin is a boolean variable indicating whether the user is an admin
+            bool isAdmin = true;  // Set the value based on your logic
+
+            frmManageCategory manageCategoryForm = new frmManageCategory(isAdmin);
+            loadform(manageCategoryForm);
+        }
+
+
+        public void UpdateUsernameLabel(string username)
+        {
+            loggedInUsername = username;
+            adminName.Text = loggedInUsername;
         }
     }
 }
