@@ -184,7 +184,7 @@ namespace StudySyncSystem
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(110, 42);
+            this.lblUsername.Location = new System.Drawing.Point(107, 42);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(12, 18);
             this.lblUsername.TabIndex = 10;

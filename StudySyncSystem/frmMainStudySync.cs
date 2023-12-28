@@ -28,6 +28,9 @@ namespace StudySyncSystem
             InitializeUI("UIMode");
             loggedInUserID = userID;
             UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
+            UpdateNoteCountLabel();
+            UpdateTaskCountLabel();
+
         }
         public static class DatabaseHelper
         {
@@ -62,7 +65,62 @@ namespace StudySyncSystem
                 }
 
                 return firstName;
+
+
             }
+            //test test test
+            public static int GetNoteCountForUser(int userID)
+            {
+                int noteCount = 0;
+
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT COUNT(*) FROM tblNote WHERE UserID = @UserID";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            noteCount = (int)cmd.ExecuteScalar();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving note count: " + ex.Message);
+                }
+
+                return noteCount;
+            }
+
+            public static int GetTaskCountForUser(int userID)
+            {
+                int taskCount = 0;
+
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT COUNT(*) FROM tblTask WHERE UserID = @UserID";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            taskCount = (int)cmd.ExecuteScalar();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving task count: " + ex.Message);
+                }
+
+                return taskCount;
+            }
+
         }
 
         private void displayDays()
@@ -121,7 +179,7 @@ namespace StudySyncSystem
             this.ForeColor = Color.FromArgb(0, 8, 20);
             this.BackColor = Color.FromArgb(115, 160, 195);
 
-            // Apply dark mode colors to other controls if needed
+            panel15.BackColor = Color.FromArgb(115, 160, 195);
         }
 
         private void ApplyLightModeColors()
@@ -129,7 +187,7 @@ namespace StudySyncSystem
             this.ForeColor = Color.FromArgb(255, 255, 255);
             this.BackColor = Color.FromArgb(0, 8, 20);
 
-            // Apply light mode colors to other controls if needed
+            panel15.BackColor = Color.FromArgb(0, 8, 20);
         }
 
         public void loadform(object Form)
@@ -176,6 +234,8 @@ namespace StudySyncSystem
         private void frmMainStudySync_Load(object sender, EventArgs e)
         {
             displayDays();
+            UpdateNoteCountLabel();
+
         }
 
         private void picPrevious_Click(object sender, EventArgs e)
@@ -291,14 +351,16 @@ namespace StudySyncSystem
 
         private void btnViewTask_Click(object sender, EventArgs e)
         {
-            frmViewTask viewTask = new frmViewTask();
-            viewTask.ShowDialog();
+            frmViewTask viewTaskForm = new frmViewTask();
+            viewTaskForm.SetLoggedInUserID(loggedInUserID);
+            viewTaskForm.ShowDialog();
         }
 
         private void btnViewNotes_Click(object sender, EventArgs e)
         {
-            frmViewNotes viewNotes = new frmViewNotes();
-            viewNotes.ShowDialog();
+            frmViewNotes viewNotesForm = new frmViewNotes();
+            viewNotesForm.SetLoggedInUserID(loggedInUserID);
+            viewNotesForm.ShowDialog();
         }
 
         private void btnViewFiles_Click(object sender, EventArgs e)
@@ -346,11 +408,35 @@ namespace StudySyncSystem
         }
 
 
-
         public void UpdateUsernameLabel(string username)
         {
             loggedInUsername = username;
             lblUsername.Text = loggedInUsername;
+            lblName.Text = loggedInUsername;
+        }
+
+        private void pnlMain2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //test test test 
+
+        private void UpdateNoteCountLabel()
+        {
+            int noteCount = DatabaseHelper.GetNoteCountForUser(loggedInUserID);
+            lblTotalNotes.Text = noteCount.ToString();
+        }
+
+        private void UpdateTaskCountLabel()
+        {
+            int taskCount = DatabaseHelper.GetTaskCountForUser(loggedInUserID);
+            lblTotalTasks.Text = taskCount.ToString();
         }
 
     }

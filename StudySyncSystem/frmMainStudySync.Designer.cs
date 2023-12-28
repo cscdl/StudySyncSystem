@@ -59,10 +59,10 @@ namespace StudySyncSystem
             this.lblTotalFiles = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.lblTotalTask = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.lblTotalNotes = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.btnPendingTask = new System.Windows.Forms.Button();
@@ -73,10 +73,10 @@ namespace StudySyncSystem
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.btnViewNotes = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.btnViewTask = new System.Windows.Forms.Button();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.lblTotalNotes = new System.Windows.Forms.Label();
+            this.lblTotalTasks = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -373,7 +373,7 @@ namespace StudySyncSystem
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.panel15.Controls.Add(this.panel8);
             this.panel15.Controls.Add(this.panel9);
-            this.panel15.Controls.Add(this.label12);
+            this.panel15.Controls.Add(this.lblName);
             this.panel15.Controls.Add(this.panel10);
             this.panel15.Controls.Add(this.panel11);
             this.panel15.Controls.Add(this.panel12);
@@ -432,24 +432,13 @@ namespace StudySyncSystem
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel9.Controls.Add(this.lblTotalTask);
             this.panel9.Controls.Add(this.pictureBox10);
+            this.panel9.Controls.Add(this.lblTotalNotes);
             this.panel9.Controls.Add(this.label11);
             this.panel9.Location = new System.Drawing.Point(13, 110);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(302, 27);
             this.panel9.TabIndex = 1;
-            // 
-            // lblTotalTask
-            // 
-            this.lblTotalTask.AutoSize = true;
-            this.lblTotalTask.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalTask.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTotalTask.Location = new System.Drawing.Point(275, 6);
-            this.lblTotalTask.Name = "lblTotalTask";
-            this.lblTotalTask.Size = new System.Drawing.Size(22, 18);
-            this.lblTotalTask.TabIndex = 9;
-            this.lblTotalTask.Text = "00";
             // 
             // pictureBox10
             // 
@@ -460,6 +449,17 @@ namespace StudySyncSystem
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 6;
             this.pictureBox10.TabStop = false;
+            // 
+            // lblTotalNotes
+            // 
+            this.lblTotalNotes.AutoSize = true;
+            this.lblTotalNotes.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalNotes.ForeColor = System.Drawing.Color.Yellow;
+            this.lblTotalNotes.Location = new System.Drawing.Point(275, 6);
+            this.lblTotalNotes.Name = "lblTotalNotes";
+            this.lblTotalNotes.Size = new System.Drawing.Size(22, 18);
+            this.lblTotalNotes.TabIndex = 10;
+            this.lblTotalNotes.Text = "00";
             // 
             // label11
             // 
@@ -472,16 +472,16 @@ namespace StudySyncSystem
             this.label11.TabIndex = 11;
             this.label11.Text = "Total Notes";
             // 
-            // label12
+            // lblName
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(113, 42);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 18);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "-";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(109, 42);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(12, 18);
+            this.lblName.TabIndex = 10;
+            this.lblName.Text = "-";
             // 
             // panel10
             // 
@@ -546,6 +546,7 @@ namespace StudySyncSystem
             this.btnViewFiles.TabIndex = 4;
             this.btnViewFiles.Text = "View Files";
             this.btnViewFiles.UseVisualStyleBackColor = true;
+            this.btnViewFiles.Click += new System.EventHandler(this.btnViewFiles_Click);
             // 
             // panel12
             // 
@@ -578,16 +579,30 @@ namespace StudySyncSystem
             this.btnViewNotes.TabIndex = 4;
             this.btnViewNotes.Text = "View Notes";
             this.btnViewNotes.UseVisualStyleBackColor = true;
+            this.btnViewNotes.Click += new System.EventHandler(this.btnViewNotes_Click);
             // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel13.Controls.Add(this.pictureBox11);
             this.panel13.Controls.Add(this.btnViewTask);
+            this.panel13.Controls.Add(this.pictureBox11);
             this.panel13.Location = new System.Drawing.Point(18, 195);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(140, 100);
             this.panel13.TabIndex = 0;
+            // 
+            // btnViewTask
+            // 
+            this.btnViewTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewTask.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewTask.ForeColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnViewTask.Location = new System.Drawing.Point(14, 65);
+            this.btnViewTask.Name = "btnViewTask";
+            this.btnViewTask.Size = new System.Drawing.Size(106, 26);
+            this.btnViewTask.TabIndex = 12;
+            this.btnViewTask.Text = "View Task";
+            this.btnViewTask.UseVisualStyleBackColor = true;
+            this.btnViewTask.Click += new System.EventHandler(this.btnViewTask_Click);
             // 
             // pictureBox11
             // 
@@ -599,22 +614,10 @@ namespace StudySyncSystem
             this.pictureBox11.TabIndex = 11;
             this.pictureBox11.TabStop = false;
             // 
-            // btnViewTask
-            // 
-            this.btnViewTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewTask.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewTask.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.btnViewTask.Location = new System.Drawing.Point(17, 65);
-            this.btnViewTask.Name = "btnViewTask";
-            this.btnViewTask.Size = new System.Drawing.Size(106, 26);
-            this.btnViewTask.TabIndex = 4;
-            this.btnViewTask.Text = "View Task";
-            this.btnViewTask.UseVisualStyleBackColor = true;
-            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel14.Controls.Add(this.lblTotalNotes);
+            this.panel14.Controls.Add(this.lblTotalTasks);
             this.panel14.Controls.Add(this.pictureBox9);
             this.panel14.Controls.Add(this.label10);
             this.panel14.Location = new System.Drawing.Point(13, 77);
@@ -622,16 +625,16 @@ namespace StudySyncSystem
             this.panel14.Size = new System.Drawing.Size(302, 27);
             this.panel14.TabIndex = 0;
             // 
-            // lblTotalNotes
+            // lblTotalTasks
             // 
-            this.lblTotalNotes.AutoSize = true;
-            this.lblTotalNotes.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalNotes.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTotalNotes.Location = new System.Drawing.Point(275, 6);
-            this.lblTotalNotes.Name = "lblTotalNotes";
-            this.lblTotalNotes.Size = new System.Drawing.Size(22, 18);
-            this.lblTotalNotes.TabIndex = 10;
-            this.lblTotalNotes.Text = "00";
+            this.lblTotalTasks.AutoSize = true;
+            this.lblTotalTasks.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTasks.ForeColor = System.Drawing.Color.Yellow;
+            this.lblTotalTasks.Location = new System.Drawing.Point(275, 6);
+            this.lblTotalTasks.Name = "lblTotalTasks";
+            this.lblTotalTasks.Size = new System.Drawing.Size(22, 18);
+            this.lblTotalTasks.TabIndex = 9;
+            this.lblTotalTasks.Text = "00";
             // 
             // pictureBox9
             // 
@@ -679,7 +682,7 @@ namespace StudySyncSystem
             // dayContainer
             // 
             this.dayContainer.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dayContainer.Location = new System.Drawing.Point(10, 60);
+            this.dayContainer.Location = new System.Drawing.Point(10, 47);
             this.dayContainer.Name = "dayContainer";
             this.dayContainer.Size = new System.Drawing.Size(287, 247);
             this.dayContainer.TabIndex = 37;
@@ -697,7 +700,7 @@ namespace StudySyncSystem
             this.panel53.Controls.Add(this.label2);
             this.panel53.Controls.Add(this.label1);
             this.panel53.Controls.Add(this.dayContainer);
-            this.panel53.Location = new System.Drawing.Point(568, 97);
+            this.panel53.Location = new System.Drawing.Point(568, 84);
             this.panel53.Name = "panel53";
             this.panel53.Size = new System.Drawing.Size(306, 315);
             this.panel53.TabIndex = 38;
@@ -705,7 +708,7 @@ namespace StudySyncSystem
             // picnext
             // 
             this.picnext.Image = ((System.Drawing.Image)(resources.GetObject("picnext.Image")));
-            this.picnext.Location = new System.Drawing.Point(277, 13);
+            this.picnext.Location = new System.Drawing.Point(277, 0);
             this.picnext.Name = "picnext";
             this.picnext.Size = new System.Drawing.Size(20, 20);
             this.picnext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -716,7 +719,7 @@ namespace StudySyncSystem
             // picPrevious
             // 
             this.picPrevious.Image = ((System.Drawing.Image)(resources.GetObject("picPrevious.Image")));
-            this.picPrevious.Location = new System.Drawing.Point(10, 13);
+            this.picPrevious.Location = new System.Drawing.Point(10, 0);
             this.picPrevious.Name = "picPrevious";
             this.picPrevious.Size = new System.Drawing.Size(20, 20);
             this.picPrevious.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -728,7 +731,7 @@ namespace StudySyncSystem
             // 
             this.lblMonthYear.AutoSize = true;
             this.lblMonthYear.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonthYear.Location = new System.Drawing.Point(126, 16);
+            this.lblMonthYear.Location = new System.Drawing.Point(111, 3);
             this.lblMonthYear.Name = "lblMonthYear";
             this.lblMonthYear.Size = new System.Drawing.Size(43, 18);
             this.lblMonthYear.TabIndex = 45;
@@ -738,7 +741,7 @@ namespace StudySyncSystem
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 43);
+            this.label7.Location = new System.Drawing.Point(51, 30);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 18);
             this.label7.TabIndex = 44;
@@ -748,7 +751,7 @@ namespace StudySyncSystem
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(92, 43);
+            this.label6.Location = new System.Drawing.Point(92, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 18);
             this.label6.TabIndex = 43;
@@ -758,7 +761,7 @@ namespace StudySyncSystem
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(133, 43);
+            this.label5.Location = new System.Drawing.Point(133, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 18);
             this.label5.TabIndex = 42;
@@ -768,7 +771,7 @@ namespace StudySyncSystem
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(174, 43);
+            this.label4.Location = new System.Drawing.Point(174, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 18);
             this.label4.TabIndex = 41;
@@ -778,7 +781,7 @@ namespace StudySyncSystem
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(215, 43);
+            this.label3.Location = new System.Drawing.Point(215, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 18);
             this.label3.TabIndex = 40;
@@ -788,7 +791,7 @@ namespace StudySyncSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 43);
+            this.label2.Location = new System.Drawing.Point(256, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 18);
             this.label2.TabIndex = 39;
@@ -798,7 +801,7 @@ namespace StudySyncSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 43);
+            this.label1.Location = new System.Drawing.Point(10, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 18);
             this.label1.TabIndex = 38;
@@ -876,16 +879,18 @@ namespace StudySyncSystem
             this.pnlMain2.Name = "pnlMain2";
             this.pnlMain2.Size = new System.Drawing.Size(685, 480);
             this.pnlMain2.TabIndex = 36;
+            this.pnlMain2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain2_Paint);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(671, 85);
+            this.label8.Location = new System.Drawing.Point(671, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 42;
             this.label8.Text = "C A L E N D A R";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // frmMainStudySync
             // 
@@ -1001,10 +1006,10 @@ namespace StudySyncSystem
         private System.Windows.Forms.Label lblTotalFiles;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label lblTotalTask;
+        private System.Windows.Forms.Label lblTotalTasks;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.Button btnPendingTask;
@@ -1016,12 +1021,12 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnViewNotes;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Button btnViewTask;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label lblTotalNotes;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnViewTask;
     }
 }
