@@ -731,7 +731,7 @@ namespace StudySyncSystem
             // 
             this.lblMonthYear.AutoSize = true;
             this.lblMonthYear.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonthYear.Location = new System.Drawing.Point(111, 3);
+            this.lblMonthYear.Location = new System.Drawing.Point(84, 9);
             this.lblMonthYear.Name = "lblMonthYear";
             this.lblMonthYear.Size = new System.Drawing.Size(43, 18);
             this.lblMonthYear.TabIndex = 45;

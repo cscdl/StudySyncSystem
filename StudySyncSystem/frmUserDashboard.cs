@@ -23,7 +23,8 @@ namespace StudySyncSystem
             loggedInUserID = userID;
 
             UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
-
+            UpdateNoteCountLabel();
+            UpdateTaskCountLabel();
 
         }
         public void UpdateUsernameLabel(string username)
@@ -62,6 +63,16 @@ namespace StudySyncSystem
             viewPendingTask.ShowDialog();
         }
 
+        private void UpdateNoteCountLabel()
+        {
+            int noteCount = DatabaseHelper.GetNoteCountForUser(loggedInUserID);
+            lblTotalNotes.Text = noteCount.ToString();
+        }
 
+        private void UpdateTaskCountLabel()
+        {
+            int taskCount = DatabaseHelper.GetTaskCountForUser(loggedInUserID);
+            lblTotalTask.Text = taskCount.ToString();
+        }
     }
 }

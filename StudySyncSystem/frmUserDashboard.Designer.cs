@@ -139,7 +139,7 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel1.Controls.Add(this.lblTotalTask);
+            this.panel1.Controls.Add(this.lblTotalNotes);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 110);
@@ -152,7 +152,7 @@ namespace StudySyncSystem
             this.lblTotalTask.AutoSize = true;
             this.lblTotalTask.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalTask.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTotalTask.Location = new System.Drawing.Point(275, 6);
+            this.lblTotalTask.Location = new System.Drawing.Point(275, 3);
             this.lblTotalTask.Name = "lblTotalTask";
             this.lblTotalTask.Size = new System.Drawing.Size(22, 18);
             this.lblTotalTask.TabIndex = 9;
@@ -325,8 +325,8 @@ namespace StudySyncSystem
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(45)))));
-            this.panel2.Controls.Add(this.lblTotalNotes);
             this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.lblTotalTask);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(13, 77);
             this.panel2.Name = "panel2";
