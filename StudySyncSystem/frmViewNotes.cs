@@ -39,9 +39,10 @@ namespace StudySyncSystem
             dgvNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             // Bind data to the DataGridView (optional, depending on when you want to load the data)
-            dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+           
         }
-    
+
 
         private int GetLoggedInUserID()
         {
@@ -59,7 +60,7 @@ namespace StudySyncSystem
 
             addNotesForm.Show();
         }
-        
+
 
         private DataTable RetrieveNotesForLoggedInUser(int userID)
         {
@@ -189,6 +190,47 @@ namespace StudySyncSystem
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        // test test test
+
+        private void SearchNotes(string searchTerm)
+        {
+            DataTable notesTable = new DataTable();
+
+            try
+            {
+                connection.Open();
+                // Modify the SELECT statement to filter notes by UserID and search term
+                string query = $"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {loggedInUserID} AND NoteTitle LIKE @SearchTerm";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@SearchTerm", $"%{searchTerm}%");
+                adapter.Fill(notesTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching notes: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            dgvNotes.DataSource = notesTable;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                SearchNotes(searchTerm);
+            }
+            else
+            {
+                // If the search term is empty, reload all notes
+                dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            }
         }
 
     }

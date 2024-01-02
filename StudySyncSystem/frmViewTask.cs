@@ -15,6 +15,9 @@ namespace StudySyncSystem
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
+        private string searchCriteria;
+        private string categoryFilter;
+
         public frmViewTask()
         {
             InitializeComponent();
@@ -23,10 +26,10 @@ namespace StudySyncSystem
         public void SetLoggedInUserID(int userID)
         {
             loggedInUserID = userID;
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
-        }
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
 
-        
+            LoadTasks();
+        }
 
 
         private void frmViewTask_Load(object sender, EventArgs e)
@@ -41,8 +44,14 @@ namespace StudySyncSystem
             dgvTasks.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvTasks.Columns["CategoryID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
+            
+            cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
+
+            LoadTasks();
+
         }
+
 
         private int GetLoggedInUserID()
         {
@@ -55,13 +64,12 @@ namespace StudySyncSystem
             frmAddTasks addTasksForm = new frmAddTasks();
             addTasksForm.StartPosition = FormStartPosition.CenterScreen;
 
-            // Subscribe to the DataSaved event
             addTasksForm.DataSaved += FrmAddTasks_DataSaved;
 
             addTasksForm.Show();
         }
 
-        private DataTable RetrieveTasksForLoggedInUser(int userID)
+        private DataTable RetrieveTasksForLoggedInUser(int userID, string searchCriteria, string categoryFilter)
         {
             DataTable todoListTask = new DataTable();
 
@@ -70,9 +78,34 @@ namespace StudySyncSystem
                 using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
                 {
                     connection.Open();
-                    // Modify the SELECT statement to filter notes by UserID
-                    SqlDataAdapter adapter = new SqlDataAdapter($"SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = {userID}", connection);
-                    adapter.Fill(todoListTask);
+
+                    string query = "SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userID);
+
+                        StringBuilder queryBuilder = new StringBuilder(query);
+
+                        if (!string.IsNullOrEmpty(searchCriteria))
+                        {
+                            queryBuilder.Append("AND(TaskTitle LIKE '%' + @SearchCriteria + '%' OR TaskStatus LIKE '%' + @SearchCriteria + '%')");
+                            cmd.Parameters.AddWithValue("@SearchCriteria", searchCriteria);
+                        }
+
+                        if (!string.IsNullOrEmpty(categoryFilter) && categoryFilter != "All")
+                        {
+                            queryBuilder.Append("AND CategoryID IN(SELECT CategoryID FROM tblCategory WHERE CategoryName = @CategoryFilter)");
+                            cmd.Parameters.AddWithValue("@CategoryFilter", categoryFilter);
+                        }
+
+                        
+                        cmd.CommandText = queryBuilder.ToString();
+
+                    
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(todoListTask);
+                    }
                 }
             }
             catch (Exception ex)
@@ -86,7 +119,7 @@ namespace StudySyncSystem
 
         private void FrmAddTasks_DataSaved(object sender, EventArgs e)
         {
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
         }
 
 
@@ -103,14 +136,14 @@ namespace StudySyncSystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // Get the selected note
+          
             DataGridViewRow selectedRow = dgvTasks.CurrentRow;
 
             if (selectedRow != null)
             {
                 int taskID = Convert.ToInt32(selectedRow.Cells["TaskID"].Value);
 
-                // Open the edit form with the selected note
+               
                 OpenEditTasksForm(taskID);
             }
             else
@@ -123,40 +156,38 @@ namespace StudySyncSystem
         {
             frmEditTasks editTasksForm = new frmEditTasks(taskID);
             editTasksForm.StartPosition = FormStartPosition.CenterScreen;
-            // Subscribe to the DataSaved event
+            
             editTasksForm.DataSaved += FrmEditTasks_DataSaved;
 
             editTasksForm.ShowDialog();
 
-            // Refresh the DataGridView after editing
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
+           
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
         }
 
         private void FrmEditTasks_DataSaved(object sender, EventArgs e)
         {
-            // You can handle any actions after data is saved in the edit form
-            // For example, refresh the DataGridView or perform additional tasks
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Get the selected note
+            
             DataGridViewRow selectedRow = dgvTasks.CurrentRow;
 
             if (selectedRow != null)
             {
                 int taskID = Convert.ToInt32(selectedRow.Cells["TaskID"].Value);
 
-                // Confirm with the user before deleting
+                
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this task?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Delete the task from the database
+                    
                     DeleteTaskFromDatabase(taskID);
 
-                    // Remove the selected row from the DataGridView
+                   
                     dgvTasks.Rows.Remove(selectedRow);
                 }
             }
@@ -173,7 +204,6 @@ namespace StudySyncSystem
                 {
                     deleteConnection.Open();
 
-                    // Delete the task from the database
                     string query = "DELETE FROM tblTask WHERE TaskID = @TaskID";
                     using (SqlCommand cmd = new SqlCommand(query, deleteConnection))
                     {
@@ -195,14 +225,46 @@ namespace StudySyncSystem
 
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
+            string searchCriteria = txtSearch.Text.Trim();
 
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string selectedFilter = cmbFilter.SelectedItem.ToString();
 
+            string filterCriteria = GetFilterCriteria(selectedFilter);
+
+        
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, filterCriteria);
+        }
+
+
+        private string GetFilterCriteria(string selectedFilter)
+        {
+            Dictionary<string, string> filterMap = new Dictionary<string, string>
+            {
+                { "Pending", "TaskStatus = 'Pending'" },
+                { "Complete", "TaskStatus = 'Complete'" },
+                { "All Categories", "" },
+                { "Upcoming Tasks", "EndDate >= GETDATE()" }
+            };
+
+           
+            if (selectedFilter.StartsWith("Category: "))
+            {
+                return $"AND CategoryID IN(SELECT CategoryID FROM tblCategory WHERE CategoryName = '{selectedFilter.Replace("Category: ", "")}')";
+            }
+
+            return filterMap.ContainsKey(selectedFilter) ? filterMap[selectedFilter] : "";
+        }
+
+        private void LoadTasks()
+        {
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, "", "");
         }
     }
 }

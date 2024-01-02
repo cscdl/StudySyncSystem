@@ -41,14 +41,16 @@ namespace StudySyncSystem
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +71,7 @@ namespace StudySyncSystem
             this.IsArchived,
             this.DateCreated,
             this.CategoryID});
-            this.dgvTasks.Location = new System.Drawing.Point(14, 61);
+            this.dgvTasks.Location = new System.Drawing.Point(14, 62);
             this.dgvTasks.Name = "dgvTasks";
             this.dgvTasks.Size = new System.Drawing.Size(676, 246);
             this.dgvTasks.TabIndex = 14;
@@ -145,11 +147,13 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cmbFilter);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.dgvTasks);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDelete);
@@ -158,6 +162,17 @@ namespace StudySyncSystem
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 362);
             this.panel1.TabIndex = 22;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(15, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 18);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Search :";
             // 
             // btnNew
             // 
@@ -185,17 +200,18 @@ namespace StudySyncSystem
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // button5
+            // btnSearch
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Yellow;
-            this.button5.Location = new System.Drawing.Point(484, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 26);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Search";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Yellow;
+            this.btnSearch.Location = new System.Drawing.Point(321, 27);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(82, 26);
+            this.btnSearch.TabIndex = 22;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnEdit
             // 
@@ -241,22 +257,46 @@ namespace StudySyncSystem
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.White;
-            this.txtSearch.Location = new System.Drawing.Point(163, 26);
+            this.txtSearch.Location = new System.Drawing.Point(74, 29);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(307, 21);
-            this.txtSearch.TabIndex = 20;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Size = new System.Drawing.Size(241, 21);
+            this.txtSearch.TabIndex = 27;
             // 
-            // label3
+            // cmbFilter
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(100, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 18);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Search :";
+            this.cmbFilter.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Items.AddRange(new object[] {
+            "Pending",
+            "Complete",
+            "All Categories",
+            "Upcoming Tasks",
+            "Category: General",
+            "Category: Research",
+            "Category: Project",
+            "Category: Homework",
+            "Category: Seatwork",
+            "Category: Readings",
+            "Category: Presentations",
+            "Category: Exams",
+            "Category: Socials",
+            "Category: Others"});
+            this.cmbFilter.Location = new System.Drawing.Point(525, 27);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(165, 26);
+            this.cmbFilter.TabIndex = 28;
+            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(453, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 18);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Filter by :";
             // 
             // frmViewTask
             // 
@@ -284,7 +324,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.DataGridView dgvTasks;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
@@ -298,8 +338,10 @@ namespace StudySyncSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn IsArchived;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.Label label2;
     }
 }
