@@ -25,7 +25,6 @@ namespace StudySyncSystem
 
         private void frmViewActivityLogs_Load(object sender, EventArgs e)
         {
-            // create columns for activity log
             activityLog.Columns.Add("Title");
             activityLog.Columns.Add("Date Created");
 

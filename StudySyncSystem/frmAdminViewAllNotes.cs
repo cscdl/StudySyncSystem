@@ -16,22 +16,18 @@ namespace StudySyncSystem
 
         private void frmAdminViewAllNotes_Load(object sender, EventArgs e)
         {
-            // Set AutoGenerateColumns to false
             dgvAllNotes.AutoGenerateColumns = false;
 
-            // Check if "NoteID" column exists before setting visibility
             if (dgvAllNotes.Columns.Contains("NoteID"))
             {
                 dgvAllNotes.Columns["NoteID"].Visible = false;
             }
 
-            // Set AutoSizeMode for other columns
             dgvAllNotes.Columns["NoteTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvAllNotes.Columns["NoteContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvAllNotes.Columns["DateCreated"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvAllNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            // Bind data to the DataGridView
             dgvAllNotes.DataSource = RetrieveAllNotes();
         }
 
@@ -42,7 +38,6 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                // Select all notes from the database
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived, UserID FROM tblNote", connection);
                 adapter.Fill(notesTable);
             }

@@ -23,22 +23,18 @@ namespace StudySyncSystem
 
         private void frmViewNotes_Load(object sender, EventArgs e)
         {
-            // Set AutoGenerateColumns to false
             dgvNotes.AutoGenerateColumns = false;
 
-            // Check if "NoteID" column exists before setting visibility
             if (dgvNotes.Columns.Contains("NoteID"))
             {
                 dgvNotes.Columns["NoteID"].Visible = false;
             }
 
-            // Set AutoSizeMode for other columns
             dgvNotes.Columns["NoteTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvNotes.Columns["NoteContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvNotes.Columns["DateCreated"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            // Bind data to the DataGridView (optional, depending on when you want to load the data)
              dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
            
         }
@@ -55,7 +51,6 @@ namespace StudySyncSystem
             frmAddNotes addNotesForm = new frmAddNotes();
             addNotesForm.StartPosition = FormStartPosition.CenterScreen;
 
-            // Subscribe to the DataSaved event
             addNotesForm.DataSaved += FrmAddNotes_DataSaved;
 
             addNotesForm.Show();
@@ -69,7 +64,6 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                // Modify the SELECT statement to filter notes by UserID
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {userID}", connection);
                 adapter.Fill(notesTable);
             }
@@ -97,14 +91,12 @@ namespace StudySyncSystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // Get the selected note
             DataGridViewRow selectedRow = dgvNotes.CurrentRow;
 
             if (selectedRow != null)
             {
                 int noteID = Convert.ToInt32(selectedRow.Cells["NoteID"].Value);
 
-                // Open the edit form with the selected note
                 OpenEditNotesForm(noteID);
             }
             else
@@ -118,40 +110,32 @@ namespace StudySyncSystem
         {
             frmEditNotes editNotesForm = new frmEditNotes(noteID);
             editNotesForm.StartPosition = FormStartPosition.CenterScreen;
-            // Subscribe to the DataSaved event
             editNotesForm.DataSaved += FrmEditNotes_DataSaved;
 
             editNotesForm.ShowDialog();
 
-            // Refresh the DataGridView after editing
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
         }
 
         private void FrmEditNotes_DataSaved(object sender, EventArgs e)
         {
-            // You can handle any actions after data is saved in the edit form
-            // For example, refresh the DataGridView or perform additional tasks
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Get the selected note
             DataGridViewRow selectedRow = dgvNotes.CurrentRow;
 
             if (selectedRow != null)
             {
                 int noteID = Convert.ToInt32(selectedRow.Cells["NoteID"].Value);
 
-                // Confirm with the user before deleting
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this note?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Delete the note from the database
                     DeleteNoteFromDatabase(noteID);
 
-                    // Remove the selected row from the DataGridView
                     dgvNotes.Rows.Remove(selectedRow);
                 }
             }
@@ -167,7 +151,6 @@ namespace StudySyncSystem
             {
                 connection.Open();
 
-                // Delete the note from the database
                 string query = "DELETE FROM tblNote WHERE NoteID = @NoteID";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -192,7 +175,6 @@ namespace StudySyncSystem
             Close();
         }
 
-        // test test test
 
         private void SearchNotes(string searchTerm)
         {
@@ -201,7 +183,6 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                // Modify the SELECT statement to filter notes by UserID and search term
                 string query = $"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {loggedInUserID} AND NoteTitle LIKE @SearchTerm";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@SearchTerm", $"%{searchTerm}%");
@@ -228,7 +209,6 @@ namespace StudySyncSystem
             }
             else
             {
-                // If the search term is empty, reload all notes
                 dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
             }
         }

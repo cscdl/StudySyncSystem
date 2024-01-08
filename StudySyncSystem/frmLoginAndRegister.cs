@@ -50,17 +50,16 @@ namespace StudySyncSystem
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read()) // Check if there is a matching user
+                if (reader.Read()) 
                 {
                     int userID = reader.GetInt32(0);
                     string userType = reader.GetString(1);
                     
 
-                    reader.Close(); // Close the SqlDataReader before executing another query
+                    reader.Close(); 
 
                     if (userType.ToLower() == "admin")
                     {
-                        // This is an admin logging in
                         frmAdmin adminDashboard = new frmAdmin();
                         string selectFirstNameQuery = "SELECT FirstName FROM tblUserInfo WHERE UserID = @UserID";
                         SqlCommand selectFirstNameCmd = new SqlCommand(selectFirstNameQuery, connect);
@@ -72,16 +71,13 @@ namespace StudySyncSystem
                     }
                     else
                     {
-                        // This is a regular user logging in
                         string selectFirstNameQuery = "SELECT FirstName FROM tblUserInfo WHERE UserID = @UserID";
                         SqlCommand selectFirstNameCmd = new SqlCommand(selectFirstNameQuery, connect);
                         selectFirstNameCmd.Parameters.AddWithValue("@UserID", userID);
 
-                        // Execute the query and get the first name
                         string firstName = Convert.ToString(selectFirstNameCmd.ExecuteScalar());
 
-                        // Update the username label directly in frmMainStudySync
-                        frmMainStudySync mainStudySync = new frmMainStudySync(userID); // Pass the user ID
+                        frmMainStudySync mainStudySync = new frmMainStudySync(userID); 
                         mainStudySync.UpdateUsernameLabel(firstName);
                         mainStudySync.ShowDialog();
                         this.Hide();
@@ -105,17 +101,12 @@ namespace StudySyncSystem
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            // Check if it's an admin registration
             if (txtRegUsername.Text.ToLower() == "admin" && txtRegPassword.Text == "adminpw")
             {
-                // This is the default admin account registration
                 MessageBox.Show("Admin account registered successfully!");
-                // You might want to redirect to an admin dashboard or perform other admin-related tasks
             }
             else
             {
-                // This is a regular user registration
-                // Perform the user registration logic
                 try
                 {
                     connect.Open();
@@ -123,12 +114,10 @@ namespace StudySyncSystem
                     SqlCommand cmd = new SqlCommand(query, connect);
                     cmd.Parameters.AddWithValue("@Username", txtRegUsername.Text);
                     cmd.Parameters.AddWithValue("@Password", txtRegPassword.Text);
-                    cmd.Parameters.AddWithValue("@UserType", "user"); // Set UserType to 'user' for regular users
+                    cmd.Parameters.AddWithValue("@UserType", "user"); 
 
-                    // Execute the query and get the new UserID
                     int newUserID = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    // Now, insert the user info
                     string insertUserInfoQuery = "INSERT INTO tblUserInfo (FirstName, LastName, Address, PhoneNumber, Birthday, UserID) VALUES (@FirstName, @LastName, @Address, @PhoneNumber, @Birthday, @UserID)";
                     SqlCommand userInfoCmd = new SqlCommand(insertUserInfoQuery, connect);
                     userInfoCmd.Parameters.AddWithValue("@FirstName", txtRegFirstName.Text);

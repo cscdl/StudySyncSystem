@@ -16,12 +16,9 @@ namespace StudySyncSystem
 
         private void frmViewUsersAndAdmins_Load(object sender, EventArgs e)
         {
-            // Set AutoSizeMode for other columns
             dgvUsers.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvUsers.Columns["UserType"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
    
-
-            // Bind data to the DataGridView
             dgvUsers.DataSource = RetrieveUsersFromDatabase();
         }
 
@@ -32,7 +29,6 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                // Modify the SQL query to select the desired columns from tblUser
                 string query = "SELECT UserID, Username, UserType FROM tblUser";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -52,22 +48,18 @@ namespace StudySyncSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Get the selected user
             DataGridViewRow selectedRow = dgvUsers.CurrentRow;
 
             if (selectedRow != null)
             {
                 int userID = Convert.ToInt32(selectedRow.Cells["UserID"].Value);
 
-                // Confirm with the user before deleting
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Delete the user from the database
                     DeleteUserFromDatabase(userID);
 
-                    // Remove the selected row from the DataGridView
                     dgvUsers.Rows.Remove(selectedRow);
                 }
             }
@@ -83,7 +75,6 @@ namespace StudySyncSystem
             {
                 connection.Open();
 
-                // Delete the user from the database
                 string query = "DELETE FROM tblUser WHERE UserID = @UserID";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

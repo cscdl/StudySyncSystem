@@ -19,7 +19,6 @@ namespace StudySyncSystem
             {
                 connect.Open();
 
-                // Assuming you have UI elements to get the new admin's information
                 string newAdminUsername = txtRegAdUsername.Text;
                 string newAdminPassword = txtRegAdPassword.Text;
                 string newAdminFirstName = txtRegAdFirstName.Text;
@@ -27,17 +26,14 @@ namespace StudySyncSystem
                 string newAdminAddress = txtRegAdAddress.Text;
                 string newAdminPhoneNumber = txtRegAdMobileNum.Text;
 
-                // Perform the insertion into tblUser for the new admin
                 string insertAdminQuery = "INSERT INTO tblUser (Username, Password, UserType) VALUES (@Username, @Password, @UserType); SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(insertAdminQuery, connect);
                 cmd.Parameters.AddWithValue("@Username", newAdminUsername);
                 cmd.Parameters.AddWithValue("@Password", newAdminPassword);
-                cmd.Parameters.AddWithValue("@UserType", "admin"); // Set UserType to 'admin' for administrators
+                cmd.Parameters.AddWithValue("@UserType", "admin");
 
-                // Execute the query and get the new AdminID
                 int newAdminID = Convert.ToInt32(cmd.ExecuteScalar());
 
-                // Now, insert the admin info into tblUserInfo (assuming this table holds additional info for admins)
                 string insertAdminInfoQuery = "INSERT INTO tblUserInfo (UserID, FirstName, LastName, Address, PhoneNumber) VALUES (@UserID, @FirstName, @LastName, @Address, @PhoneNumber)";
                 SqlCommand adminInfoCmd = new SqlCommand(insertAdminInfoQuery, connect);
                 adminInfoCmd.Parameters.AddWithValue("@UserID", newAdminID);

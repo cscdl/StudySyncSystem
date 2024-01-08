@@ -40,7 +40,6 @@ namespace StudySyncSystem
                         {
                             if (reader.Read())
                             {
-                                // Display user information in labels
                                 lblUsername.Text =  reader["Username"].ToString();
                                 lblFullName.Text = $"{reader["FirstName"]} {reader["LastName"]}".Trim();
                                 lblAddress.Text = reader["Address"].ToString();
@@ -75,7 +74,6 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    // Update the username
                     string updateUsernameQuery = "UPDATE tblUser SET Username = @Username WHERE UserID = @UserID";
                     using (SqlCommand updateUsernameCmd = new SqlCommand(updateUsernameQuery, connection))
                     {
@@ -84,18 +82,16 @@ namespace StudySyncSystem
                         updateUsernameCmd.ExecuteNonQuery();
                     }
 
-                    // Update the password
                     string updatePasswordQuery = "UPDATE tblUser SET Password = @Password WHERE UserID = @UserID";
                     using (SqlCommand updatePasswordCmd = new SqlCommand(updatePasswordQuery, connection))
                     {
-                        updatePasswordCmd.Parameters.AddWithValue("@Password", txtEditPassword.Text); // Make sure to hash the password before storing it in the database
+                        updatePasswordCmd.Parameters.AddWithValue("@Password", txtEditPassword.Text);
                         updatePasswordCmd.Parameters.AddWithValue("@UserID", loggedInUserID);
                         updatePasswordCmd.ExecuteNonQuery();
                     }
 
                     MessageBox.Show("Changes saved successfully!");
 
-                    // Reload user data to update labels
                     LoadUserData(loggedInUserID);
                 }
             }

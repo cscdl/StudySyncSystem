@@ -16,17 +16,14 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        // Property to set the user ID
         public int LoggedInUserID
         {
             set { loggedInUserID = value; }
         }
 
 
-        // Inside btnSave_Click method in frmAddNotes
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Collect data from the form
             string title = txtTitle.Text;
             string content = richTxtNewNote.Text;
 
@@ -34,10 +31,8 @@ namespace StudySyncSystem
             {
                 connect.Open();
 
-                // Get the current date and time in C#
                 DateTime currentDate = DateTime.Now;
 
-                // Insert data into tblNote
                 string insertQuery = "INSERT INTO tblNote (NoteTitle, NoteContent, DateCreated, IsArchived, UserID) " +
                                      "VALUES (@NoteTitle, @NoteContent, @DateCreated, 0, @UserID)";
                 using (SqlCommand cmd = new SqlCommand(insertQuery, connect))

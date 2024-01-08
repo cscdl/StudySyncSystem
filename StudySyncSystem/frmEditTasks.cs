@@ -34,7 +34,6 @@ namespace StudySyncSystem
                     connect.Open();
                 }
 
-                // Retrieve task data based on the taskID
                 string query = "SELECT * FROM tblTask WHERE TaskID = @TaskID";
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
@@ -44,14 +43,12 @@ namespace StudySyncSystem
                     {
                         if (reader.Read())
                         {
-                            // Load existing task data into controls
                             txtTitle.Text = reader["TaskTitle"].ToString();
                             dtpStartDate.Value = Convert.ToDateTime(reader["StartDate"]);
                             dtpEndDate.Value = Convert.ToDateTime(reader["EndDate"]);
 
-                            // Load category into ComboBox
                             int categoryID = Convert.ToInt32(reader["CategoryID"]);
-                            LoadCategories(); // You need to have a method to populate the ComboBox with categories
+                            LoadCategories(); 
                             cbCategory.SelectedValue = categoryID;
                         }
                     }
@@ -63,7 +60,6 @@ namespace StudySyncSystem
             }
             finally
             {
-                // Always close the connection in the finally block
                 if (connect.State == ConnectionState.Open)
                 {
                     connect.Close();
@@ -76,12 +72,10 @@ namespace StudySyncSystem
         {
             try
             {
-                // Use a separate connection for loading categories
                 using (SqlConnection categoryConnection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
                 {
                     categoryConnection.Open();
 
-                    // Retrieve category data from tblCategory
                     string query = "SELECT CategoryID, CategoryName FROM tblCategory";
                     using (SqlCommand cmd = new SqlCommand(query, categoryConnection))
                     {
@@ -89,7 +83,6 @@ namespace StudySyncSystem
                         DataTable categoryTable = new DataTable();
                         adapter.Fill(categoryTable);
 
-                        // Display category names in the ComboBox
                         cbCategory.DataSource = categoryTable;
                         cbCategory.DisplayMember = "CategoryName";
                         cbCategory.ValueMember = "CategoryID";
@@ -108,7 +101,7 @@ namespace StudySyncSystem
         private void OnDataSaved()
         {
             DataSaved?.Invoke(this, EventArgs.Empty);
-            Close(); // Close the form after saving
+            Close(); 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -117,7 +110,7 @@ namespace StudySyncSystem
             {
                 connect.Open();
 
-                // Update the existing task with new data
+               
                 string query = "UPDATE tblTask SET TaskTitle = @TaskTitle, StartDate = @StartDate, EndDate = @EndDate, CategoryID = @CategoryID WHERE TaskID = @TaskID";
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {

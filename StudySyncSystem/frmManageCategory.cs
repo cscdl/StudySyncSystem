@@ -18,30 +18,25 @@ namespace StudySyncSystem
 
             this.isAdmin = isAdmin;
 
-            // Enable or disable buttons based on the user's role
             btnNew.Enabled = isAdmin;
             btnEdit.Enabled = isAdmin;
             btnDelete.Enabled = isAdmin;
 
-            // Load categories into the DataGridView
             dgvManageCategory.AutoGenerateColumns = false;
             dgvManageCategory.Columns["CategoryID"].Visible = false;
             dgvManageCategory.Columns["CategoryName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            // Call the method to bind data to the DataGridView
             BindCategoriesToDataGridView();
         }
 
         private void dgvManageCategory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Set a fixed text color for all cells
-            e.CellStyle.ForeColor = Color.Black; // Change the text color to green
+            e.CellStyle.ForeColor = Color.Black; 
         }
 
 
         private void BindCategoriesToDataGridView()
         {
-            // Retrieve categories from the database and set as DataSource
             dgvManageCategory.DataSource = RetrieveCategoriesFromDatabase();
         }
 
@@ -53,7 +48,6 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                // Modify the SQL query to select the desired columns from tblCategory
                 string query = "SELECT CategoryID, CategoryName FROM tblCategory";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(categoriesTable);
@@ -78,10 +72,8 @@ namespace StudySyncSystem
 
                 if (!string.IsNullOrEmpty(newCategoryName))
                 {
-                    // Insert the new category into the database
                     InsertCategoryIntoDatabase(newCategoryName);
 
-                    // Refresh the DataGridView to reflect the changes
                     BindCategoriesToDataGridView();
                 }
             }
@@ -111,7 +103,6 @@ namespace StudySyncSystem
             {
                 connection.Open();
 
-                // Insert the new category into tblCategory
                 string query = "INSERT INTO tblCategory (CategoryName) VALUES (@CategoryName)";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -135,7 +126,6 @@ namespace StudySyncSystem
         {
             if (isAdmin)
             {
-                // Get the selected category
                 DataGridViewRow selectedRow = dgvManageCategory.CurrentRow;
 
                 if (selectedRow != null)
@@ -147,10 +137,8 @@ namespace StudySyncSystem
 
                     if (!string.IsNullOrEmpty(newCategoryName))
                     {
-                        // Update the category in the database
                         UpdateCategoryInDatabase(categoryID, newCategoryName);
 
-                        // Refresh the DataGridView to reflect the changes
                         BindCategoriesToDataGridView();
                     }
                 }
@@ -171,7 +159,6 @@ namespace StudySyncSystem
             {
                 connection.Open();
 
-                // Update the category in tblCategory
                 string query = "UPDATE tblCategory SET CategoryName = @CategoryName WHERE CategoryID = @CategoryID";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -196,7 +183,6 @@ namespace StudySyncSystem
         {
             if (isAdmin)
             {
-                // Get the selected category
                 DataGridViewRow selectedRow = dgvManageCategory.CurrentRow;
 
                 if (selectedRow != null)
@@ -204,15 +190,12 @@ namespace StudySyncSystem
                     int categoryID = Convert.ToInt32(selectedRow.Cells["CategoryID"].Value);
                     string categoryName = Convert.ToString(selectedRow.Cells["CategoryName"].Value);
 
-                    // Confirm with the user before deleting
                     DialogResult result = MessageBox.Show($"Are you sure you want to delete the category '{categoryName}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
-                        // Delete the category from the database
                         DeleteCategoryFromDatabase(categoryID);
 
-                        // Refresh the DataGridView to reflect the changes
                         dgvManageCategory.DataSource = RetrieveCategoriesFromDatabase();
                     }
                 }
@@ -233,7 +216,6 @@ namespace StudySyncSystem
             {
                 connection.Open();
 
-                // Delete the category from tblCategory
                 string query = "DELETE FROM tblCategory WHERE CategoryID = @CategoryID";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -259,11 +241,5 @@ namespace StudySyncSystem
             Close();
         }
 
-
-        
-
-
-
-        // Additional logic for using categories in other parts of your application...
     }
 }

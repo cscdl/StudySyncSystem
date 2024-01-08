@@ -11,7 +11,6 @@ namespace StudySyncSystem
 
         public event EventHandler DataSaved;
 
-        // Constructor for editing an existing note
         public frmEditNotes(int noteID)
         {
             InitializeComponent();
@@ -25,7 +24,6 @@ namespace StudySyncSystem
             {
                 connect.Open();
 
-                // Retrieve note data based on the noteID
                 string query = "SELECT * FROM tblNote WHERE NoteID = @NoteID";
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
@@ -35,7 +33,6 @@ namespace StudySyncSystem
                     {
                         if (reader.Read())
                         {
-                            // Load existing note data into controls
                             txtTitle.Text = reader["NoteTitle"].ToString();
                             richTxtEditNote.Text = reader["NoteContent"].ToString();
                         }
@@ -55,7 +52,7 @@ namespace StudySyncSystem
         private void OnDataSaved()
         {
             DataSaved?.Invoke(this, EventArgs.Empty);
-            Close(); // Close the form after saving
+            Close(); 
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -69,7 +66,6 @@ namespace StudySyncSystem
             {
                 connect.Open();
 
-                // Update the existing note with new data
                 string query = "UPDATE tblNote SET NoteTitle = @NoteTitle, NoteContent = @NoteContent WHERE NoteID = @NoteID";
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {

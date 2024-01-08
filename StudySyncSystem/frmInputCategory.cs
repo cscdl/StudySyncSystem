@@ -15,7 +15,6 @@ namespace StudySyncSystem
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            // Set the UserInput property when the user clicks "Confirm"
             UserInput = txtInput.Text;
             DialogResult = DialogResult.OK;
             Close();

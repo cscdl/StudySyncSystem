@@ -30,6 +30,10 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblMobileNum = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.txtEditPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEditUsername = new System.Windows.Forms.TextBox();
@@ -41,10 +45,6 @@ namespace StudySyncSystem
             this.label1 = new System.Windows.Forms.Label();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblFullName = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblMobileNum = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,54 @@ namespace StudySyncSystem
             this.panel3.Size = new System.Drawing.Size(643, 441);
             this.panel3.TabIndex = 8;
             // 
+            // lblMobileNum
+            // 
+            this.lblMobileNum.AutoSize = true;
+            this.lblMobileNum.BackColor = System.Drawing.Color.Yellow;
+            this.lblMobileNum.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMobileNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.lblMobileNum.Location = new System.Drawing.Point(197, 173);
+            this.lblMobileNum.Name = "lblMobileNum";
+            this.lblMobileNum.Size = new System.Drawing.Size(13, 18);
+            this.lblMobileNum.TabIndex = 45;
+            this.lblMobileNum.Text = "-";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.BackColor = System.Drawing.Color.Yellow;
+            this.lblAddress.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.lblAddress.Location = new System.Drawing.Point(196, 133);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(13, 18);
+            this.lblAddress.TabIndex = 44;
+            this.lblAddress.Text = "-";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.BackColor = System.Drawing.Color.Yellow;
+            this.lblFullName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.lblFullName.Location = new System.Drawing.Point(196, 91);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(13, 18);
+            this.lblFullName.TabIndex = 43;
+            this.lblFullName.Text = "-";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Yellow;
+            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.lblUsername.Location = new System.Drawing.Point(197, 48);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(13, 18);
+            this.lblUsername.TabIndex = 42;
+            this.lblUsername.Text = "-";
+            // 
             // txtEditPassword
             // 
             this.txtEditPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
@@ -90,9 +138,9 @@ namespace StudySyncSystem
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(170, 313);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 18);
+            this.label8.Size = new System.Drawing.Size(96, 18);
             this.label8.TabIndex = 40;
-            this.label8.Text = "Edit Password :";
+            this.label8.Text = "New Password :";
             // 
             // txtEditUsername
             // 
@@ -112,18 +160,18 @@ namespace StudySyncSystem
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(170, 272);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 18);
+            this.label7.Size = new System.Drawing.Size(100, 18);
             this.label7.TabIndex = 38;
-            this.label7.Text = "Edit Username :";
+            this.label7.Text = "New Username :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(170, 244);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 18);
+            this.label6.Size = new System.Drawing.Size(222, 20);
             this.label6.TabIndex = 37;
             this.label6.Text = "Edit Username and Password :";
             // 
@@ -183,6 +231,7 @@ namespace StudySyncSystem
             this.btnSaveChanges.TabIndex = 25;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // btnCancel
             // 
@@ -196,50 +245,6 @@ namespace StudySyncSystem
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(175, 48);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(12, 18);
-            this.lblUsername.TabIndex = 42;
-            this.lblUsername.Text = "-";
-            // 
-            // lblFullName
-            // 
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.ForeColor = System.Drawing.Color.White;
-            this.lblFullName.Location = new System.Drawing.Point(174, 91);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(12, 18);
-            this.lblFullName.TabIndex = 43;
-            this.lblFullName.Text = "-";
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.ForeColor = System.Drawing.Color.White;
-            this.lblAddress.Location = new System.Drawing.Point(174, 133);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(12, 18);
-            this.lblAddress.TabIndex = 44;
-            this.lblAddress.Text = "-";
-            // 
-            // lblMobileNum
-            // 
-            this.lblMobileNum.AutoSize = true;
-            this.lblMobileNum.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobileNum.ForeColor = System.Drawing.Color.White;
-            this.lblMobileNum.Location = new System.Drawing.Point(175, 173);
-            this.lblMobileNum.Name = "lblMobileNum";
-            this.lblMobileNum.Size = new System.Drawing.Size(12, 18);
-            this.lblMobileNum.TabIndex = 45;
-            this.lblMobileNum.Text = "-";
             // 
             // frmAdminProfile
             // 

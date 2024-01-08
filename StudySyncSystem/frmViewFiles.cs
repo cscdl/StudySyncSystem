@@ -21,7 +21,6 @@ namespace StudySyncSystem
 
         private void frmViewFiles_Load(object sender, EventArgs e)
         {
-            // create columns for task
             todoListFiles.Columns.Add("File Name");
             todoListFiles.Columns.Add("File");
 

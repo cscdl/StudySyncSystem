@@ -34,8 +34,6 @@ namespace StudySyncSystem
         }
         public static class DatabaseHelper
         {
-            // Your other database-related methods go here
-
             public static string GetFirstNameForUserID(int userID)
             {
                 string firstName = string.Empty;
@@ -68,7 +66,7 @@ namespace StudySyncSystem
 
 
             }
-            //test test test
+
             public static int GetNoteCountForUser(int userID)
             {
                 int noteCount = 0;
@@ -323,17 +321,10 @@ namespace StudySyncSystem
 
         private void btnAddNotes_Click(object sender, EventArgs e)
         {
-            // Create the form
             frmAddNotes addNotesForm = new frmAddNotes();
-
-            // Set the user ID property
             addNotesForm.LoggedInUserID = loggedInUserID;
-
-
-            // Show the form
             loadform(addNotesForm);
         }
-
 
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -346,10 +337,7 @@ namespace StudySyncSystem
 
         private void btnPicUser_Click(object sender, EventArgs e)
         {
-            // Create the form
             frmUserProfile userProfileForm = new frmUserProfile(loggedInUserID);
-
-            // Show the form
             loadform(userProfileForm);
         }
 
@@ -384,12 +372,10 @@ namespace StudySyncSystem
             int userID = GetLoggedInUserID();
             string firstName = DatabaseHelper.GetFirstNameForUserID(userID);
 
-            // Assuming your frmUserDashboard has a method to update the username label
             frmUserDashboard userDash = new frmUserDashboard(userID);
             userDash.UpdateUsernameLabel(firstName);
             loadform(userDash);
         }
-
 
 
         private void panel7_Paint(object sender, PaintEventArgs e)
@@ -429,8 +415,6 @@ namespace StudySyncSystem
         {
 
         }
-
-        //test test test 
 
         private void UpdateNoteCountLabel()
         {

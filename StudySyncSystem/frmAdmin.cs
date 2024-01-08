@@ -14,7 +14,9 @@ namespace StudySyncSystem
     public partial class frmAdmin : Form
     {
         private string loggedInUsername;
+        private int adminID;
         bool SideBarExpand;
+
         public frmAdmin()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace StudySyncSystem
 
             mainAdmin.Show();
         }
+
         private void InitializeUI(string key)
         {
             var uiMode = ConfigurationManager.AppSettings[key];
@@ -58,7 +61,7 @@ namespace StudySyncSystem
             this.ForeColor = Color.FromArgb(0, 8, 20);
             this.BackColor = Color.FromArgb(115, 160, 195);
 
-            // Apply dark mode colors to other controls if needed
+            
         }
 
         private void ApplyLightModeColors()
@@ -66,7 +69,7 @@ namespace StudySyncSystem
             this.ForeColor = Color.FromArgb(255, 255, 255);
             this.BackColor = Color.FromArgb(0, 8, 20);
 
-            // Apply light mode colors to other controls if needed
+           
         }
 
         private void tmrSideBar_Tick(object sender, EventArgs e)
@@ -118,7 +121,8 @@ namespace StudySyncSystem
 
         private void btnPicUser_Click(object sender, EventArgs e)
         {
-            loadform(new frmAdminProfile());
+            frmAdminProfile adminProfileForm = new frmAdminProfile(adminID);
+            loadform(adminProfileForm);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -130,13 +134,11 @@ namespace StudySyncSystem
 
         private void btnManageCategories_Click(object sender, EventArgs e)
         {
-            // Assuming isAdmin is a boolean variable indicating whether the user is an admin
-            bool isAdmin = true;  // Set the value based on your logic
+            bool isAdmin = true; 
 
             frmManageCategory manageCategoryForm = new frmManageCategory(isAdmin);
             loadform(manageCategoryForm);
         }
-
 
         public void UpdateUsernameLabel(string username)
         {
