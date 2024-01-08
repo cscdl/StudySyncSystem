@@ -514,6 +514,7 @@ namespace StudySyncSystem
             this.btnPendingTask.TabIndex = 4;
             this.btnPendingTask.Text = "Pending Task";
             this.btnPendingTask.UseVisualStyleBackColor = true;
+            this.btnPendingTask.Click += new System.EventHandler(this.btnPendingTask_Click);
             // 
             // panel11
             // 

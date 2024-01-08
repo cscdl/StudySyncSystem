@@ -30,7 +30,16 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.dgvTasks = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.TaskID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaskStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnViewArchived = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
@@ -42,15 +51,6 @@ namespace StudySyncSystem
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.TaskID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaskStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,25 +68,90 @@ namespace StudySyncSystem
             this.StartDate,
             this.EndDate,
             this.UserID,
-            this.IsArchived,
             this.DateCreated,
-            this.CategoryID});
+            this.CategoryID,
+            this.IsArchived});
             this.dgvTasks.Location = new System.Drawing.Point(14, 62);
             this.dgvTasks.Name = "dgvTasks";
             this.dgvTasks.Size = new System.Drawing.Size(676, 246);
             this.dgvTasks.TabIndex = 14;
+            this.dgvTasks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTasks_CellContentClick);
             // 
-            // btnSave
+            // TaskID
             // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSave.Location = new System.Drawing.Point(427, 318);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(125, 26);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.TaskID.DataPropertyName = "TaskID";
+            this.TaskID.HeaderText = "";
+            this.TaskID.Name = "TaskID";
+            this.TaskID.Visible = false;
+            // 
+            // TaskTitle
+            // 
+            this.TaskTitle.DataPropertyName = "TaskTitle";
+            this.TaskTitle.HeaderText = "Task Title";
+            this.TaskTitle.Name = "TaskTitle";
+            // 
+            // TaskStatus
+            // 
+            this.TaskStatus.DataPropertyName = "TaskStatus";
+            this.TaskStatus.HeaderText = "Task Status";
+            this.TaskStatus.Items.AddRange(new object[] {
+            "Pending",
+            "Complete"});
+            this.TaskStatus.Name = "TaskStatus";
+            this.TaskStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TaskStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // StartDate
+            // 
+            this.StartDate.DataPropertyName = "StartDate";
+            this.StartDate.HeaderText = "Start Date";
+            this.StartDate.Name = "StartDate";
+            // 
+            // EndDate
+            // 
+            this.EndDate.DataPropertyName = "EndDate";
+            this.EndDate.HeaderText = "End Date";
+            this.EndDate.Name = "EndDate";
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "";
+            this.UserID.Name = "UserID";
+            this.UserID.Visible = false;
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.DataPropertyName = "DateCreated";
+            this.DateCreated.HeaderText = "Date Created";
+            this.DateCreated.Name = "DateCreated";
+            // 
+            // CategoryID
+            // 
+            this.CategoryID.DataPropertyName = "CategoryID";
+            this.CategoryID.HeaderText = "Category ID";
+            this.CategoryID.Name = "CategoryID";
+            // 
+            // IsArchived
+            // 
+            this.IsArchived.DataPropertyName = "IsArchived";
+            this.IsArchived.HeaderText = "Is Archived";
+            this.IsArchived.Name = "IsArchived";
+            this.IsArchived.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsArchived.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // btnViewArchived
+            // 
+            this.btnViewArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewArchived.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewArchived.ForeColor = System.Drawing.Color.Yellow;
+            this.btnViewArchived.Location = new System.Drawing.Point(427, 318);
+            this.btnViewArchived.Name = "btnViewArchived";
+            this.btnViewArchived.Size = new System.Drawing.Size(125, 26);
+            this.btnViewArchived.TabIndex = 16;
+            this.btnViewArchived.Text = "View Archived";
+            this.btnViewArchived.UseVisualStyleBackColor = true;
+            this.btnViewArchived.Click += new System.EventHandler(this.btnViewArchived_Click);
             // 
             // panel1
             // 
@@ -101,7 +166,7 @@ namespace StudySyncSystem
             this.panel1.Controls.Add(this.dgvTasks);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.btnViewArchived);
             this.panel1.Location = new System.Drawing.Point(13, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 362);
@@ -242,64 +307,6 @@ namespace StudySyncSystem
             this.label1.Text = "T A S K S";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // TaskID
-            // 
-            this.TaskID.DataPropertyName = "TaskID";
-            this.TaskID.HeaderText = "";
-            this.TaskID.Name = "TaskID";
-            this.TaskID.Visible = false;
-            // 
-            // TaskTitle
-            // 
-            this.TaskTitle.DataPropertyName = "TaskTitle";
-            this.TaskTitle.HeaderText = "Task Title";
-            this.TaskTitle.Name = "TaskTitle";
-            // 
-            // TaskStatus
-            // 
-            this.TaskStatus.DataPropertyName = "TaskStatus";
-            this.TaskStatus.HeaderText = "Task Status";
-            this.TaskStatus.Name = "TaskStatus";
-            // 
-            // StartDate
-            // 
-            this.StartDate.DataPropertyName = "StartDate";
-            this.StartDate.HeaderText = "Start Date";
-            this.StartDate.Name = "StartDate";
-            // 
-            // EndDate
-            // 
-            this.EndDate.DataPropertyName = "EndDate";
-            this.EndDate.HeaderText = "End Date";
-            this.EndDate.Name = "EndDate";
-            // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "";
-            this.UserID.Name = "UserID";
-            this.UserID.Visible = false;
-            // 
-            // IsArchived
-            // 
-            this.IsArchived.DataPropertyName = "IsArchived";
-            this.IsArchived.HeaderText = "Is Archived";
-            this.IsArchived.Name = "IsArchived";
-            this.IsArchived.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsArchived.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // DateCreated
-            // 
-            this.DateCreated.DataPropertyName = "DateCreated";
-            this.DateCreated.HeaderText = "Date Created";
-            this.DateCreated.Name = "DateCreated";
-            // 
-            // CategoryID
-            // 
-            this.CategoryID.DataPropertyName = "CategoryID";
-            this.CategoryID.HeaderText = "Category ID";
-            this.CategoryID.Name = "CategoryID";
-            // 
             // frmViewTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,7 +331,7 @@ namespace StudySyncSystem
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTasks;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnViewArchived;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnEdit;
@@ -338,12 +345,12 @@ namespace StudySyncSystem
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TaskStatus;
+        private System.Windows.Forms.DataGridViewComboBoxColumn TaskStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
     }
 }

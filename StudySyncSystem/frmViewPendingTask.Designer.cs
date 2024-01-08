@@ -33,11 +33,15 @@ namespace StudySyncSystem
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvPendingTask = new System.Windows.Forms.DataGridView();
+            this.dgvPendingTasks = new System.Windows.Forms.DataGridView();
+            this.TaskID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingTask)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingTasks)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -46,7 +50,7 @@ namespace StudySyncSystem
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.dgvPendingTask);
+            this.panel1.Controls.Add(this.dgvPendingTasks);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Location = new System.Drawing.Point(13, 30);
             this.panel1.Name = "panel1";
@@ -87,16 +91,45 @@ namespace StudySyncSystem
             this.txtSearch.Size = new System.Drawing.Size(307, 21);
             this.txtSearch.TabIndex = 20;
             // 
-            // dgvPendingTask
+            // dgvPendingTasks
             // 
-            this.dgvPendingTask.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPendingTask.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.dgvPendingTask.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvPendingTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPendingTask.Location = new System.Drawing.Point(14, 61);
-            this.dgvPendingTask.Name = "dgvPendingTask";
-            this.dgvPendingTask.Size = new System.Drawing.Size(676, 246);
-            this.dgvPendingTask.TabIndex = 14;
+            this.dgvPendingTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPendingTasks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.dgvPendingTasks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvPendingTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPendingTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TaskID,
+            this.TaskTitle,
+            this.StartDate,
+            this.EndDate});
+            this.dgvPendingTasks.Location = new System.Drawing.Point(14, 61);
+            this.dgvPendingTasks.Name = "dgvPendingTasks";
+            this.dgvPendingTasks.Size = new System.Drawing.Size(676, 246);
+            this.dgvPendingTasks.TabIndex = 14;
+            // 
+            // TaskID
+            // 
+            this.TaskID.DataPropertyName = "TaskID";
+            this.TaskID.HeaderText = "Task ID";
+            this.TaskID.Name = "TaskID";
+            // 
+            // TaskTitle
+            // 
+            this.TaskTitle.DataPropertyName = "TaskTitle";
+            this.TaskTitle.HeaderText = "Task Title";
+            this.TaskTitle.Name = "TaskTitle";
+            // 
+            // StartDate
+            // 
+            this.StartDate.DataPropertyName = "StartDate";
+            this.StartDate.HeaderText = "Start Date";
+            this.StartDate.Name = "StartDate";
+            // 
+            // EndDate
+            // 
+            this.EndDate.DataPropertyName = "EndDate";
+            this.EndDate.HeaderText = "End Date";
+            this.EndDate.Name = "EndDate";
             // 
             // btnClose
             // 
@@ -118,9 +151,9 @@ namespace StudySyncSystem
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(20, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 18);
+            this.label1.Size = new System.Drawing.Size(141, 18);
             this.label1.TabIndex = 23;
-            this.label1.Text = "P E N D I N G   T A S K";
+            this.label1.Text = "P E N D I N G   T A S K S";
             // 
             // frmViewPendingTask
             // 
@@ -136,7 +169,7 @@ namespace StudySyncSystem
             this.Text = "frmViewPendingTask";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingTask)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingTasks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,8 +181,12 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dgvPendingTask;
+        private System.Windows.Forms.DataGridView dgvPendingTasks;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TaskID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TaskTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
     }
 }

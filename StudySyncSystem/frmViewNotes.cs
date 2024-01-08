@@ -270,7 +270,6 @@ namespace StudySyncSystem
 
         private void ArchivedNotesForm_NoteUnarchived(object sender, EventArgs e)
         {
-            // Reload archived notes in frmViewNotes
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
         }
     }

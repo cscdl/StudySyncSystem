@@ -65,6 +65,12 @@
     <Compile Include="frmArchivedNotes.Designer.cs">
       <DependentUpon>frmArchivedNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmArchivedTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArchivedTasks.Designer.cs">
+      <DependentUpon>frmArchivedTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmArchivedNotes.resx">
       <DependentUpon>frmArchivedNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmArchivedTasks.resx">
+      <DependentUpon>frmArchivedTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCalculator.resx">
       <DependentUpon>frmCalculator.cs</DependentUpon>

@@ -17,6 +17,7 @@ namespace StudySyncSystem
         private int loggedInUserID;
         private string searchCriteria;
         private string categoryFilter;
+        private frmArchivedTasks archivedTasksForm;
 
         public frmViewTask()
         {
@@ -26,8 +27,7 @@ namespace StudySyncSystem
         public void SetLoggedInUserID(int userID)
         {
             loggedInUserID = userID;
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
-
+            SetDataSource();
             LoadTasks();
         }
 
@@ -35,7 +35,6 @@ namespace StudySyncSystem
         private void frmViewTask_Load(object sender, EventArgs e)
         {
             dgvTasks.AutoGenerateColumns = false;
-
             dgvTasks.Columns["TaskTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvTasks.Columns["TaskStatus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvTasks.Columns["StartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -44,18 +43,24 @@ namespace StudySyncSystem
             dgvTasks.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvTasks.Columns["CategoryID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
-            
+            SetDataSource();
+
             cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
+            dgvTasks.CellContentClick += dgvTasks_CellContentClick;
+            dgvTasks.EditingControlShowing += dgvTasks_EditingControlShowing;
+
 
             LoadTasks();
-
         }
-
 
         private int GetLoggedInUserID()
         {
             return loggedInUserID;
+        }
+
+        private void SetDataSource()
+        {
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
         private void OpenAddTasksForm()
@@ -69,7 +74,7 @@ namespace StudySyncSystem
             addTasksForm.Show();
         }
 
-        private DataTable RetrieveTasksForLoggedInUser(int userID, string searchCriteria, string categoryFilter)
+        private DataTable RetrieveTasksForLoggedInUser(int userID, bool showArchived = false)
         {
             DataTable todoListTask = new DataTable();
 
@@ -79,30 +84,12 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    string query = "SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = @UserID";
+                    string query = $"SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = @UserID AND IsArchived = {(showArchived ? 1 : 0)}";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@UserID", userID);
 
-                        StringBuilder queryBuilder = new StringBuilder(query);
-
-                        if (!string.IsNullOrEmpty(searchCriteria))
-                        {
-                            queryBuilder.Append("AND(TaskTitle LIKE '%' + @SearchCriteria + '%' OR TaskStatus LIKE '%' + @SearchCriteria + '%')");
-                            cmd.Parameters.AddWithValue("@SearchCriteria", searchCriteria);
-                        }
-
-                        if (!string.IsNullOrEmpty(categoryFilter) && categoryFilter != "All")
-                        {
-                            queryBuilder.Append("AND CategoryID IN(SELECT CategoryID FROM tblCategory WHERE CategoryName = @CategoryFilter)");
-                            cmd.Parameters.AddWithValue("@CategoryFilter", categoryFilter);
-                        }
-
-                        
-                        cmd.CommandText = queryBuilder.ToString();
-
-                    
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         adapter.Fill(todoListTask);
                     }
@@ -110,16 +97,15 @@ namespace StudySyncSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error retrieving tasks from the logged-in user: " + ex.Message);
+                Console.WriteLine($"Error retrieving tasks from the logged-in user: {ex.Message}");
             }
 
             return todoListTask;
         }
 
-
         private void FrmAddTasks_DataSaved(object sender, EventArgs e)
         {
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
 
@@ -162,12 +148,12 @@ namespace StudySyncSystem
             editTasksForm.ShowDialog();
 
            
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
         private void FrmEditTasks_DataSaved(object sender, EventArgs e)
         {
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
+            SetDataSource();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -229,7 +215,7 @@ namespace StudySyncSystem
         {
             string searchCriteria = txtSearch.Text.Trim();
 
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, categoryFilter);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
         private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,7 +225,7 @@ namespace StudySyncSystem
             string filterCriteria = GetFilterCriteria(selectedFilter);
 
         
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, searchCriteria, filterCriteria);
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
 
@@ -264,7 +250,127 @@ namespace StudySyncSystem
 
         private void LoadTasks()
         {
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID, "", "");
+            SetDataSource();
         }
+
+        private void dgvTasks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvTasks.Columns["IsArchived"].Index && e.RowIndex >= 0)
+            {
+                bool isArchived = !(bool)dgvTasks.Rows[e.RowIndex].Cells["IsArchived"].Value;
+
+                int taskID = Convert.ToInt32(dgvTasks.Rows[e.RowIndex].Cells["TaskID"].Value);
+                UpdateArchiveStatus(taskID, isArchived);
+
+                dgvTasks.Rows[e.RowIndex].Cells["IsArchived"].Value = isArchived;
+            }
+        }
+
+        private void UpdateArchiveStatus(int taskID, bool isArchived)
+        {
+            try
+            {
+                using (SqlConnection updateConnection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    updateConnection.Open();
+
+                    string query = "UPDATE tblTask SET IsArchived = @IsArchived WHERE TaskID = @TaskID";
+                    using (SqlCommand cmd = new SqlCommand(query, updateConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@IsArchived", isArchived);
+                        cmd.Parameters.AddWithValue("@TaskID", taskID);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            SetDataSource();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No rows were affected. Archive status not updated.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating archive status: " + ex.Message);
+            }
+        }
+
+        private void btnViewArchived_Click(object sender, EventArgs e)
+        {
+            OpenArchivedTasksForm();
+
+        }
+
+        private void OpenArchivedTasksForm()
+        {
+            archivedTasksForm = new frmArchivedTasks(loggedInUserID);
+            archivedTasksForm.StartPosition = FormStartPosition.CenterScreen;
+            archivedTasksForm.TaskUnarchived += ArchivedTasksForm_TaskUnarchived;
+            archivedTasksForm.Show();
+        }
+
+        private void ArchivedTasksForm_TaskUnarchived(object sender, EventArgs e)
+        {
+            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
+        }
+
+        private void dgvTasks_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dgvTasks.CurrentCell.ColumnIndex == dgvTasks.Columns["TaskStatus"].Index && e.Control is ComboBox)
+            {
+                ((ComboBox)e.Control).SelectedValueChanged += ComboBoxTaskStatus_SelectedValueChanged;
+            }
+        }
+
+        private void ComboBoxTaskStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string newStatus = ((ComboBox)sender).Text;
+
+            DataGridViewCell cell = dgvTasks.CurrentCell;
+
+            if (cell != null && cell.ColumnIndex == dgvTasks.Columns["TaskStatus"].Index)
+            {
+                int taskID = Convert.ToInt32(dgvTasks.Rows[cell.RowIndex].Cells["TaskID"].Value);
+
+                UpdateTaskStatusInDatabase(taskID, newStatus);
+            }
+        }
+
+
+        private void UpdateTaskStatusInDatabase(int taskID, string newStatus)
+        {
+            try
+            {
+                using (SqlConnection updateConnection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    updateConnection.Open();
+
+                    string query = "UPDATE tblTask SET TaskStatus = @TaskStatus WHERE TaskID = @TaskID";
+                    using (SqlCommand cmd = new SqlCommand(query, updateConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@TaskStatus", newStatus);
+                        cmd.Parameters.AddWithValue("@TaskID", taskID);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("TaskStatus updated successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No rows were affected. TaskStatus not updated.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating TaskStatus: " + ex.Message);
+            }
+        }
+
     }
 }

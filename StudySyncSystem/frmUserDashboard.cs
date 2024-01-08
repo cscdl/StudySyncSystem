@@ -59,9 +59,12 @@ namespace StudySyncSystem
 
         private void btnPendingTask_Click(object sender, EventArgs e)
         {
-            frmViewPendingTask viewPendingTask = new frmViewPendingTask();
+            int userID = loggedInUserID;
+
+            frmViewPendingTask viewPendingTask = new frmViewPendingTask(userID);
             viewPendingTask.ShowDialog();
         }
+
 
         private void UpdateNoteCountLabel()
         {

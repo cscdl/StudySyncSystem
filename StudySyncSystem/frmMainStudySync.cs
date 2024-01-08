@@ -416,6 +416,14 @@ namespace StudySyncSystem
 
         }
 
+        private void btnPendingTask_Click(object sender, EventArgs e)
+        {
+            int userID = loggedInUserID;
+
+            frmViewPendingTask viewPendingTask = new frmViewPendingTask(userID);
+            viewPendingTask.ShowDialog();
+        }
+
         private void UpdateNoteCountLabel()
         {
             int noteCount = DatabaseHelper.GetNoteCountForUser(loggedInUserID);
