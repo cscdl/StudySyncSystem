@@ -176,6 +176,7 @@ namespace StudySyncSystem
             this.btnRegister.TabIndex = 67;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // chckShowPassword1
             // 

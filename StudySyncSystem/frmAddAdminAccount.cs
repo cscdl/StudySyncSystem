@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace StudySyncSystem
@@ -13,7 +14,53 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        private void btnRegisterAdmin_Click(object sender, EventArgs e)
+        
+        private bool IsValidUsername(string newAdminUsername)
+        {
+            string pattern = @"^[a-zA-Z0-9_]{3,20}$";
+            return Regex.IsMatch(newAdminUsername, pattern);
+        }
+
+        private bool IsValidPassword(string newAdminPassword)
+        {
+            string pattern = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+            return Regex.IsMatch(newAdminPassword, pattern);
+        }
+
+        private bool IsValidName(string newAdminFirstName)
+        {
+            string pattern = @"^[a-zA-Z]+$";
+            return Regex.IsMatch(newAdminFirstName, pattern);
+        }
+
+
+        private bool IsValidAddress(string newAdminAddress)
+        {
+            string pattern = @"^[a-zA-Z0-9\s,.-]+$";
+            return Regex.IsMatch(newAdminAddress, pattern);
+        }
+
+        private bool IsValidPhoneNumber(string newAdminPhoneNumber)
+        {
+            string pattern = @"^[0-9]+$";
+            return Regex.IsMatch(newAdminPhoneNumber, pattern);
+        }
+
+        private void chckShowPassword1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckShowPassword1.Checked == true)
+            {
+                txtRegAdPassword.UseSystemPasswordChar = false;
+                txtRegConfirmPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtRegAdPassword.UseSystemPasswordChar = true;
+                txtRegConfirmPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
         {
             try
             {
@@ -25,6 +72,12 @@ namespace StudySyncSystem
                 string newAdminLastName = txtRegAdLastName.Text;
                 string newAdminAddress = txtRegAdAddress.Text;
                 string newAdminPhoneNumber = txtRegAdMobileNum.Text;
+
+                if (!IsValidUsername(newAdminUsername) || !IsValidPassword(newAdminPassword) || !IsValidName(newAdminFirstName) || !IsValidName(newAdminLastName) || !IsValidAddress(newAdminAddress) || !IsValidPhoneNumber(newAdminPhoneNumber))
+                {
+                    MessageBox.Show("Invalid input. Please check the provided information.");
+                    return;
+                }
 
                 string insertAdminQuery = "INSERT INTO tblUser (Username, Password, UserType) VALUES (@Username, @Password, @UserType); SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(insertAdminQuery, connect);
@@ -54,20 +107,7 @@ namespace StudySyncSystem
             {
                 connect.Close();
             }
-        }
-
-        private void chckShowPassword1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chckShowPassword1.Checked == true)
-            {
-                txtRegAdPassword.UseSystemPasswordChar = false;
-                txtRegConfirmPassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtRegAdPassword.UseSystemPasswordChar = true;
-                txtRegConfirmPassword.UseSystemPasswordChar = true;
-            }
+        
         }
     }
 }

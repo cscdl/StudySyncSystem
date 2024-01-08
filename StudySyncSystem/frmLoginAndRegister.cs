@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace StudySyncSystem
 {
@@ -38,6 +39,12 @@ namespace StudySyncSystem
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
 
             try
             {
@@ -101,6 +108,58 @@ namespace StudySyncSystem
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            string regUsername = txtRegUsername.Text.Trim();
+            string regPassword = txtRegPassword.Text;
+            string regConfirmPassword = txtRegConfirmPassword.Text;
+            string regFirstName = txtRegFirstName.Text.Trim();
+            string regLastName = txtRegLastName.Text.Trim();
+            string regAddress = txtRegAddress.Text.Trim();
+            string regPhoneNumber = txtRegPhoneNumber.Text.Trim();
+
+            if (string.IsNullOrEmpty(regUsername) || string.IsNullOrEmpty(regPassword) || string.IsNullOrEmpty(regConfirmPassword) ||
+                string.IsNullOrEmpty(regFirstName) || string.IsNullOrEmpty(regLastName) || string.IsNullOrEmpty(regAddress) ||
+                string.IsNullOrEmpty(regPhoneNumber))
+            {
+                MessageBox.Show("Please fill in all registration fields.");
+                return;
+            }
+
+            if (regPassword != regConfirmPassword)
+            {
+                MessageBox.Show("Password and confirm password do not match.");
+                return;
+            }
+
+            if (ContainsNumbers(regFirstName) || ContainsNumbers(regLastName))
+            {
+                MessageBox.Show("First Name and Last Name should not contain numbers.");
+                return;
+            }
+
+            if (!IsValidAddress(regAddress))
+            {
+                MessageBox.Show("Invalid Address format.");
+                return;
+            }
+
+            if (!IsValidMobileNumber(regPhoneNumber))
+            {
+                MessageBox.Show("Invalid Mobile Number format.");
+                return;
+            }
+
+            if (!IsValidUsername(regUsername))
+            {
+                MessageBox.Show("Invalid Username format.");
+                return;
+            }
+
+            if (!IsValidPassword(regPassword))
+            {
+                MessageBox.Show("Invalid Password format.");
+                return;
+            }
+
             if (txtRegUsername.Text.ToLower() == "admin" && txtRegPassword.Text == "adminpw")
             {
                 MessageBox.Show("Admin account registered successfully!");
@@ -141,6 +200,35 @@ namespace StudySyncSystem
                 }
             }
 
+        }
+
+        private bool ContainsNumbers(string input)
+        {
+            return input.Any(char.IsDigit);
+        }
+
+        private bool IsValidAddress(string address)
+        {
+            string pattern = @"^[a-zA-Z0-9\s,.'-]{3,}$";
+            return Regex.IsMatch(address, pattern);
+        }
+
+        private bool IsValidMobileNumber(string mobileNumber)
+        {
+            string pattern = @"^\d{10}$";
+            return Regex.IsMatch(mobileNumber, pattern);
+        }
+
+        private bool IsValidUsername(string username)
+        {
+            string pattern = @"^[a-zA-Z0-9_]{3,20}$";
+            return Regex.IsMatch(username, pattern);
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            string pattern = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+            return Regex.IsMatch(password, pattern);
         }
 
 
