@@ -346,8 +346,13 @@ namespace StudySyncSystem
 
         private void btnPicUser_Click(object sender, EventArgs e)
         {
-            loadform(new frmUserProfile());
+            // Create the form
+            frmUserProfile userProfileForm = new frmUserProfile(loggedInUserID);
+
+            // Show the form
+            loadform(userProfileForm);
         }
+
 
         private void btnViewTask_Click(object sender, EventArgs e)
         {
