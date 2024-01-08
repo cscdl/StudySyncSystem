@@ -59,6 +59,12 @@
     <Compile Include="frmAdminViewAllNotes.Designer.cs">
       <DependentUpon>frmAdminViewAllNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmArchivedNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArchivedNotes.Designer.cs">
+      <DependentUpon>frmArchivedNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminViewAllNotes.resx">
       <DependentUpon>frmAdminViewAllNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmArchivedNotes.resx">
+      <DependentUpon>frmArchivedNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCalculator.resx">
       <DependentUpon>frmCalculator.cs</DependentUpon>

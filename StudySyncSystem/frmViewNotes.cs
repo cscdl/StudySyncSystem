@@ -9,6 +9,8 @@ namespace StudySyncSystem
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
+        private frmArchivedNotes archivedNotesForm;
+
 
         public frmViewNotes()
         {
@@ -57,14 +59,15 @@ namespace StudySyncSystem
         }
 
 
-        private DataTable RetrieveNotesForLoggedInUser(int userID)
+        private DataTable RetrieveNotesForLoggedInUser(int userID, bool showArchived = false)
         {
             DataTable notesTable = new DataTable();
 
             try
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {userID}", connection);
+                string query = $"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {userID} AND IsArchived = {(showArchived ? 1 : 0)}";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(notesTable);
             }
             catch (Exception ex)
@@ -78,6 +81,7 @@ namespace StudySyncSystem
 
             return notesTable;
         }
+
         private void FrmAddNotes_DataSaved(object sender, EventArgs e)
         {
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
@@ -213,5 +217,61 @@ namespace StudySyncSystem
             }
         }
 
+        private void dgvNotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvNotes.Columns["IsArchived"].Index && e.RowIndex >= 0)
+            {
+                bool isArchived = !(bool)dgvNotes.Rows[e.RowIndex].Cells["IsArchived"].Value;
+
+                int noteID = Convert.ToInt32(dgvNotes.Rows[e.RowIndex].Cells["NoteID"].Value);
+                UpdateArchiveStatus(noteID, isArchived);
+
+                dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            }
+        }
+
+        private void UpdateArchiveStatus(int noteID, bool isArchived)
+        {
+            try
+            {
+                connection.Open();
+
+                string query = "UPDATE tblNote SET IsArchived = @IsArchived WHERE NoteID = @NoteID";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IsArchived", isArchived);
+                    cmd.Parameters.AddWithValue("@NoteID", noteID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating archive status: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void btnViewArchived_Click(object sender, EventArgs e)
+        {
+            OpenArchivedNotesForm();
+            
+        }
+
+        private void OpenArchivedNotesForm()
+        {
+            archivedNotesForm = new frmArchivedNotes(loggedInUserID);
+            archivedNotesForm.StartPosition = FormStartPosition.CenterScreen;
+            archivedNotesForm.NoteUnarchived += ArchivedNotesForm_NoteUnarchived;
+            archivedNotesForm.Show();
+        }
+
+        private void ArchivedNotesForm_NoteUnarchived(object sender, EventArgs e)
+        {
+            // Reload archived notes in frmViewNotes
+            dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+        }
     }
 }
