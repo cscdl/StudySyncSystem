@@ -6,13 +6,13 @@ namespace StudySyncSystem
 {
     public partial class frmAdminProfile : Form
     {
-        private int adminID;
+        private int loggedInAdminID;
 
         public frmAdminProfile(int adminID)
         {
             InitializeComponent();
-            this.adminID = adminID;
-            LoadAdminData(adminID);
+            this.loggedInAdminID = adminID;
+            LoadAdminData(loggedInAdminID);
         }
 
         private void LoadAdminData(int adminId)
@@ -23,10 +23,10 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    string query = "SELECT u.Username, ui.FirstName, ui.LastName, ui.Address, ui.PhoneNumber FROM tblUser u INNER JOIN tblUserInfo ui ON u.UserID = ui.UserID WHERE u.UserID = @AdminID AND u.UserType = 'admin'";
+                    string query = "SELECT u.Username, ui.FirstName, ui.LastName, ui.Address, ui.PhoneNumber, u.UserType FROM tblUser u INNER JOIN tblUserInfo ui ON u.UserID = ui.UserID WHERE u.UserID = @UserID AND u.UserType = 'admin'";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@AdminID", adminId);
+                        cmd.Parameters.AddWithValue("@UserID", adminId);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -36,7 +36,12 @@ namespace StudySyncSystem
                                 lblFullName.Text = $"{reader["FirstName"]} {reader["LastName"]}".Trim();
                                 lblAddress.Text = reader["Address"].ToString();
                                 lblMobileNum.Text = reader["PhoneNumber"].ToString();
+
+                                string userType = reader["UserType"].ToString();
+
+                                MessageBox.Show($"UserType: {userType}"); 
                             }
+
                             else
                             {
                                 MessageBox.Show("Admin not found.");
@@ -59,18 +64,18 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    string updateUsernameQuery = "UPDATE tblUser SET Username = @Username WHERE UserID = @AdminID AND UserType = 'admin'";
+                    string updateUsernameQuery = "UPDATE tblUser SET Username = @Username WHERE UserID = @UserID AND UserType = 'admin'";
                     using (SqlCommand updateUsernameCmd = new SqlCommand(updateUsernameQuery, connection))
                     {
-                        updateUsernameCmd.Parameters.AddWithValue("@AdminID", adminID);
+                        updateUsernameCmd.Parameters.AddWithValue("@UserID", loggedInAdminID);
                         updateUsernameCmd.Parameters.AddWithValue("@Username", txtEditUsername.Text);
                         updateUsernameCmd.ExecuteNonQuery();
                     }
 
-                    string updatePasswordQuery = "UPDATE tblUser SET Password = @Password WHERE UserID = @AdminID AND UserType = 'admin'";
+                    string updatePasswordQuery = "UPDATE tblUser SET Password = @Password WHERE UserID = @UserID AND UserType = 'admin'";
                     using (SqlCommand updatePasswordCmd = new SqlCommand(updatePasswordQuery, connection))
                     {
-                        updatePasswordCmd.Parameters.AddWithValue("@AdminID", adminID);
+                        updatePasswordCmd.Parameters.AddWithValue("@UserID", loggedInAdminID);
                         updatePasswordCmd.Parameters.AddWithValue("@Password", txtEditPassword.Text); 
                         updatePasswordCmd.ExecuteNonQuery();
                     }
@@ -78,7 +83,7 @@ namespace StudySyncSystem
                     MessageBox.Show("Changes saved successfully!");
 
                     
-                    LoadAdminData(adminID);
+                    LoadAdminData(loggedInAdminID);
                 }
             }
             catch (Exception ex)

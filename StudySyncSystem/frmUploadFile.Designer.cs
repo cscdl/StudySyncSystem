@@ -56,9 +56,9 @@ namespace StudySyncSystem
             // 
             this.dgvDisplayTextFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDisplayTextFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisplayTextFile.Location = new System.Drawing.Point(12, 34);
+            this.dgvDisplayTextFile.Location = new System.Drawing.Point(25, 39);
             this.dgvDisplayTextFile.Name = "dgvDisplayTextFile";
-            this.dgvDisplayTextFile.Size = new System.Drawing.Size(300, 305);
+            this.dgvDisplayTextFile.Size = new System.Drawing.Size(277, 305);
             this.dgvDisplayTextFile.TabIndex = 12;
             // 
             // btnCancel
@@ -66,7 +66,7 @@ namespace StudySyncSystem
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCancel.Location = new System.Drawing.Point(25, 377);
+            this.btnCancel.Location = new System.Drawing.Point(25, 385);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(277, 26);
             this.btnCancel.TabIndex = 11;
@@ -79,7 +79,7 @@ namespace StudySyncSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, 13);
+            this.label2.Location = new System.Drawing.Point(25, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 18);
             this.label2.TabIndex = 10;
@@ -91,7 +91,7 @@ namespace StudySyncSystem
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpload.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.btnUpload.Location = new System.Drawing.Point(25, 345);
+            this.btnUpload.Location = new System.Drawing.Point(25, 353);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(277, 26);
             this.btnUpload.TabIndex = 9;

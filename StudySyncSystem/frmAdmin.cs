@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,13 +15,16 @@ namespace StudySyncSystem
     public partial class frmAdmin : Form
     {
         private string loggedInUsername;
-        private int adminID;
+        private int loggedInUserID;
+
         bool SideBarExpand;
 
-        public frmAdmin()
+        public frmAdmin(int userID)
         {
             InitializeComponent();
             InitializeUI("UIMode");
+            loggedInUserID = userID;
+
         }
 
         public void loadform(object Form)
@@ -121,9 +125,47 @@ namespace StudySyncSystem
 
         private void btnPicUser_Click(object sender, EventArgs e)
         {
+            int adminID = GetLoggedInAdminID();
+
+            MessageBox.Show($"AdminID to be passed: {adminID}");
             frmAdminProfile adminProfileForm = new frmAdminProfile(adminID);
             loadform(adminProfileForm);
         }
+
+        private int GetLoggedInAdminID()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string query = "SELECT UserID FROM tblUser WHERE Username = @Username AND UserType = 'admin'"; 
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", loggedInUsername);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return (int)result;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Admin not found.");
+                            return -1;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving admin ID: " + ex.Message);
+                return -1;
+            }
+        }
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

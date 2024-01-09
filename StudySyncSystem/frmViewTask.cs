@@ -15,8 +15,6 @@ namespace StudySyncSystem
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
-        private string searchCriteria;
-        private string categoryFilter;
         private frmArchivedTasks archivedTasksForm;
 
         public frmViewTask()

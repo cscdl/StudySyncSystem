@@ -59,9 +59,9 @@ namespace StudySyncSystem
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(48, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 18);
+            this.label2.Size = new System.Drawing.Size(148, 18);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Welcome back,";
+            this.label2.Text = "Welcome back, Admin!";
             // 
             // label1
             // 
@@ -163,9 +163,8 @@ namespace StudySyncSystem
             this.adminName.ForeColor = System.Drawing.Color.White;
             this.adminName.Location = new System.Drawing.Point(150, 72);
             this.adminName.Name = "adminName";
-            this.adminName.Size = new System.Drawing.Size(13, 18);
+            this.adminName.Size = new System.Drawing.Size(0, 18);
             this.adminName.TabIndex = 10;
-            this.adminName.Text = "-";
             // 
             // panel4
             // 

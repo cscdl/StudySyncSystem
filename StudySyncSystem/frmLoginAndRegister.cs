@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace StudySyncSystem
 {
@@ -16,7 +17,7 @@ namespace StudySyncSystem
     {
 
         SqlConnection connect = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
-       
+        private int uID;
         public frmLoginAndRegister()
         {
             InitializeComponent();
@@ -67,7 +68,7 @@ namespace StudySyncSystem
 
                     if (userType.ToLower() == "admin")
                     {
-                        frmAdmin adminDashboard = new frmAdmin();
+                        frmAdmin adminDashboard = new frmAdmin(userID);
                         string selectFirstNameQuery = "SELECT FirstName FROM tblUserInfo WHERE UserID = @UserID";
                         SqlCommand selectFirstNameCmd = new SqlCommand(selectFirstNameQuery, connect);
                         selectFirstNameCmd.Parameters.AddWithValue("@UserID", userID);

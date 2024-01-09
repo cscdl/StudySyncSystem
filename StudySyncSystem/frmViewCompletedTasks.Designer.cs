@@ -33,12 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvCompletedTasks = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.TaskID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompletedTasks)).BeginInit();
             this.SuspendLayout();
@@ -106,30 +106,6 @@
             this.dgvCompletedTasks.Size = new System.Drawing.Size(676, 246);
             this.dgvCompletedTasks.TabIndex = 14;
             // 
-            // TaskID
-            // 
-            this.TaskID.DataPropertyName = "TaskID";
-            this.TaskID.HeaderText = "Task ID";
-            this.TaskID.Name = "TaskID";
-            // 
-            // TaskTitle
-            // 
-            this.TaskTitle.DataPropertyName = "TaskTitle";
-            this.TaskTitle.HeaderText = "Task Title";
-            this.TaskTitle.Name = "TaskTitle";
-            // 
-            // StartDate
-            // 
-            this.StartDate.DataPropertyName = "StartDate";
-            this.StartDate.HeaderText = "Start Date";
-            this.StartDate.Name = "StartDate";
-            // 
-            // EndDate
-            // 
-            this.EndDate.DataPropertyName = "EndDate";
-            this.EndDate.HeaderText = "End Date";
-            this.EndDate.Name = "EndDate";
-            // 
             // btnClose
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -153,6 +129,32 @@
             this.label1.Size = new System.Drawing.Size(168, 18);
             this.label1.TabIndex = 25;
             this.label1.Text = "C O M P L E T E D   T A S K S";
+            // 
+            // TaskID
+            // 
+            this.TaskID.DataPropertyName = "TaskID";
+            this.TaskID.HeaderText = "Task ID";
+            this.TaskID.Name = "TaskID";
+            // 
+            // TaskTitle
+            // 
+            this.TaskTitle.DataPropertyName = "TaskTitle";
+            this.TaskTitle.HeaderText = "Task Title";
+            this.TaskTitle.Name = "TaskTitle";
+            // 
+            // StartDate
+            // 
+            this.StartDate.DataPropertyName = "StartDate";
+            this.StartDate.HeaderText = "Start Date";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Visible = false;
+            // 
+            // EndDate
+            // 
+            this.EndDate.DataPropertyName = "EndDate";
+            this.EndDate.HeaderText = "End Date";
+            this.EndDate.Name = "EndDate";
+            this.EndDate.Visible = false;
             // 
             // frmViewCompletedTasks
             // 
@@ -180,11 +182,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvCompletedTasks;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label1;
     }
 }
