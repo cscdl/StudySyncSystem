@@ -23,7 +23,7 @@ namespace StudySyncSystem
             dgvPendingTasks.Columns["TaskTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPendingTasks.Columns["StartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPendingTasks.Columns["EndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            
+
 
             dgvPendingTasks.DataSource = RetrievePendingTasksForLoggedInUser(loggedInUserID);
         }
@@ -55,7 +55,6 @@ namespace StudySyncSystem
 
             return pendingTasks;
         }
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {

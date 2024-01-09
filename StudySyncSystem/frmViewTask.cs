@@ -122,14 +122,14 @@ namespace StudySyncSystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-          
+
             DataGridViewRow selectedRow = dgvTasks.CurrentRow;
 
             if (selectedRow != null)
             {
                 int taskID = Convert.ToInt32(selectedRow.Cells["TaskID"].Value);
 
-               
+
                 OpenEditTasksForm(taskID);
             }
             else
@@ -142,12 +142,12 @@ namespace StudySyncSystem
         {
             frmEditTasks editTasksForm = new frmEditTasks(taskID);
             editTasksForm.StartPosition = FormStartPosition.CenterScreen;
-            
+
             editTasksForm.DataSaved += FrmEditTasks_DataSaved;
 
             editTasksForm.ShowDialog();
 
-           
+
             dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
@@ -158,22 +158,22 @@ namespace StudySyncSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+
             DataGridViewRow selectedRow = dgvTasks.CurrentRow;
 
             if (selectedRow != null)
             {
                 int taskID = Convert.ToInt32(selectedRow.Cells["TaskID"].Value);
 
-                
+
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this task?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    
+
                     DeleteTaskFromDatabase(taskID);
 
-                   
+
                     dgvTasks.Rows.Remove(selectedRow);
                 }
             }
@@ -224,7 +224,7 @@ namespace StudySyncSystem
 
             string filterCriteria = GetFilterCriteria(selectedFilter);
 
-        
+
             dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
         }
 
@@ -239,7 +239,7 @@ namespace StudySyncSystem
                 { "Upcoming Tasks", "EndDate >= GETDATE()" }
             };
 
-           
+
             if (selectedFilter.StartsWith("Category: "))
             {
                 return $"AND CategoryID IN(SELECT CategoryID FROM tblCategory WHERE CategoryName = '{selectedFilter.Replace("Category: ", "")}')";

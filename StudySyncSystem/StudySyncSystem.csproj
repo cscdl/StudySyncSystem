@@ -185,6 +185,12 @@
     <Compile Include="frmUserProfile.Designer.cs">
       <DependentUpon>frmUserProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewCompletedTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewCompletedTasks.Designer.cs">
+      <DependentUpon>frmViewCompletedTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewFiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,11 +203,11 @@
     <Compile Include="frmViewNotes.Designer.cs">
       <DependentUpon>frmViewNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewPendingTask.cs">
+    <Compile Include="frmViewPendingTasks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewPendingTask.Designer.cs">
-      <DependentUpon>frmViewPendingTask.cs</DependentUpon>
+    <Compile Include="frmViewPendingTasks.Designer.cs">
+      <DependentUpon>frmViewPendingTasks.cs</DependentUpon>
     </Compile>
     <Compile Include="frmViewTask.cs">
       <SubType>Form</SubType>
@@ -295,14 +301,17 @@
     <EmbeddedResource Include="frmUserProfile.resx">
       <DependentUpon>frmUserProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmViewCompletedTasks.resx">
+      <DependentUpon>frmViewCompletedTasks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmViewFiles.resx">
       <DependentUpon>frmViewFiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewNotes.resx">
       <DependentUpon>frmViewNotes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewPendingTask.resx">
-      <DependentUpon>frmViewPendingTask.cs</DependentUpon>
+    <EmbeddedResource Include="frmViewPendingTasks.resx">
+      <DependentUpon>frmViewPendingTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewTask.resx">
       <DependentUpon>frmViewTask.cs</DependentUpon>

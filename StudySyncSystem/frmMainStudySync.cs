@@ -390,7 +390,7 @@ namespace StudySyncSystem
 
         private void pnlMain_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         public int GetLoggedInUserID()
@@ -422,6 +422,14 @@ namespace StudySyncSystem
 
             frmViewPendingTask viewPendingTask = new frmViewPendingTask(userID);
             viewPendingTask.ShowDialog();
+        }
+
+        private void btnCompletedTask_Click(object sender, EventArgs e)
+        {
+            int userID = loggedInUserID;
+
+            frmViewCompletedTasks viewCompletedTask = new frmViewCompletedTasks(userID);
+            viewCompletedTask.ShowDialog();
         }
 
         private void UpdateNoteCountLabel()

@@ -71,9 +71,5 @@ namespace StudySyncSystem
             }
         }
 
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
