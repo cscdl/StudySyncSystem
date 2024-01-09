@@ -33,10 +33,15 @@ namespace StudySyncSystem
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvActivityLogs = new System.Windows.Forms.DataGridView();
+            this.dgvActivityLog = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.LogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActivityLogs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivityLog)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -45,7 +50,7 @@ namespace StudySyncSystem
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.dgvActivityLogs);
+            this.panel1.Controls.Add(this.dgvActivityLog);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -86,16 +91,23 @@ namespace StudySyncSystem
             this.txtSearch.Size = new System.Drawing.Size(307, 21);
             this.txtSearch.TabIndex = 23;
             // 
-            // dgvActivityLogs
+            // dgvActivityLog
             // 
-            this.dgvActivityLogs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvActivityLogs.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.dgvActivityLogs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvActivityLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActivityLogs.Location = new System.Drawing.Point(13, 75);
-            this.dgvActivityLogs.Name = "dgvActivityLogs";
-            this.dgvActivityLogs.Size = new System.Drawing.Size(598, 300);
-            this.dgvActivityLogs.TabIndex = 14;
+            this.dgvActivityLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvActivityLog.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.dgvActivityLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvActivityLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivityLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LogID,
+            this.UserID,
+            this.Username,
+            this.LogType,
+            this.DateCreated});
+            this.dgvActivityLog.Location = new System.Drawing.Point(13, 75);
+            this.dgvActivityLog.Name = "dgvActivityLog";
+            this.dgvActivityLog.Size = new System.Drawing.Size(598, 300);
+            this.dgvActivityLog.TabIndex = 14;
+            this.dgvActivityLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvActivityLog_CellFormatting);
             // 
             // btnClose
             // 
@@ -109,6 +121,36 @@ namespace StudySyncSystem
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // LogID
+            // 
+            this.LogID.HeaderText = "LogID";
+            this.LogID.Name = "LogID";
+            this.LogID.Visible = false;
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            // 
+            // Username
+            // 
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "User Name";
+            this.Username.Name = "Username";
+            // 
+            // LogType
+            // 
+            this.LogType.DataPropertyName = "LogType";
+            this.LogType.HeaderText = "Log Type";
+            this.LogType.Name = "LogType";
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.DataPropertyName = "DateCreated";
+            this.DateCreated.HeaderText = "Date Created";
+            this.DateCreated.Name = "DateCreated";
             // 
             // frmViewActivityLogs
             // 
@@ -124,7 +166,7 @@ namespace StudySyncSystem
             this.Load += new System.EventHandler(this.frmViewActivityLogs_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActivityLogs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivityLog)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,7 +177,12 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dgvActivityLogs;
+        private System.Windows.Forms.DataGridView dgvActivityLog;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LogType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
     }
 }
