@@ -17,7 +17,6 @@ namespace StudySyncSystem
     {
 
         SqlConnection connect = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
-        private int uID;
         public frmLoginAndRegister()
         {
             InitializeComponent();

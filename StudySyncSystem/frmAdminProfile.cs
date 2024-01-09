@@ -39,7 +39,6 @@ namespace StudySyncSystem
 
                                 string userType = reader["UserType"].ToString();
 
-                                MessageBox.Show($"UserType: {userType}"); 
                             }
 
                             else

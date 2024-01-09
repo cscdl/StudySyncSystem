@@ -17,6 +17,7 @@ namespace StudySyncSystem
         private string loggedInUsername;
         private int loggedInUserID;
 
+
         bool SideBarExpand;
 
         public frmAdmin(int userID)
@@ -24,8 +25,44 @@ namespace StudySyncSystem
             InitializeComponent();
             InitializeUI("UIMode");
             loggedInUserID = userID;
+            loggedInUsername = GetUsernameFromID(loggedInUserID);
 
         }
+
+        private string GetUsernameFromID(int userID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string query = "SELECT Username FROM tblUser WHERE UserID = @UserID";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userID);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return result.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username not found.");
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving username: " + ex.Message);
+                return null;
+            }
+        }
+    
 
         public void loadform(object Form)
         {
@@ -125,12 +162,13 @@ namespace StudySyncSystem
 
         private void btnPicUser_Click(object sender, EventArgs e)
         {
+            UpdateUsernameLabel(loggedInUsername);
             int adminID = GetLoggedInAdminID();
 
-            MessageBox.Show($"AdminID to be passed: {adminID}");
             frmAdminProfile adminProfileForm = new frmAdminProfile(adminID);
             loadform(adminProfileForm);
         }
+
 
         private int GetLoggedInAdminID()
         {
@@ -140,10 +178,10 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    string query = "SELECT UserID FROM tblUser WHERE Username = @Username AND UserType = 'admin'"; 
+                    string query = "SELECT UserID FROM tblUser WHERE UserID = @UserID AND UserType = 'admin'";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@Username", loggedInUsername);
+                        cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
 
                         object result = cmd.ExecuteScalar();
 
@@ -165,6 +203,7 @@ namespace StudySyncSystem
                 return -1;
             }
         }
+
 
 
         private void btnLogout_Click(object sender, EventArgs e)
