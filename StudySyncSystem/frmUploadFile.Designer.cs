@@ -31,41 +31,35 @@ namespace StudySyncSystem
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listView = new System.Windows.Forms.ListView();
+            this.dgvDisplayTextFile = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisplayTextFile)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.listView);
+            this.panel1.Controls.Add(this.dgvDisplayTextFile);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnUpload);
-            this.panel1.Controls.Add(this.txtPath);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(326, 423);
             this.panel1.TabIndex = 1;
             // 
-            // listView
+            // dgvDisplayTextFile
             // 
-            this.listView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
-            this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(25, 31);
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(277, 270);
-            this.listView.TabIndex = 12;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.List;
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            this.dgvDisplayTextFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDisplayTextFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDisplayTextFile.Location = new System.Drawing.Point(12, 34);
+            this.dgvDisplayTextFile.Name = "dgvDisplayTextFile";
+            this.dgvDisplayTextFile.Size = new System.Drawing.Size(300, 305);
+            this.dgvDisplayTextFile.TabIndex = 12;
             // 
             // btnCancel
             // 
@@ -105,28 +99,6 @@ namespace StudySyncSystem
             this.btnUpload.UseVisualStyleBackColor = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // txtPath
-            // 
-            this.txtPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPath.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPath.ForeColor = System.Drawing.Color.White;
-            this.txtPath.Location = new System.Drawing.Point(77, 310);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(225, 21);
-            this.txtPath.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(22, 313);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Path :";
-            // 
             // imageList
             // 
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -145,6 +117,7 @@ namespace StudySyncSystem
             this.Text = "frmUploadFile";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisplayTextFile)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -155,9 +128,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnUpload;
-        private System.Windows.Forms.TextBox txtPath;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.DataGridView dgvDisplayTextFile;
     }
 }
