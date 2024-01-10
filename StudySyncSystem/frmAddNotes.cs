@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace StudySyncSystem
 {
@@ -83,6 +87,35 @@ namespace StudySyncSystem
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnSavePdfFile_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document(PageSize.A4.Rotate());
+
+                    try
+                    {
+                        PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                        doc.Open();
+                        doc.Add(new iTextSharp.text.Paragraph(richTxtNewNote.Text));
+
+                        // Show a message indicating successful creation of the PDF file
+                        MessageBox.Show("PDF file successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        doc.Close();
+                    }
+                }
+            }
         }
     }
 }

@@ -36,12 +36,14 @@ namespace StudySyncSystem
             this.btnSave = new System.Windows.Forms.Button();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSavePdfFile = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.panel1.Controls.Add(this.btnSavePdfFile);
             this.panel1.Controls.Add(this.richTxtNewNote);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
@@ -59,9 +61,9 @@ namespace StudySyncSystem
             this.richTxtNewNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.richTxtNewNote.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTxtNewNote.ForeColor = System.Drawing.Color.White;
-            this.richTxtNewNote.Location = new System.Drawing.Point(26, 90);
+            this.richTxtNewNote.Location = new System.Drawing.Point(26, 63);
             this.richTxtNewNote.Name = "richTxtNewNote";
-            this.richTxtNewNote.Size = new System.Drawing.Size(277, 259);
+            this.richTxtNewNote.Size = new System.Drawing.Size(277, 254);
             this.richTxtNewNote.TabIndex = 12;
             this.richTxtNewNote.Text = "";
             // 
@@ -83,7 +85,7 @@ namespace StudySyncSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(23, 68);
+            this.label2.Location = new System.Drawing.Point(23, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 18);
             this.label2.TabIndex = 10;
@@ -95,7 +97,7 @@ namespace StudySyncSystem
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.btnSave.Location = new System.Drawing.Point(26, 355);
+            this.btnSave.Location = new System.Drawing.Point(26, 323);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(277, 26);
             this.btnSave.TabIndex = 9;
@@ -109,7 +111,7 @@ namespace StudySyncSystem
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTitle.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.ForeColor = System.Drawing.Color.White;
-            this.txtTitle.Location = new System.Drawing.Point(66, 28);
+            this.txtTitle.Location = new System.Drawing.Point(66, 11);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(237, 21);
             this.txtTitle.TabIndex = 7;
@@ -119,11 +121,25 @@ namespace StudySyncSystem
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 31);
+            this.label1.Location = new System.Drawing.Point(23, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "Title:";
+            // 
+            // btnSavePdfFile
+            // 
+            this.btnSavePdfFile.BackColor = System.Drawing.Color.Yellow;
+            this.btnSavePdfFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePdfFile.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePdfFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.btnSavePdfFile.Location = new System.Drawing.Point(26, 355);
+            this.btnSavePdfFile.Name = "btnSavePdfFile";
+            this.btnSavePdfFile.Size = new System.Drawing.Size(277, 26);
+            this.btnSavePdfFile.TabIndex = 17;
+            this.btnSavePdfFile.Text = "Save as PDF File";
+            this.btnSavePdfFile.UseVisualStyleBackColor = false;
+            this.btnSavePdfFile.Click += new System.EventHandler(this.btnSavePdfFile_Click);
             // 
             // frmAddNotes
             // 
@@ -150,5 +166,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTxtNewNote;
+        private System.Windows.Forms.Button btnSavePdfFile;
     }
 }

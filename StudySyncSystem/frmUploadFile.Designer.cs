@@ -36,6 +36,8 @@ namespace StudySyncSystem
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFile = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplayTextFile)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +45,8 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtFile);
             this.panel1.Controls.Add(this.dgvDisplayTextFile);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.label2);
@@ -56,9 +60,9 @@ namespace StudySyncSystem
             // 
             this.dgvDisplayTextFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDisplayTextFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisplayTextFile.Location = new System.Drawing.Point(25, 39);
+            this.dgvDisplayTextFile.Location = new System.Drawing.Point(25, 77);
             this.dgvDisplayTextFile.Name = "dgvDisplayTextFile";
-            this.dgvDisplayTextFile.Size = new System.Drawing.Size(277, 305);
+            this.dgvDisplayTextFile.Size = new System.Drawing.Size(277, 267);
             this.dgvDisplayTextFile.TabIndex = 12;
             // 
             // btnCancel
@@ -105,6 +109,25 @@ namespace StudySyncSystem
             this.imageList.ImageSize = new System.Drawing.Size(32, 32);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(25, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 16);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "File :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtFile
+            // 
+            this.txtFile.Location = new System.Drawing.Point(64, 51);
+            this.txtFile.Name = "txtFile";
+            this.txtFile.Size = new System.Drawing.Size(238, 20);
+            this.txtFile.TabIndex = 15;
+            // 
             // frmUploadFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,5 +153,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.DataGridView dgvDisplayTextFile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFile;
     }
 }

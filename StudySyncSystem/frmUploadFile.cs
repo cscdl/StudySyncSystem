@@ -36,7 +36,7 @@ namespace StudySyncSystem
             dgvDisplayTextFile.DataSource = dTable; // Set the DataTable as the DataGridView's data source
         }
 
-        private void DisplayPdfTitles(List<string> filePaths)
+        private void DisplayFileTitles(List<string> filePaths, string fileType)
         {
             foreach (var filePath in filePaths)
             {
@@ -45,11 +45,12 @@ namespace StudySyncSystem
 
                 // Add the title and file type to the existing DataTable
                 DataRow row = dTable.NewRow();
-                row["PDF Title"] = title;
-                row["File Type"] = "PDF"; // Set File Type as PDF for each file
+                row["File Title"] = title;
+                row["File Type"] = fileType; // Set File Type based on the fileType parameter
                 dTable.Rows.Add(row);
             }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -57,19 +58,33 @@ namespace StudySyncSystem
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "PDF Files|*.pdf";
-            openFileDialog.Title = "Select a File";
-            openFileDialog.Multiselect = true;  // Allow multiple file selection
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "PDF Files|*.pdf|Word Documents|*.doc;*.docx|Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp",
+                Title = "Select File(s)",
+                Multiselect = true
+            };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                List<string> fileNames = new List<string>(openFileDialog.FileNames);
-                DisplayPdfTitles(fileNames);
-
-                MessageBox.Show("Files successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (openFileDialog.FileNames.Length > 0)
+                {
+                    List<string> fileNames = openFileDialog.FileNames.ToList();
+                    string fileType = openFileDialog.FilterIndex == 1 ? "PDF" : "Word Document : Image";
+                    DisplayFileTitles(fileNames, fileType);
+                    txtFile.Text = string.Join(", ", fileNames.Select(System.IO.Path.GetFileNameWithoutExtension));
+                    MessageBox.Show("Files successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No files selected!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
