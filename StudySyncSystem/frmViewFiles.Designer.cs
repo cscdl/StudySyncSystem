@@ -33,7 +33,7 @@ namespace StudySyncSystem
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvViewFiles = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@ namespace StudySyncSystem
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewFiles)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -50,7 +50,7 @@ namespace StudySyncSystem
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvViewFiles);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnClose);
@@ -95,16 +95,16 @@ namespace StudySyncSystem
             this.txtSearch.Size = new System.Drawing.Size(307, 21);
             this.txtSearch.TabIndex = 20;
             // 
-            // dataGridView1
+            // dgvViewFiles
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 61);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(676, 246);
-            this.dataGridView1.TabIndex = 14;
+            this.dgvViewFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvViewFiles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.dgvViewFiles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvViewFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewFiles.Location = new System.Drawing.Point(14, 61);
+            this.dgvViewFiles.Name = "dgvViewFiles";
+            this.dgvViewFiles.Size = new System.Drawing.Size(676, 246);
+            this.dgvViewFiles.TabIndex = 14;
             // 
             // btnNew
             // 
@@ -192,7 +192,7 @@ namespace StudySyncSystem
             this.Load += new System.EventHandler(this.frmViewFiles_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewFiles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,7 +204,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvViewFiles;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;

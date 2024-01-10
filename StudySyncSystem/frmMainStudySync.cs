@@ -18,6 +18,7 @@ namespace StudySyncSystem
     {
         private string loggedInUsername;
         private int loggedInUserID;
+        private int categoryID;
 
         bool SideBarExpand;
         int month, year;
@@ -364,8 +365,42 @@ namespace StudySyncSystem
 
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
-            loadform(new frmUploadFile());
+            LoadCategories();
+
+            frmUploadFile uploadFile = new frmUploadFile(loggedInUserID, categoryID);
+            loadform(uploadFile);
         }
+
+        private void LoadCategories()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string query = "SELECT TOP 1 CategoryID, CategoryName FROM tblCategory";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            categoryID = reader.GetInt32(reader.GetOrdinal("CategoryID"));
+                            // You can also use categoryName if needed
+                            // ...
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading categories: " + ex.Message);
+            }
+        }
+
 
         private void btnDashboard_Click_1(object sender, EventArgs e)
         {

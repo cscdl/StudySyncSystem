@@ -24,7 +24,7 @@ namespace StudySyncSystem
             todoListFiles.Columns.Add("File Name");
             todoListFiles.Columns.Add("File");
 
-            dataGridView1.DataSource = todoListFiles;
+            dgvViewFiles.DataSource = todoListFiles;
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)

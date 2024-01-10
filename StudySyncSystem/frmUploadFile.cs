@@ -1,53 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
 
 namespace StudySyncSystem
 {
     public partial class frmUploadFile : Form
     {
-        // Declare a class-level DataTable
         private DataTable dTable;
+        private int loggedInUserID;
+        private int categoryID;
 
-
-        public frmUploadFile()
+        public frmUploadFile(int loggedInUserID, int categoryID)
         {
             InitializeComponent();
             InitializeDataTable();
 
+            this.loggedInUserID = loggedInUserID;
+            this.categoryID = categoryID;
+
+            LoadCategories();
         }
 
-        // Initialize the DataTable with the required column when the form loads
         private void InitializeDataTable()
         {
             dTable = new DataTable();
-            dTable.Columns.Add("PDF Title", typeof(string));
-            dTable.Columns.Add("File Type", typeof(string)); // Add File Type column
-            dgvDisplayTextFile.DataSource = dTable; // Set the DataTable as the DataGridView's data source
+            dTable.Columns.Add("File Name", typeof(string)); 
+            dTable.Columns.Add("File Type", typeof(string));
+            dgvDisplayTextFile.DataSource = dTable;
         }
 
-        private void DisplayFileTitles(List<string> filePaths, string fileType)
-        {
-            foreach (var filePath in filePaths)
-            {
-                // Get the file name without extension as the title
-                string title = System.IO.Path.GetFileNameWithoutExtension(filePath);
 
-                // Add the title and file type to the existing DataTable
-                DataRow row = dTable.NewRow();
-                row["File Title"] = title;
-                row["File Type"] = fileType; // Set File Type based on the fileType parameter
-                dTable.Rows.Add(row);
+        private void LoadCategories()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string query = "SELECT CategoryID, CategoryName FROM tblCategory";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable categoryTable = new DataTable();
+                    adapter.Fill(categoryTable);
+
+                    cbCategory.DataSource = categoryTable;
+                    cbCategory.DisplayMember = "CategoryName";
+                    cbCategory.ValueMember = "CategoryID";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading categories: " + ex.Message);
             }
         }
 
@@ -69,10 +74,19 @@ namespace StudySyncSystem
             {
                 if (openFileDialog.FileNames.Length > 0)
                 {
-                    List<string> fileNames = openFileDialog.FileNames.ToList();
-                    string fileType = openFileDialog.FilterIndex == 1 ? "PDF" : "Word Document : Image";
-                    DisplayFileTitles(fileNames, fileType);
-                    txtFile.Text = string.Join(", ", fileNames.Select(System.IO.Path.GetFileNameWithoutExtension));
+                    foreach (var filePath in openFileDialog.FileNames)
+                    {
+                        string title = Path.GetFileNameWithoutExtension(filePath);
+                        string fileType = openFileDialog.FilterIndex == 1 ? "PDF" : "Word Document : Image";
+
+                        DataRow row = dTable.NewRow();
+                        row["File Name"] = title;
+                        row["File Type"] = fileType;
+                        dTable.Rows.Add(row);
+
+                        InsertFileToDatabase(title, fileType, filePath);
+                    }
+
                     MessageBox.Show("Files successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -82,9 +96,34 @@ namespace StudySyncSystem
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void InsertFileToDatabase(string title, string fileType, string filePath)
         {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
 
+                    string query = "INSERT INTO tblFile (FileName, FilePath, UserID, DateCreated, IsArchived, CategoryID) " +
+                                   "VALUES (@FileName, @FilePath, @UserID, @DateCreated, @IsArchived, @CategoryID)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@FileName", title);
+                        cmd.Parameters.AddWithValue("@FilePath", filePath);
+                        cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
+                        cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@IsArchived", 0);
+                        cmd.Parameters.AddWithValue("@CategoryID", cbCategory.SelectedValue);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error inserting file to database: " + ex.Message);
+            }
         }
     }
 }
