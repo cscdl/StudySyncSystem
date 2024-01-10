@@ -37,8 +37,8 @@ namespace StudySyncSystem
             this.btnClose = new System.Windows.Forms.Button();
             this.LogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LogType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivityLog)).BeginInit();
@@ -100,8 +100,8 @@ namespace StudySyncSystem
             this.dgvActivityLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LogID,
             this.UserID,
-            this.Username,
             this.LogType,
+            this.Title,
             this.DateCreated});
             this.dgvActivityLog.Location = new System.Drawing.Point(13, 75);
             this.dgvActivityLog.Name = "dgvActivityLog";
@@ -124,21 +124,18 @@ namespace StudySyncSystem
             // 
             // LogID
             // 
+            this.LogID.DataPropertyName = "LogID";
             this.LogID.HeaderText = "LogID";
             this.LogID.Name = "LogID";
             this.LogID.Visible = false;
             // 
             // UserID
             // 
+            this.UserID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.UserID.DataPropertyName = "UserID";
             this.UserID.HeaderText = "User ID";
             this.UserID.Name = "UserID";
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "User Name";
-            this.Username.Name = "Username";
+            this.UserID.Width = 68;
             // 
             // LogType
             // 
@@ -146,8 +143,15 @@ namespace StudySyncSystem
             this.LogType.HeaderText = "Log Type";
             this.LogType.Name = "LogType";
             // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            // 
             // DateCreated
             // 
+            this.DateCreated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DateCreated.DataPropertyName = "DateCreated";
             this.DateCreated.HeaderText = "Date Created";
             this.DateCreated.Name = "DateCreated";
@@ -181,8 +185,8 @@ namespace StudySyncSystem
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn LogID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn LogType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
     }
 }

@@ -32,7 +32,7 @@ namespace StudySyncSystem
             static_day = lblDays.Text;
 
             // Create the form
-            frmAddTasks addTasksForm = new frmAddTasks();
+            frmAddTasks addTasksForm = new frmAddTasks(loggedInUserID);
 
             // Set the user ID property
             addTasksForm.LoggedInUserID = loggedInUserID;

@@ -10,7 +10,6 @@ namespace StudySyncSystem
         private int loggedInUserID;
         public event EventHandler DataSaved;
 
-
         public frmAddNotes()
         {
             InitializeComponent();
@@ -20,7 +19,6 @@ namespace StudySyncSystem
         {
             set { loggedInUserID = value; }
         }
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -33,21 +31,37 @@ namespace StudySyncSystem
 
                 DateTime currentDate = DateTime.Now;
 
-                string insertQuery = "INSERT INTO tblNote (NoteTitle, NoteContent, DateCreated, IsArchived, UserID) " +
-                                     "VALUES (@NoteTitle, @NoteContent, @DateCreated, 0, @UserID)";
-                using (SqlCommand cmd = new SqlCommand(insertQuery, connect))
+                // Insert the note into tblNote
+                string insertNoteQuery = "INSERT INTO tblNote (NoteTitle, NoteContent, DateCreated, IsArchived, UserID) " +
+                                         "VALUES (@NoteTitle, @NoteContent, @DateCreated, 0, @UserID); SELECT SCOPE_IDENTITY();";
+                int newNoteID;
+
+                using (SqlCommand cmd = new SqlCommand(insertNoteQuery, connect))
                 {
                     cmd.Parameters.AddWithValue("@NoteTitle", title);
                     cmd.Parameters.AddWithValue("@NoteContent", content);
                     cmd.Parameters.AddWithValue("@DateCreated", currentDate);
                     cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
 
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Note saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    OnDataSaved(EventArgs.Empty);
-
+                    // Execute the query and get the new NoteID
+                    newNoteID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
+
+                // Insert a log into tblNoteLog
+                string insertLogQuery = "INSERT INTO tblNoteLog (LogType, UserID, DateCreated, RelatedID) " +
+                                        "VALUES (@LogType, @UserID, @DateCreated, @RelatedID)";
+                using (SqlCommand cmd = new SqlCommand(insertLogQuery, connect))
+                {
+                    cmd.Parameters.AddWithValue("@LogType", "Note Created");
+                    cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
+                    cmd.Parameters.AddWithValue("@DateCreated", currentDate);
+                    cmd.Parameters.AddWithValue("@RelatedID", newNoteID);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Note saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OnDataSaved(EventArgs.Empty);
 
             }
             catch (Exception ex)
@@ -59,6 +73,7 @@ namespace StudySyncSystem
                 connect.Close();
             }
         }
+
 
         protected virtual void OnDataSaved(EventArgs e)
         {

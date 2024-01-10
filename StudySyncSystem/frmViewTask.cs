@@ -63,14 +63,16 @@ namespace StudySyncSystem
 
         private void OpenAddTasksForm()
         {
-            int userID = GetLoggedInUserID();
-            frmAddTasks addTasksForm = new frmAddTasks();
+            int loggedInUserID = GetLoggedInUserID();
+
+            frmAddTasks addTasksForm = new frmAddTasks(loggedInUserID);
             addTasksForm.StartPosition = FormStartPosition.CenterScreen;
 
             addTasksForm.DataSaved += FrmAddTasks_DataSaved;
 
             addTasksForm.Show();
         }
+
 
         private DataTable RetrieveTasksForLoggedInUser(int userID, bool showArchived = false)
         {

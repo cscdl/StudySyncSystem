@@ -23,13 +23,9 @@ namespace StudySyncSystem
         {
             dgvActivityLog.AutoGenerateColumns = false;
 
-            dgvActivityLog.Columns.Add("NoteTitle", "Note Title");
-            dgvActivityLog.Columns.Add("TaskName", "Task Name");
-            dgvActivityLog.Columns.Add("FileName", "File Name");
             dgvActivityLog.Columns["DateCreated"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
 
             PopulateActivityLogData();
-
         }
 
         private void PopulateActivityLogData()
@@ -41,14 +37,63 @@ namespace StudySyncSystem
                     connection.Open();
 
                     string query = @"
-                        SELECT l.LogID, l.LogType, l.UserID, l.DateCreated,
-                               u.Username AS UserName, n.NoteTitle, t.TaskTitle, f.FileName
-                        FROM tblLog l
-                        LEFT JOIN tblUser u ON l.UserID = u.UserID
-                        LEFT JOIN tblNote n ON l.RelatedID = n.NoteID
-                        LEFT JOIN tblTask t ON l.RelatedID = t.TaskID
-                        LEFT JOIN tblFile f ON l.RelatedID = f.FileID
-                        ORDER BY l.DateCreated DESC;";
+                SELECT
+                    l.LogID,
+                    l.LogType,
+                    l.UserID,
+                    l.DateCreated,
+                    CONCAT(
+                        COALESCE(n.NoteTitle, ''),
+                        COALESCE(t.TaskTitle, ''),
+                        COALESCE(f.FileName, '')
+                    ) AS Title
+                FROM
+                    tblNoteLog l
+                    LEFT JOIN tblUser u ON l.UserID = u.UserID
+                    LEFT JOIN tblNote n ON l.RelatedID = n.NoteID
+                    LEFT JOIN tblTask t ON l.RelatedID = t.TaskID
+                    LEFT JOIN tblFile f ON l.RelatedID = f.FileID
+
+                UNION ALL
+
+                SELECT
+                    l.LogID,
+                    l.LogType,
+                    l.UserID,
+                    l.DateCreated,
+                    CONCAT(
+                        COALESCE(n.NoteTitle, ''),
+                        COALESCE(t.TaskTitle, ''),
+                        COALESCE(f.FileName, '')
+                    ) AS Title
+                FROM
+                    tblTaskLog l
+                    LEFT JOIN tblUser u ON l.UserID = u.UserID
+                    LEFT JOIN tblNote n ON l.RelatedID = n.NoteID
+                    LEFT JOIN tblTask t ON l.RelatedID = t.TaskID
+                    LEFT JOIN tblFile f ON l.RelatedID = f.FileID
+
+                UNION ALL
+
+                SELECT
+                    l.LogID,
+                    l.LogType,
+                    l.UserID,
+                    l.DateCreated,
+                    CONCAT(
+                        COALESCE(n.NoteTitle, ''),
+                        COALESCE(t.TaskTitle, ''),
+                        COALESCE(f.FileName, '')
+                    ) AS Title
+                FROM
+                    tblFileLog l
+                    LEFT JOIN tblUser u ON l.UserID = u.UserID
+                    LEFT JOIN tblNote n ON l.RelatedID = n.NoteID
+                    LEFT JOIN tblTask t ON l.RelatedID = t.TaskID
+                    LEFT JOIN tblFile f ON l.RelatedID = f.FileID
+                ORDER BY
+                    l.DateCreated DESC;
+            ";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -56,7 +101,6 @@ namespace StudySyncSystem
                     }
                 }
                 dgvActivityLog.DataSource = activityLog;
-
             }
             catch (Exception ex)
             {
@@ -64,11 +108,13 @@ namespace StudySyncSystem
             }
         }
 
+
+
         private void dgvActivityLog_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value == DBNull.Value)
             {
-                e.Value = ""; 
+                e.Value = "";
             }
         }
     }

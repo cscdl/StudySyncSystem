@@ -13,9 +13,10 @@ namespace StudySyncSystem
         private int loggedInUserID;
         public event EventHandler DataSaved;
 
-        public frmAddTasks()
+        public frmAddTasks(int loggedInUserID)
         {
             InitializeComponent();
+            this.loggedInUserID = loggedInUserID;
         }
 
         public int LoggedInUserID
@@ -70,22 +71,27 @@ namespace StudySyncSystem
                 DateTime currentDate = DateTime.Now;
 
                 string query = "INSERT INTO tblTask (TaskTitle, TaskStatus, StartDate, EndDate, UserID, DateCreated, IsArchived, CategoryID) " +
-                               "VALUES (@TaskTitle, @TaskStatus, @StartDate, @EndDate, @UserID, @DateCreated, 0, @CategoryID)";
+                                "VALUES (@TaskTitle, @TaskStatus, @StartDate, @EndDate, @UserID, @DateCreated, 0, @CategoryID); SELECT SCOPE_IDENTITY();";
+
+                int newTaskID;
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@TaskTitle", txtTitle.Text);
                     cmd.Parameters.AddWithValue("@TaskStatus", "Pending");
-                    cmd.Parameters.AddWithValue("@UserID", loggedInUserID); 
+                    cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
                     cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@StartDate", dtpStartDate.Value); 
-                    cmd.Parameters.AddWithValue("@EndDate", dtpEndDate.Value);    
+                    cmd.Parameters.AddWithValue("@StartDate", dtpStartDate.Value);
+                    cmd.Parameters.AddWithValue("@EndDate", dtpEndDate.Value);
                     cmd.Parameters.AddWithValue("@CategoryID", cbCategory.SelectedValue);
 
-                    cmd.ExecuteNonQuery();
+                    newTaskID = Convert.ToInt32(cmd.ExecuteScalar());
+
                     MessageBox.Show("Task saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     OnDataSaved(EventArgs.Empty);
                 }
+
+                LogActivity("Task", newTaskID);
             }
             catch (Exception ex)
             {
@@ -96,6 +102,30 @@ namespace StudySyncSystem
                 connection.Close();
             }
         }
+
+        private void LogActivity(string logType, int relatedID)
+        {
+            try
+            {
+                string logQuery = "INSERT INTO tblTaskLog (LogType, UserID, DateCreated, RelatedID) " +
+                                  "VALUES (@LogType, @UserID, @DateCreated, @RelatedID)";
+
+                using (SqlCommand logCmd = new SqlCommand(logQuery, connection))
+                {
+                    logCmd.Parameters.AddWithValue("@LogType", "Task Created");
+                    logCmd.Parameters.AddWithValue("@UserID", loggedInUserID);
+                    logCmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
+                    logCmd.Parameters.AddWithValue("@RelatedID", relatedID);
+
+                    logCmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error logging activity: " + ex.Message);
+            }
+        }
+
 
         protected virtual void OnDataSaved(EventArgs e)
         {
