@@ -38,8 +38,14 @@ namespace StudySyncSystem
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnViewArchive = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.FileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewFiles)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +61,7 @@ namespace StudySyncSystem
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.btnViewArchive);
             this.panel1.Location = new System.Drawing.Point(13, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 360);
@@ -101,6 +107,13 @@ namespace StudySyncSystem
             this.dgvViewFiles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
             this.dgvViewFiles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvViewFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewFiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FileID,
+            this.UserID,
+            this.FileName,
+            this.FilePath,
+            this.CategoryID,
+            this.IsArchived});
             this.dgvViewFiles.Location = new System.Drawing.Point(14, 61);
             this.dgvViewFiles.Name = "dgvViewFiles";
             this.dgvViewFiles.Size = new System.Drawing.Size(676, 246);
@@ -155,17 +168,17 @@ namespace StudySyncSystem
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // btnSave
+            // btnViewArchive
             // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSave.Location = new System.Drawing.Point(427, 318);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(125, 26);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnViewArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewArchive.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewArchive.ForeColor = System.Drawing.Color.Yellow;
+            this.btnViewArchive.Location = new System.Drawing.Point(427, 318);
+            this.btnViewArchive.Name = "btnViewArchive";
+            this.btnViewArchive.Size = new System.Drawing.Size(125, 26);
+            this.btnViewArchive.TabIndex = 16;
+            this.btnViewArchive.Text = "View Archived";
+            this.btnViewArchive.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -177,6 +190,45 @@ namespace StudySyncSystem
             this.label1.Size = new System.Drawing.Size(54, 18);
             this.label1.TabIndex = 24;
             this.label1.Text = "F I L E S";
+            // 
+            // FileID
+            // 
+            this.FileID.DataPropertyName = "FileID";
+            this.FileID.HeaderText = "FileID";
+            this.FileID.Name = "FileID";
+            this.FileID.Visible = false;
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            // 
+            // FileName
+            // 
+            this.FileName.DataPropertyName = "FileName";
+            this.FileName.HeaderText = "File Name";
+            this.FileName.Name = "FileName";
+            // 
+            // FilePath
+            // 
+            this.FilePath.DataPropertyName = "FilePath";
+            this.FilePath.HeaderText = "File Path";
+            this.FilePath.Name = "FilePath";
+            // 
+            // CategoryID
+            // 
+            this.CategoryID.DataPropertyName = "CategoryID";
+            this.CategoryID.HeaderText = "CategoryID";
+            this.CategoryID.Name = "CategoryID";
+            this.CategoryID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CategoryID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // IsArchived
+            // 
+            this.IsArchived.DataPropertyName = "IsArchived";
+            this.IsArchived.HeaderText = "Is Archived";
+            this.IsArchived.Name = "IsArchived";
             // 
             // frmViewFiles
             // 
@@ -206,10 +258,16 @@ namespace StudySyncSystem
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvViewFiles;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnViewArchive;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
     }
 }

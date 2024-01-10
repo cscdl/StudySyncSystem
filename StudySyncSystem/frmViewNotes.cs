@@ -37,8 +37,8 @@ namespace StudySyncSystem
             dgvNotes.Columns["DateCreated"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
-           
+            dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+
         }
 
 
@@ -257,7 +257,7 @@ namespace StudySyncSystem
         private void btnViewArchived_Click(object sender, EventArgs e)
         {
             OpenArchivedNotesForm();
-            
+
         }
 
         private void OpenArchivedNotesForm()

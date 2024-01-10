@@ -11,6 +11,9 @@ namespace StudySyncSystem
         private DataTable dTable;
         private int loggedInUserID;
         private int categoryID;
+        private int newFileID;
+        public event EventHandler FileUploaded;
+
 
         public frmUploadFile(int loggedInUserID, int categoryID)
         {
@@ -26,11 +29,10 @@ namespace StudySyncSystem
         private void InitializeDataTable()
         {
             dTable = new DataTable();
-            dTable.Columns.Add("File Name", typeof(string)); 
+            dTable.Columns.Add("File Name", typeof(string));
             dTable.Columns.Add("File Type", typeof(string));
             dgvDisplayTextFile.DataSource = dTable;
         }
-
 
         private void LoadCategories()
         {
@@ -63,6 +65,7 @@ namespace StudySyncSystem
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
+
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "PDF Files|*.pdf|Word Documents|*.doc;*.docx|Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp",
@@ -76,6 +79,7 @@ namespace StudySyncSystem
                 {
                     foreach (var filePath in openFileDialog.FileNames)
                     {
+
                         string title = Path.GetFileNameWithoutExtension(filePath);
                         string fileType = openFileDialog.FilterIndex == 1 ? "PDF" : "Word Document : Image";
 
@@ -85,10 +89,14 @@ namespace StudySyncSystem
                         dTable.Rows.Add(row);
 
                         InsertFileToDatabase(title, fileType, filePath);
+                        LogActivity("File Uploaded", newFileID);
+
+
                     }
 
                     MessageBox.Show("Files successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
                 else
                 {
                     MessageBox.Show("No files selected!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -105,7 +113,8 @@ namespace StudySyncSystem
                     connection.Open();
 
                     string query = "INSERT INTO tblFile (FileName, FilePath, UserID, DateCreated, IsArchived, CategoryID) " +
-                                   "VALUES (@FileName, @FilePath, @UserID, @DateCreated, @IsArchived, @CategoryID)";
+                                   "VALUES (@FileName, @FilePath, @UserID, @DateCreated, @IsArchived, @CategoryID); " +
+                                   "SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -116,13 +125,42 @@ namespace StudySyncSystem
                         cmd.Parameters.AddWithValue("@IsArchived", 0);
                         cmd.Parameters.AddWithValue("@CategoryID", cbCategory.SelectedValue);
 
-                        cmd.ExecuteNonQuery();
+                        newFileID = Convert.ToInt32(cmd.ExecuteScalar());
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error inserting file to database: " + ex.Message);
+            }
+        }
+
+
+        private void LogActivity(string logType, int relatedID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string logQuery = "INSERT INTO tblFileLog (LogType, UserID, DateCreated, RelatedID) " +
+                                      "VALUES (@LogType, @UserID, @DateCreated, @RelatedID)";
+
+                    using (SqlCommand logCmd = new SqlCommand(logQuery, connection))
+                    {
+                        logCmd.Parameters.AddWithValue("@LogType", logType);
+                        logCmd.Parameters.AddWithValue("@UserID", loggedInUserID);
+                        logCmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
+                        logCmd.Parameters.AddWithValue("@RelatedID", relatedID);
+
+                        logCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error logging activity: " + ex.Message);
             }
         }
     }

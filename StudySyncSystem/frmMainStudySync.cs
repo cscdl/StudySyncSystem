@@ -359,9 +359,39 @@ namespace StudySyncSystem
 
         private void btnViewFiles_Click(object sender, EventArgs e)
         {
-            frmViewFiles viewFiles = new frmViewFiles();
+            int userID = GetLoggedInUserID(); 
+            int categoryID = GetCategoryID();  
+
+            frmViewFiles viewFiles = new frmViewFiles(userID, categoryID);
             viewFiles.ShowDialog();
         }
+
+        private int GetCategoryID()
+        {
+            int categoryID = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    string query = "SELECT TOP 1 CategoryID FROM tblCategory WHERE UserID = @UserID";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", GetLoggedInUserID());
+                        categoryID = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving category ID: " + ex.Message);
+            }
+
+            return categoryID;
+        }
+
 
         private void btnUploadFile_Click(object sender, EventArgs e)
         {
@@ -389,8 +419,7 @@ namespace StudySyncSystem
                         while (reader.Read())
                         {
                             categoryID = reader.GetInt32(reader.GetOrdinal("CategoryID"));
-                            // You can also use categoryName if needed
-                            // ...
+
                         }
                     }
                 }
