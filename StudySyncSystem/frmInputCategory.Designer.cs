@@ -60,6 +60,7 @@
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -80,7 +81,7 @@
             this.lblPrompt.AutoSize = true;
             this.lblPrompt.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrompt.ForeColor = System.Drawing.Color.White;
-            this.lblPrompt.Location = new System.Drawing.Point(15, 29);
+            this.lblPrompt.Location = new System.Drawing.Point(15, 23);
             this.lblPrompt.Name = "lblPrompt";
             this.lblPrompt.Size = new System.Drawing.Size(130, 18);
             this.lblPrompt.TabIndex = 21;

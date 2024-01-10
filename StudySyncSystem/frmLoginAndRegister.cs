@@ -215,7 +215,7 @@ namespace StudySyncSystem
 
         private bool IsValidMobileNumber(string mobileNumber)
         {
-            string pattern = @"^\d{10}$";
+            string pattern = @"^\d{11}$";
             return Regex.IsMatch(mobileNumber, pattern);
         }
 
