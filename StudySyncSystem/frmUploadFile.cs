@@ -10,18 +10,16 @@ namespace StudySyncSystem
     {
         private DataTable dTable;
         private int loggedInUserID;
-        private int categoryID;
         private int newFileID;
         public event EventHandler FileUploaded;
 
 
-        public frmUploadFile(int loggedInUserID, int categoryID)
+        public frmUploadFile(int loggedInUserID)
         {
             InitializeComponent();
             InitializeDataTable();
 
             this.loggedInUserID = loggedInUserID;
-            this.categoryID = categoryID;
 
             LoadCategories();
         }

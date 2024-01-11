@@ -30,22 +30,22 @@ namespace StudySyncSystem
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvViewFiles = new System.Windows.Forms.DataGridView();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnViewArchive = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.FileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnViewArchive = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewFiles)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +53,7 @@ namespace StudySyncSystem
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.dgvViewFiles);
@@ -66,18 +66,6 @@ namespace StudySyncSystem
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 360);
             this.panel1.TabIndex = 25;
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Yellow;
-            this.button5.Location = new System.Drawing.Point(484, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 26);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Search";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -118,78 +106,7 @@ namespace StudySyncSystem
             this.dgvViewFiles.Name = "dgvViewFiles";
             this.dgvViewFiles.Size = new System.Drawing.Size(676, 246);
             this.dgvViewFiles.TabIndex = 14;
-            // 
-            // btnNew
-            // 
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.ForeColor = System.Drawing.Color.Yellow;
-            this.btnNew.Location = new System.Drawing.Point(14, 318);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(125, 26);
-            this.btnNew.TabIndex = 19;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.Yellow;
-            this.btnEdit.Location = new System.Drawing.Point(153, 318);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(125, 26);
-            this.btnEdit.TabIndex = 18;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.Yellow;
-            this.btnClose.Location = new System.Drawing.Point(565, 318);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(125, 26);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Yellow;
-            this.btnDelete.Location = new System.Drawing.Point(289, 318);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(125, 26);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnViewArchive
-            // 
-            this.btnViewArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewArchive.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewArchive.ForeColor = System.Drawing.Color.Yellow;
-            this.btnViewArchive.Location = new System.Drawing.Point(427, 318);
-            this.btnViewArchive.Name = "btnViewArchive";
-            this.btnViewArchive.Size = new System.Drawing.Size(125, 26);
-            this.btnViewArchive.TabIndex = 16;
-            this.btnViewArchive.Text = "View Archived";
-            this.btnViewArchive.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(19, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 18);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "F I L E S";
+            this.dgvViewFiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewFiles_CellContentClick);
             // 
             // FileID
             // 
@@ -230,6 +147,95 @@ namespace StudySyncSystem
             this.IsArchived.HeaderText = "Is Archived";
             this.IsArchived.Name = "IsArchived";
             // 
+            // btnNew
+            // 
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.Color.Yellow;
+            this.btnNew.Location = new System.Drawing.Point(14, 318);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(125, 26);
+            this.btnNew.TabIndex = 19;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Yellow;
+            this.btnEdit.Location = new System.Drawing.Point(153, 318);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(125, 26);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Yellow;
+            this.btnClose.Location = new System.Drawing.Point(565, 318);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(125, 26);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Yellow;
+            this.btnDelete.Location = new System.Drawing.Point(289, 318);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(125, 26);
+            this.btnDelete.TabIndex = 17;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnViewArchive
+            // 
+            this.btnViewArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewArchive.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewArchive.ForeColor = System.Drawing.Color.Yellow;
+            this.btnViewArchive.Location = new System.Drawing.Point(427, 318);
+            this.btnViewArchive.Name = "btnViewArchive";
+            this.btnViewArchive.Size = new System.Drawing.Size(125, 26);
+            this.btnViewArchive.TabIndex = 16;
+            this.btnViewArchive.Text = "View Archived";
+            this.btnViewArchive.UseVisualStyleBackColor = true;
+            this.btnViewArchive.Click += new System.EventHandler(this.btnViewArchived_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(19, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 18);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "F I L E S";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Yellow;
+            this.btnSearch.Location = new System.Drawing.Point(485, 21);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(101, 26);
+            this.btnSearch.TabIndex = 23;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // frmViewFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,7 +259,6 @@ namespace StudySyncSystem
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvViewFiles;
@@ -269,5 +274,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
