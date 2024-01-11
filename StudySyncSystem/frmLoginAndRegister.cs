@@ -188,6 +188,13 @@ namespace StudySyncSystem
 
                     userInfoCmd.ExecuteNonQuery();
 
+                    DialogResult confirmationResult = MessageBox.Show("Please make sure the entered details are correct, as they cannot be edited later. Do you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (confirmationResult == DialogResult.No)
+                    {
+                        return;
+                    }
+
                     MessageBox.Show("User registered successfully!");
                 }
                 catch (Exception ex)

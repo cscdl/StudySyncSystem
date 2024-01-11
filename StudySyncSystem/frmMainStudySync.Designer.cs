@@ -161,7 +161,7 @@ namespace StudySyncSystem
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(759, 17);
+            this.lblUsername.Location = new System.Drawing.Point(755, 17);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(13, 18);
             this.lblUsername.TabIndex = 43;
@@ -170,7 +170,7 @@ namespace StudySyncSystem
             // btnPicUser
             // 
             this.btnPicUser.Image = ((System.Drawing.Image)(resources.GetObject("btnPicUser.Image")));
-            this.btnPicUser.Location = new System.Drawing.Point(853, 15);
+            this.btnPicUser.Location = new System.Drawing.Point(849, 15);
             this.btnPicUser.Name = "btnPicUser";
             this.btnPicUser.Size = new System.Drawing.Size(20, 20);
             this.btnPicUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

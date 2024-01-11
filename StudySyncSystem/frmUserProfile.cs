@@ -43,7 +43,17 @@ namespace StudySyncSystem
                                 lblUsername.Text =  reader["Username"].ToString();
                                 lblFullName.Text = $"{reader["FirstName"]} {reader["LastName"]}".Trim();
                                 lblAddress.Text = reader["Address"].ToString();
-                                lblBirthday.Text = reader["Birthday"].ToString();
+                                object birthdayValue = reader["Birthday"];
+
+                                if (birthdayValue != null && birthdayValue != DBNull.Value)
+                                {
+                                    DateTime birthday = Convert.ToDateTime(birthdayValue);
+                                    lblBirthday.Text = birthday.ToString("yyyy-MM-dd"); 
+                                }
+                                else
+                                {
+                                    lblBirthday.Text = "N/A"; 
+                                }
                                 lblMobileNum.Text = reader["PhoneNumber"].ToString();
                             }
                             else
