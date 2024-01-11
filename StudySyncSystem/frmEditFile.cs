@@ -7,7 +7,6 @@ namespace StudySyncSystem
 {
     public partial class frmEditFile : Form
     {
-        
         private int fileID;
         private SqlConnection connect = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
 
@@ -18,6 +17,7 @@ namespace StudySyncSystem
             InitializeComponent();
             this.fileID = fileID;
             LoadFileData();
+            LoadCategories();  
         }
 
         private void LoadFileData()
@@ -40,6 +40,8 @@ namespace StudySyncSystem
                         if (reader.Read())
                         {
                             txtFile.Text = reader["FileName"].ToString();
+                            int categoryID = Convert.ToInt32(reader["CategoryID"]);
+                            cbCategory.SelectedValue = categoryID;
                         }
                     }
                 }
@@ -47,6 +49,43 @@ namespace StudySyncSystem
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading file data: " + ex.Message);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+        private void LoadCategories()
+        {
+            try
+            {
+                if (connect.State != ConnectionState.Open)
+                {
+                    connect.Open();
+                }
+
+                string query = "SELECT CategoryID, CategoryName FROM tblCategory";
+
+                using (SqlCommand cmd = new SqlCommand(query, connect))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        DataTable categoryTable = new DataTable();
+                        categoryTable.Load(reader);
+
+                        cbCategory.DisplayMember = "CategoryName";
+                        cbCategory.ValueMember = "CategoryID";
+                        cbCategory.DataSource = categoryTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading categories: " + ex.Message);
             }
             finally
             {
@@ -71,12 +110,13 @@ namespace StudySyncSystem
                 {
                     updateConnection.Open();
 
-                    string updateQuery = "UPDATE tblFile SET FileName = @FileName WHERE FileID = @FileID";
+                    string updateQuery = "UPDATE tblFile SET FileName = @FileName, CategoryID = @CategoryID WHERE FileID = @FileID";
 
                     using (SqlCommand cmd = new SqlCommand(updateQuery, updateConnection))
                     {
                         cmd.Parameters.AddWithValue("@FileID", fileID);
                         cmd.Parameters.AddWithValue("@FileName", txtFile.Text);
+                        cmd.Parameters.AddWithValue("@CategoryID", cbCategory.SelectedValue);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("File updated successfully!");

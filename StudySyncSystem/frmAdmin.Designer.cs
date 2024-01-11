@@ -94,7 +94,7 @@ namespace StudySyncSystem
             // 
             this.adminName.AutoSize = true;
             this.adminName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminName.Location = new System.Drawing.Point(806, 19);
+            this.adminName.Location = new System.Drawing.Point(790, 19);
             this.adminName.Name = "adminName";
             this.adminName.Size = new System.Drawing.Size(13, 18);
             this.adminName.TabIndex = 44;

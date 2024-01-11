@@ -25,6 +25,8 @@ namespace StudySyncSystem
             UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
             UpdateNoteCountLabel();
             UpdateTaskCountLabel();
+            UpdateFileCountLabel();
+
 
         }
         public void UpdateUsernameLabel(string username)
@@ -82,6 +84,12 @@ namespace StudySyncSystem
         {
             int taskCount = DatabaseHelper.GetTaskCountForUser(loggedInUserID);
             lblTotalTask.Text = taskCount.ToString();
+        }
+
+        private void UpdateFileCountLabel()
+        {
+            int fileCount = DatabaseHelper.GetFileCountForUser(loggedInUserID);
+            lblTotalFiles.Text = fileCount.ToString();
         }
     }
 }

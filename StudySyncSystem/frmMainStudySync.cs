@@ -31,6 +31,7 @@ namespace StudySyncSystem
             UpdateUsernameLabel(DatabaseHelper.GetFirstNameForUserID(loggedInUserID));
             UpdateNoteCountLabel();
             UpdateTaskCountLabel();
+            UpdateFileCountLabel();
 
         }
         public static class DatabaseHelper
@@ -119,7 +120,31 @@ namespace StudySyncSystem
 
                 return taskCount;
             }
+            public static int GetFileCountForUser(int userID)
+            {
+                int fileCount = 0;
 
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+
+                        string query = "SELECT COUNT(*) FROM tblFile WHERE UserID = @UserID";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            fileCount = (int)cmd.ExecuteScalar();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving file count: " + ex.Message);
+                }
+
+                return fileCount;
+            }
         }
 
         private void displayDays()
@@ -478,6 +503,12 @@ namespace StudySyncSystem
         {
             int taskCount = DatabaseHelper.GetTaskCountForUser(loggedInUserID);
             lblTotalTasks.Text = taskCount.ToString();
+        }
+
+        private void UpdateFileCountLabel()
+        {
+            int fileCount = DatabaseHelper.GetFileCountForUser(loggedInUserID);
+            lblTotalFiles.Text = fileCount.ToString();
         }
 
     }
