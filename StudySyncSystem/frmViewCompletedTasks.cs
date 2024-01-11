@@ -37,7 +37,6 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    // Modify the query to retrieve completed tasks based on your database structure
                     string query = $"SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = @UserID AND TaskStatus = 'Complete'";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {

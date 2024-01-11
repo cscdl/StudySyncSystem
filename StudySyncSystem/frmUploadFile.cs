@@ -77,7 +77,6 @@ namespace StudySyncSystem
             {
                 if (openFileDialog.FileNames.Length > 0)
                 {
-                    // Clear existing text in txtFile
                     txtFile.Text = "";
 
                     foreach (var filePath in openFileDialog.FileNames)

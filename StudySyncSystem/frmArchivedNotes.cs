@@ -88,7 +88,6 @@ namespace StudySyncSystem
 
                     MessageBox.Show("Note unarchived successfully!");
 
-                    // Trigger the event to notify frmViewNotes
                     OnNoteUnarchived();
                 }
             }

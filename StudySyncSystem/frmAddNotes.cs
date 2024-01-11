@@ -35,7 +35,6 @@ namespace StudySyncSystem
 
                 DateTime currentDate = DateTime.Now;
 
-                // Insert the note into tblNote
                 string insertNoteQuery = "INSERT INTO tblNote (NoteTitle, NoteContent, DateCreated, IsArchived, UserID) " +
                                          "VALUES (@NoteTitle, @NoteContent, @DateCreated, 0, @UserID); SELECT SCOPE_IDENTITY();";
                 int newNoteID;
@@ -47,11 +46,9 @@ namespace StudySyncSystem
                     cmd.Parameters.AddWithValue("@DateCreated", currentDate);
                     cmd.Parameters.AddWithValue("@UserID", loggedInUserID);
 
-                    // Execute the query and get the new NoteID
                     newNoteID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
-                // Insert a log into tblNoteLog
                 string insertLogQuery = "INSERT INTO tblNoteLog (LogType, UserID, DateCreated, RelatedID) " +
                                         "VALUES (@LogType, @UserID, @DateCreated, @RelatedID)";
                 using (SqlCommand cmd = new SqlCommand(insertLogQuery, connect))
@@ -103,7 +100,6 @@ namespace StudySyncSystem
                         doc.Open();
                         doc.Add(new iTextSharp.text.Paragraph(richTxtNewNote.Text));
 
-                        // Show a message indicating successful creation of the PDF file
                         MessageBox.Show("PDF file successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
