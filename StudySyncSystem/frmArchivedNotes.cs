@@ -9,6 +9,8 @@ namespace StudySyncSystem
     {
         public event EventHandler NoteUnarchived;
         private int loggedInUserID;
+        private DataTable originalArchivedNotesTable;
+
 
         public frmArchivedNotes(int userID)
         {
@@ -29,10 +31,10 @@ namespace StudySyncSystem
                     string query = $"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {loggedInUserID} AND IsArchived = 1";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
-                    DataTable archivedNotesTable = new DataTable();
-                    adapter.Fill(archivedNotesTable);
+                    originalArchivedNotesTable = new DataTable();
+                    adapter.Fill(originalArchivedNotesTable);
 
-                    dgvArchivedNotes.DataSource = archivedNotesTable;
+                    dgvArchivedNotes.DataSource = originalArchivedNotesTable;
                 }
             }
             catch (Exception ex)
@@ -41,10 +43,6 @@ namespace StudySyncSystem
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void dgvArchivedNotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -112,6 +110,28 @@ namespace StudySyncSystem
                 }
             }
             return -1;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalArchivedNotesTable != null)
+            {
+                DataRow[] filteredRows = originalArchivedNotesTable.Select($"NoteTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalArchivedNotesTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvArchivedNotes.DataSource = filteredTable;
+            }
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

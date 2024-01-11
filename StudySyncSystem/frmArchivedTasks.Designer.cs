@@ -30,8 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -65,8 +63,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.cmbFilter);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnClose);
@@ -76,41 +72,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 362);
             this.panel1.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(453, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 18);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Filter by :";
-            // 
-            // cmbFilter
-            // 
-            this.cmbFilter.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Items.AddRange(new object[] {
-            "Pending",
-            "Complete",
-            "All Categories",
-            "Upcoming Tasks",
-            "Category: General",
-            "Category: Research",
-            "Category: Project",
-            "Category: Homework",
-            "Category: Seatwork",
-            "Category: Readings",
-            "Category: Presentations",
-            "Category: Exams",
-            "Category: Socials",
-            "Category: Others"});
-            this.cmbFilter.Location = new System.Drawing.Point(525, 27);
-            this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(165, 26);
-            this.cmbFilter.TabIndex = 28;
             // 
             // txtSearch
             // 
@@ -158,6 +119,7 @@
             this.btnSearch.TabIndex = 22;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvArchivedTasks
             // 
@@ -276,8 +238,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;

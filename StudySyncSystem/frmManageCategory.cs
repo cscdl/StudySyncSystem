@@ -10,6 +10,7 @@ namespace StudySyncSystem
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private bool isAdmin;
+        private DataTable originalCategoriesTable;
 
         public frmManageCategory(bool isAdmin)
         {
@@ -31,15 +32,14 @@ namespace StudySyncSystem
 
         private void dgvManageCategory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            e.CellStyle.ForeColor = Color.Black; 
+            e.CellStyle.ForeColor = Color.Black;
         }
-
 
         private void BindCategoriesToDataGridView()
         {
-            dgvManageCategory.DataSource = RetrieveCategoriesFromDatabase();
+            originalCategoriesTable = RetrieveCategoriesFromDatabase();
+            dgvManageCategory.DataSource = originalCategoriesTable;
         }
-
 
         private DataTable RetrieveCategoriesFromDatabase()
         {
@@ -96,7 +96,6 @@ namespace StudySyncSystem
             return string.Empty;
         }
 
-
         private void InsertCategoryIntoDatabase(string categoryName)
         {
             try
@@ -114,7 +113,7 @@ namespace StudySyncSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding new category: " + ex.Message);
+                MessageBox.Show("Error adding a new category: " + ex.Message);
             }
             finally
             {
@@ -171,7 +170,7 @@ namespace StudySyncSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating category: " + ex.Message);
+                MessageBox.Show("Error updating the category: " + ex.Message);
             }
             finally
             {
@@ -196,7 +195,7 @@ namespace StudySyncSystem
                     {
                         DeleteCategoryFromDatabase(categoryID);
 
-                        dgvManageCategory.DataSource = RetrieveCategoriesFromDatabase();
+                        BindCategoriesToDataGridView();
                     }
                 }
                 else
@@ -227,7 +226,7 @@ namespace StudySyncSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error deleting category: " + ex.Message);
+                MessageBox.Show("Error deleting the category: " + ex.Message);
             }
             finally
             {
@@ -235,11 +234,28 @@ namespace StudySyncSystem
             }
         }
 
+        
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalCategoriesTable != null)
+            {
+                DataRow[] filteredRows = originalCategoriesTable.Select($"CategoryName LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalCategoriesTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvManageCategory.DataSource = filteredTable;
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
     }
 }

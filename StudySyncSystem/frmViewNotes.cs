@@ -9,8 +9,8 @@ namespace StudySyncSystem
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
+        private DataTable originalNotesTable;
         private frmArchivedNotes archivedNotesForm;
-
 
         public frmViewNotes()
         {
@@ -21,6 +21,7 @@ namespace StudySyncSystem
         {
             loggedInUserID = userID;
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            originalNotesTable = (DataTable)dgvNotes.DataSource;
         }
 
         private void frmViewNotes_Load(object sender, EventArgs e)
@@ -38,13 +39,6 @@ namespace StudySyncSystem
             dgvNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
-
-        }
-
-
-        private int GetLoggedInUserID()
-        {
-            return loggedInUserID;
         }
 
         private void OpenAddNotesForm()
@@ -58,6 +52,10 @@ namespace StudySyncSystem
             addNotesForm.Show();
         }
 
+        private int GetLoggedInUserID()
+        {
+            return loggedInUserID;
+        }
 
         private DataTable RetrieveNotesForLoggedInUser(int userID, bool showArchived = false)
         {
@@ -85,8 +83,8 @@ namespace StudySyncSystem
         private void FrmAddNotes_DataSaved(object sender, EventArgs e)
         {
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            originalNotesTable = (DataTable)dgvNotes.DataSource;
         }
-
 
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -109,7 +107,6 @@ namespace StudySyncSystem
             }
         }
 
-
         private void OpenEditNotesForm(int noteID)
         {
             frmEditNotes editNotesForm = new frmEditNotes(noteID);
@@ -119,11 +116,13 @@ namespace StudySyncSystem
             editNotesForm.ShowDialog();
 
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            originalNotesTable = (DataTable)dgvNotes.DataSource;
         }
 
         private void FrmEditNotes_DataSaved(object sender, EventArgs e)
         {
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            originalNotesTable = (DataTable)dgvNotes.DataSource;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -141,6 +140,7 @@ namespace StudySyncSystem
                     DeleteNoteFromDatabase(noteID);
 
                     dgvNotes.Rows.Remove(selectedRow);
+                    originalNotesTable = (DataTable)dgvNotes.DataSource;
                 }
             }
             else
@@ -179,41 +179,33 @@ namespace StudySyncSystem
             Close();
         }
 
-
         private void SearchNotes(string searchTerm)
         {
-            DataTable notesTable = new DataTable();
+            if (originalNotesTable != null)
+            {
+                DataRow[] filteredRows = originalNotesTable.Select($"NoteTitle LIKE '%{searchTerm}%'");
 
-            try
-            {
-                connection.Open();
-                string query = $"SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived FROM tblNote WHERE UserID = {loggedInUserID} AND NoteTitle LIKE @SearchTerm";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@SearchTerm", $"%{searchTerm}%");
-                adapter.Fill(notesTable);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error searching notes: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+                DataTable filteredTable = originalNotesTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
 
-            dgvNotes.DataSource = notesTable;
+                dgvNotes.DataSource = filteredTable;
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchTerm = txtSearch.Text.Trim();
+
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 SearchNotes(searchTerm);
             }
             else
             {
-                dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+                dgvNotes.DataSource = originalNotesTable;
             }
         }
 
@@ -227,6 +219,7 @@ namespace StudySyncSystem
                 UpdateArchiveStatus(noteID, isArchived);
 
                 dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+                originalNotesTable = (DataTable)dgvNotes.DataSource;
             }
         }
 
@@ -257,7 +250,6 @@ namespace StudySyncSystem
         private void btnViewArchived_Click(object sender, EventArgs e)
         {
             OpenArchivedNotesForm();
-
         }
 
         private void OpenArchivedNotesForm()
@@ -271,6 +263,7 @@ namespace StudySyncSystem
         private void ArchivedNotesForm_NoteUnarchived(object sender, EventArgs e)
         {
             dgvNotes.DataSource = RetrieveNotesForLoggedInUser(loggedInUserID);
+            originalNotesTable = (DataTable)dgvNotes.DataSource;
         }
     }
 }

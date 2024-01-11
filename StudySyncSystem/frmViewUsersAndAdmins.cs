@@ -8,6 +8,7 @@ namespace StudySyncSystem
     public partial class frmViewUsersAndAdmins : Form
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
+        private DataTable originalUsersTable;
 
         public frmViewUsersAndAdmins()
         {
@@ -18,8 +19,9 @@ namespace StudySyncSystem
         {
             dgvUsers.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvUsers.Columns["UserType"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-   
-            dgvUsers.DataSource = RetrieveUsersFromDatabase();
+
+            originalUsersTable = RetrieveUsersFromDatabase();
+            dgvUsers.DataSource = originalUsersTable;
         }
 
         private DataTable RetrieveUsersFromDatabase()
@@ -31,8 +33,11 @@ namespace StudySyncSystem
                 connection.Open();
                 string query = "SELECT UserID, Username, UserType FROM tblUser";
 
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.Fill(usersTable);
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(usersTable);
+                }
             }
             catch (Exception ex)
             {
@@ -46,60 +51,34 @@ namespace StudySyncSystem
             return usersTable;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = dgvUsers.CurrentRow;
+            string searchTerm = txtSearch.Text.Trim();
 
-            if (selectedRow != null)
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                int userID = Convert.ToInt32(selectedRow.Cells["UserID"].Value);
-
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    DeleteUserFromDatabase(userID);
-
-                    dgvUsers.Rows.Remove(selectedRow);
-                }
+                SearchUsers(searchTerm);
             }
             else
             {
-                MessageBox.Show("Please select a user to delete.");
+                dgvUsers.DataSource = originalUsersTable;
             }
         }
 
-        private void DeleteUserFromDatabase(int userID)
+        private void SearchUsers(string searchTerm)
         {
-            try
+            if (originalUsersTable != null)
             {
-                connection.Open();
-
-                string query = "DELETE FROM tblUser WHERE UserID = @UserID";
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@UserID", userID);
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("User deleted successfully!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error deleting user: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
+                DataView dv = originalUsersTable.DefaultView;
+                dv.RowFilter = $"Username LIKE '%{searchTerm}%'";
+                dgvUsers.DataSource = dv.ToTable();
             }
         }
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        
     }
 }

@@ -8,12 +8,14 @@ namespace StudySyncSystem
     public partial class frmViewCompletedTasks : Form
     {
         private int loggedInUserID;
+        private DataTable originalCompletedTasksTable;
 
         public frmViewCompletedTasks(int userID)
         {
             InitializeComponent();
             loggedInUserID = userID;
             SetDataSource();
+            originalCompletedTasksTable = (DataTable)dgvCompletedTasks.DataSource;
         }
 
         private void SetDataSource()
@@ -55,9 +57,29 @@ namespace StudySyncSystem
             return completedTasks;
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalCompletedTasksTable != null)
+            {
+                DataRow[] filteredRows = originalCompletedTasksTable.Select($"TaskTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalCompletedTasksTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvCompletedTasks.DataSource = filteredTable;
+            }
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        
     }
 }

@@ -8,12 +8,14 @@ namespace StudySyncSystem
     public partial class frmViewPendingTask : Form
     {
         private int loggedInUserID;
+        private DataTable originalPendingTasksTable;
 
         public frmViewPendingTask(int userID)
         {
             InitializeComponent();
             loggedInUserID = userID;
             SetDataSource();
+            originalPendingTasksTable = (DataTable)dgvPendingTasks.DataSource;
         }
 
         private void SetDataSource()
@@ -23,7 +25,6 @@ namespace StudySyncSystem
             dgvPendingTasks.Columns["TaskTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPendingTasks.Columns["StartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPendingTasks.Columns["EndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
 
             dgvPendingTasks.DataSource = RetrievePendingTasksForLoggedInUser(loggedInUserID);
         }
@@ -54,6 +55,38 @@ namespace StudySyncSystem
             }
 
             return pendingTasks;
+        }
+
+        
+
+        private void SearchPendingTasks(string searchTerm)
+        {
+            if (originalPendingTasksTable != null)
+            {
+                DataRow[] filteredRows = originalPendingTasksTable.Select($"TaskTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalPendingTasksTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvPendingTasks.DataSource = filteredTable;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                SearchPendingTasks(searchTerm);
+            }
+            else
+            {
+                dgvPendingTasks.DataSource = originalPendingTasksTable;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

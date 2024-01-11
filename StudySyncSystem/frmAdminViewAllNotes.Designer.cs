@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvAllNotes = new System.Windows.Forms.DataGridView();
-            this.NoteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoteTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoteContent = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsArchived = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.NoteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoteTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsArchived = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllNotes)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button5
+            // btnSearch
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Yellow;
-            this.button5.Location = new System.Drawing.Point(484, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 26);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Search";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Yellow;
+            this.btnSearch.Location = new System.Drawing.Point(484, 24);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(101, 26);
+            this.btnSearch.TabIndex = 22;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label2
             // 
@@ -88,7 +88,6 @@
             this.dgvAllNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NoteID,
             this.NoteTitle,
-            this.NoteContent,
             this.UserID,
             this.DateCreated,
             this.IsArchived});
@@ -96,46 +95,6 @@
             this.dgvAllNotes.Name = "dgvAllNotes";
             this.dgvAllNotes.Size = new System.Drawing.Size(676, 246);
             this.dgvAllNotes.TabIndex = 14;
-            // 
-            // NoteID
-            // 
-            this.NoteID.DataPropertyName = "NoteID";
-            this.NoteID.HeaderText = "NoteID";
-            this.NoteID.Name = "NoteID";
-            // 
-            // NoteTitle
-            // 
-            this.NoteTitle.DataPropertyName = "NoteTitle";
-            this.NoteTitle.HeaderText = "Note Title";
-            this.NoteTitle.Name = "NoteTitle";
-            // 
-            // NoteContent
-            // 
-            this.NoteContent.DataPropertyName = "NoteContent";
-            this.NoteContent.HeaderText = "Note Content";
-            this.NoteContent.Name = "NoteContent";
-            this.NoteContent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NoteContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.NoteContent.Visible = false;
-            // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            // 
-            // DateCreated
-            // 
-            this.DateCreated.DataPropertyName = "DateCreated";
-            this.DateCreated.HeaderText = "Date Created";
-            this.DateCreated.Name = "DateCreated";
-            // 
-            // IsArchived
-            // 
-            this.IsArchived.DataPropertyName = "IsArchived";
-            this.IsArchived.HeaderText = "Is Archived";
-            this.IsArchived.Name = "IsArchived";
-            this.IsArchived.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // btnClose
             // 
@@ -153,7 +112,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.dgvAllNotes);
@@ -173,6 +132,37 @@
             this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 24;
             this.label1.Text = "N O T E S";
+            // 
+            // NoteID
+            // 
+            this.NoteID.DataPropertyName = "NoteID";
+            this.NoteID.HeaderText = "NoteID";
+            this.NoteID.Name = "NoteID";
+            // 
+            // NoteTitle
+            // 
+            this.NoteTitle.DataPropertyName = "NoteTitle";
+            this.NoteTitle.HeaderText = "Note Title";
+            this.NoteTitle.Name = "NoteTitle";
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.DataPropertyName = "DateCreated";
+            this.DateCreated.HeaderText = "Date Created";
+            this.DateCreated.Name = "DateCreated";
+            // 
+            // IsArchived
+            // 
+            this.IsArchived.DataPropertyName = "IsArchived";
+            this.IsArchived.HeaderText = "Is Archived";
+            this.IsArchived.Name = "IsArchived";
+            this.IsArchived.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // frmAdminViewAllNotes
             // 
@@ -195,7 +185,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvAllNotes;
@@ -204,7 +194,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoteID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoteTitle;
-        private System.Windows.Forms.DataGridViewButtonColumn NoteContent;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsArchived;

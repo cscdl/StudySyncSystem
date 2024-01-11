@@ -10,6 +10,8 @@ namespace StudySyncSystem
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
         private frmArchivedFiles archivedFilesForm;
+        private DataTable originalFilesTable;
+
 
 
         public frmViewFiles()
@@ -17,7 +19,7 @@ namespace StudySyncSystem
             InitializeComponent();
         }
 
-        public void SetLoggedInUserID(int userID) 
+        public void SetLoggedInUserID(int userID)
         {
             loggedInUserID = userID;
             SetDataSource();
@@ -35,7 +37,7 @@ namespace StudySyncSystem
                 if (archivedColumn != null)
                 {
                     archivedColumn.ReadOnly = true;
-                    archivedColumn.DefaultCellStyle.NullValue = false; 
+                    archivedColumn.DefaultCellStyle.NullValue = false;
                 }
             }
 
@@ -47,11 +49,10 @@ namespace StudySyncSystem
         }
 
 
-
         private void SetDataSource()
         {
-            DataTable filesTable = RetrieveFilesForLoggedInUser(loggedInUserID);
-            dgvViewFiles.DataSource = filesTable;
+            originalFilesTable = RetrieveFilesForLoggedInUser(loggedInUserID);
+            dgvViewFiles.DataSource = originalFilesTable;
         }
 
 
@@ -73,6 +74,8 @@ namespace StudySyncSystem
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         adapter.Fill(todoListFiles);
+
+                        originalFilesTable = todoListFiles.Copy();
                     }
                 }
             }
@@ -83,6 +86,7 @@ namespace StudySyncSystem
 
             return todoListFiles;
         }
+
 
 
         private void FrmUploadFile_FileUploaded(object sender, EventArgs e)
@@ -252,13 +256,24 @@ namespace StudySyncSystem
         }
 
 
-
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchCriteria = txtSearch.Text.Trim();
-            dgvViewFiles.DataSource = RetrieveFilesForLoggedInUser(loggedInUserID);
+
+            if (originalFilesTable != null)
+            {
+                DataRow[] filteredRows = originalFilesTable.Select($"FileName LIKE '%{searchCriteria}%'");
+
+                DataTable filteredTable = originalFilesTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvViewFiles.DataSource = filteredTable;
+            }
         }
+
 
         private void btnViewArchived_Click(object sender, EventArgs e)
         {

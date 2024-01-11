@@ -16,6 +16,8 @@ namespace StudySyncSystem
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
         private int loggedInUserID;
         private frmArchivedTasks archivedTasksForm;
+        private DataTable originalTasksTable;
+
 
         public frmViewTask()
         {
@@ -43,12 +45,12 @@ namespace StudySyncSystem
 
             SetDataSource();
 
-            cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             dgvTasks.CellContentClick += dgvTasks_CellContentClick;
             dgvTasks.EditingControlShowing += dgvTasks_EditingControlShowing;
-
+            originalTasksTable = (DataTable)dgvTasks.DataSource;
 
             LoadTasks();
+
         }
 
         private int GetLoggedInUserID()
@@ -213,40 +215,33 @@ namespace StudySyncSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchCriteria = txtSearch.Text.Trim();
+            string searchTerm = txtSearch.Text.Trim();
 
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
-        }
-
-        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedFilter = cmbFilter.SelectedItem.ToString();
-
-            string filterCriteria = GetFilterCriteria(selectedFilter);
-
-
-            dgvTasks.DataSource = RetrieveTasksForLoggedInUser(loggedInUserID);
-        }
-
-
-        private string GetFilterCriteria(string selectedFilter)
-        {
-            Dictionary<string, string> filterMap = new Dictionary<string, string>
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                { "Pending", "TaskStatus = 'Pending'" },
-                { "Complete", "TaskStatus = 'Complete'" },
-                { "All Categories", "" },
-                { "Upcoming Tasks", "EndDate >= GETDATE()" }
-            };
-
-
-            if (selectedFilter.StartsWith("Category: "))
-            {
-                return $"AND CategoryID IN(SELECT CategoryID FROM tblCategory WHERE CategoryName = '{selectedFilter.Replace("Category: ", "")}')";
+                SearchTasks(searchTerm);
             }
-
-            return filterMap.ContainsKey(selectedFilter) ? filterMap[selectedFilter] : "";
+            else
+            {
+                dgvTasks.DataSource = originalTasksTable;
+            }
         }
+        private void SearchTasks(string searchTerm)
+        {
+            if (originalTasksTable != null)
+            {
+                DataRow[] filteredRows = originalTasksTable.Select($"TaskTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalTasksTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvTasks.DataSource = filteredTable;
+            }
+        }
+
 
         private void LoadTasks()
         {

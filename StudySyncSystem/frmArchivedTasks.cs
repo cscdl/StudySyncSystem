@@ -9,13 +9,16 @@ namespace StudySyncSystem
     {
         public event EventHandler TaskUnarchived;
         private int loggedInUserID;
+        private DataTable originalArchivedTasksTable;
 
         public frmArchivedTasks(int userID)
         {
             InitializeComponent();
             loggedInUserID = userID;
+            dgvArchivedTasks.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 
             RetrieveArchivedTasks();
+            TaskUnarchived += FrmArchivedTasks_TaskUnarchived;
         }
 
         private void RetrieveArchivedTasks()
@@ -29,10 +32,10 @@ namespace StudySyncSystem
                     string query = $"SELECT TaskID, TaskTitle, TaskStatus, StartDate, EndDate, DateCreated, IsArchived, CategoryID FROM tblTask WHERE UserID = {loggedInUserID} AND IsArchived = 1";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
-                    DataTable archivedTasksTable = new DataTable();
-                    adapter.Fill(archivedTasksTable);
+                    originalArchivedTasksTable = new DataTable();
+                    adapter.Fill(originalArchivedTasksTable);
 
-                    dgvArchivedTasks.DataSource = archivedTasksTable;
+                    dgvArchivedTasks.DataSource = originalArchivedTasksTable;
                 }
             }
             catch (Exception ex)
@@ -57,7 +60,6 @@ namespace StudySyncSystem
                     }
 
                     MessageBox.Show("Task unarchived successfully!");
-
                     RemoveUnarchivedTaskFromGrid(taskID);
 
                     OnTaskUnarchived();
@@ -67,6 +69,11 @@ namespace StudySyncSystem
             {
                 MessageBox.Show("Error unarchiving task: " + ex.Message);
             }
+        }
+
+        private void FrmArchivedTasks_TaskUnarchived(object sender, EventArgs e)
+        {
+            RetrieveArchivedTasks();
         }
 
         private void RemoveUnarchivedTaskFromGrid(int taskID)
@@ -81,27 +88,14 @@ namespace StudySyncSystem
             }
         }
 
-        protected virtual void OnTaskUnarchived()
+        private void OnTaskUnarchived()
         {
             TaskUnarchived?.Invoke(this, EventArgs.Empty);
         }
 
-        private int GetColumnIndexByName(DataGridView dataGridView, string columnName)
-        {
-            foreach (DataGridViewColumn column in dataGridView.Columns)
-            {
-                if (column.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return column.Index;
-                }
-            }
-            return -1;
-        }
+        
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
 
         private void dgvArchivedTasks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,6 +119,41 @@ namespace StudySyncSystem
                     MessageBox.Show("Column 'TaskID' not found in the DataGridView. Check the column name.");
                 }
             }
+        }
+
+        private int GetColumnIndexByName(DataGridView dataGridView, string columnName)
+        {
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                if (column.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return column.Index;
+                }
+            }
+            return -1;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalArchivedTasksTable != null)
+            {
+                DataRow[] filteredRows = originalArchivedTasksTable.Select($"TaskTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalArchivedTasksTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvArchivedTasks.DataSource = filteredTable;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

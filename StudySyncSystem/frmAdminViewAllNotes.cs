@@ -8,6 +8,7 @@ namespace StudySyncSystem
     public partial class frmAdminViewAllNotes : Form
     {
         private SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True");
+        private DataTable originalNotesTable;
 
         public frmAdminViewAllNotes()
         {
@@ -24,11 +25,12 @@ namespace StudySyncSystem
             }
 
             dgvAllNotes.Columns["NoteTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvAllNotes.Columns["NoteContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvAllNotes.Columns["DateCreated"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvAllNotes.Columns["UserID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvAllNotes.Columns["IsArchived"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dgvAllNotes.DataSource = RetrieveAllNotes();
+            originalNotesTable = RetrieveAllNotes();
+            dgvAllNotes.DataSource = originalNotesTable; 
         }
 
         private DataTable RetrieveAllNotes()
@@ -38,7 +40,7 @@ namespace StudySyncSystem
             try
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT NoteID, NoteTitle, NoteContent, DateCreated, IsArchived, UserID FROM tblNote", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT NoteID, NoteTitle, DateCreated, IsArchived, UserID FROM tblNote", connection);
                 adapter.Fill(notesTable);
             }
             catch (Exception ex)
@@ -53,11 +55,27 @@ namespace StudySyncSystem
             return notesTable;
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalNotesTable != null)
+            {
+                DataRow[] filteredRows = originalNotesTable.Select($"NoteTitle LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalNotesTable.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredTable.ImportRow(row);
+                }
+
+                dgvAllNotes.DataSource = filteredTable;
+            }
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        
     }
 }

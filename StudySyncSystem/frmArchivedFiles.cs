@@ -9,22 +9,17 @@ namespace StudySyncSystem
     {
         public event EventHandler ItemUnarchived;
         private int loggedInUserID;
-
+        private DataTable originalArchivedItemsTable;
 
         public frmArchivedFiles(int userID)
         {
             InitializeComponent();
             loggedInUserID = userID;
-
             dgvArchivedFiles.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-
 
             RetrieveArchivedItems(userID);
             ItemUnarchived += FrmArchivedFiles_ItemUnarchived;
-
         }
-
-
 
         private void RetrieveArchivedItems(int userID)
         {
@@ -36,9 +31,9 @@ namespace StudySyncSystem
                     string query = $"SELECT FileID, FileName, FilePath, IsArchived, CategoryID FROM tblFile WHERE UserID = {userID} AND IsArchived = 1";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable archivedItemsTable = new DataTable();
-                    adapter.Fill(archivedItemsTable);
-                    dgvArchivedFiles.DataSource = archivedItemsTable;
+                    originalArchivedItemsTable = new DataTable();
+                    adapter.Fill(originalArchivedItemsTable);
+                    dgvArchivedFiles.DataSource = originalArchivedItemsTable;
                 }
             }
             catch (Exception ex)
@@ -94,23 +89,25 @@ namespace StudySyncSystem
             ItemUnarchived?.Invoke(this, EventArgs.Empty);
         }
 
-        private int GetColumnIndexByName(DataGridView dataGridView, string columnName)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewColumn column in dataGridView.Columns)
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (originalArchivedItemsTable != null)
             {
-                if (column.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                DataRow[] filteredRows = originalArchivedItemsTable.Select($"FileName LIKE '%{searchTerm}%'");
+
+                DataTable filteredTable = originalArchivedItemsTable.Clone();
+                foreach (DataRow row in filteredRows)
                 {
-                    return column.Index;
+                    filteredTable.ImportRow(row);
                 }
+
+                dgvArchivedFiles.DataSource = filteredTable;
             }
-            return -1;
         }
 
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+      
 
         private void dgvArchivedFiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -134,6 +131,23 @@ namespace StudySyncSystem
                     MessageBox.Show("Column 'FileID' not found in the DataGridView. Check the column name.");
                 }
             }
+        }
+
+        private int GetColumnIndexByName(DataGridView dataGridView, string columnName)
+        {
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                if (column.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return column.Index;
+                }
+            }
+            return -1;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
     }
