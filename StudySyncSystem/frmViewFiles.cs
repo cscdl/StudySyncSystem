@@ -38,8 +38,10 @@ namespace StudySyncSystem
 
         private void SetDataSource()
         {
-            dgvViewFiles.DataSource = RetrieveFilesForLoggedInUser(loggedInUserID);
+            DataTable filesTable = RetrieveFilesForLoggedInUser(loggedInUserID);
+            dgvViewFiles.DataSource = filesTable;
         }
+
 
         private DataTable RetrieveFilesForLoggedInUser(int userID, bool showArchived = false)
         {
@@ -51,7 +53,7 @@ namespace StudySyncSystem
                 {
                     connection.Open();
 
-                    string query = $"SELECT FileID, FileName, FilePath FROM tblFile WHERE UserID = @UserID AND IsArchived = {(showArchived ? 1 : 0)}";
+                    string query = $"SELECT FileID, FileName, FilePath, CategoryID FROM tblFile WHERE UserID = @UserID AND IsArchived = {(showArchived ? 1 : 0)}";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -69,6 +71,7 @@ namespace StudySyncSystem
 
             return todoListFiles;
         }
+
 
         private void FrmUploadFile_FileUploaded(object sender, EventArgs e)
         {
@@ -237,6 +240,7 @@ namespace StudySyncSystem
         {
             OpenArchivedFilesForm();
         }
+
 
         private void OpenArchivedFilesForm()
         {
