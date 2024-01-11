@@ -21,6 +21,9 @@ namespace StudySyncSystem
 
             this.loggedInUserID = loggedInUserID;
 
+            dgvDisplayTextFile.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+
+
             LoadCategories();
         }
 
@@ -63,7 +66,6 @@ namespace StudySyncSystem
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "PDF Files|*.pdf|Word Documents|*.doc;*.docx|Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp",
@@ -75,10 +77,15 @@ namespace StudySyncSystem
             {
                 if (openFileDialog.FileNames.Length > 0)
                 {
+                    // Clear existing text in txtFile
+                    txtFile.Text = "";
+
                     foreach (var filePath in openFileDialog.FileNames)
                     {
-
                         string title = Path.GetFileNameWithoutExtension(filePath);
+
+                        txtFile.Text += title + Environment.NewLine;
+
                         string fileType = openFileDialog.FilterIndex == 1 ? "PDF" : "Word Document : Image";
 
                         DataRow row = dTable.NewRow();
@@ -88,19 +95,17 @@ namespace StudySyncSystem
 
                         InsertFileToDatabase(title, fileType, filePath);
                         LogActivity("File Uploaded", newFileID);
-
-
                     }
 
                     MessageBox.Show("Files successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
                 else
                 {
                     MessageBox.Show("No files selected!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
+
 
         private void InsertFileToDatabase(string title, string fileType, string filePath)
         {
