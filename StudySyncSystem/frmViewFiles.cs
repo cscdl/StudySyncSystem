@@ -11,6 +11,7 @@ namespace StudySyncSystem
         private int loggedInUserID;
         private frmArchivedFiles archivedFilesForm;
 
+
         public frmViewFiles()
         {
             InitializeComponent();
@@ -28,13 +29,24 @@ namespace StudySyncSystem
             dgvViewFiles.Columns["FileName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvViewFiles.Columns["FilePath"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+            if (dgvViewFiles.Columns.Contains("IsArchived"))
+            {
+                DataGridViewCheckBoxColumn archivedColumn = dgvViewFiles.Columns["IsArchived"] as DataGridViewCheckBoxColumn;
+                if (archivedColumn != null)
+                {
+                    archivedColumn.ReadOnly = true;
+                    archivedColumn.DefaultCellStyle.NullValue = false; 
+                }
+            }
+
             SetDataSource();
 
             dgvViewFiles.CellContentClick += dgvViewFiles_CellContentClick;
-            dgvViewFiles.EditingControlShowing += dgvViewFiles_EditingControlShowing;
+            dgvViewFiles.DataBindingComplete += dgvViewFiles_DataBindingComplete;
 
-            
         }
+
+
 
         private void SetDataSource()
         {
@@ -182,23 +194,24 @@ namespace StudySyncSystem
         {
             if (e.ColumnIndex == dgvViewFiles.Columns["IsArchived"].Index && e.RowIndex >= 0)
             {
-                ToggleArchiveStatus("FileID", dgvViewFiles);
+                if (dgvViewFiles.Rows[e.RowIndex].Cells["IsArchived"].Value != null)
+                {
+                    bool isArchived = !(bool)dgvViewFiles.Rows[e.RowIndex].Cells["IsArchived"].Value;
+                    int fileID = Convert.ToInt32(dgvViewFiles.Rows[e.RowIndex].Cells["FileID"].Value);
+
+                    UpdateArchiveStatusInDatabase(fileID, isArchived);
+
+                    dgvViewFiles.Rows[e.RowIndex].Cells["IsArchived"].Value = isArchived;
+                }
+                else
+                {
+                    MessageBox.Show("Cell value is null. Unable to toggle archive status.");
+                }
             }
         }
 
-        private void ToggleArchiveStatus(string idColumnName, DataGridView dataGridView)
-        {
-            DataGridViewRow selectedRow = dataGridView.Rows[dataGridView.CurrentCell.RowIndex];
 
-            bool isArchived = !(bool)selectedRow.Cells["IsArchived"].Value;
-            int id = Convert.ToInt32(selectedRow.Cells[idColumnName].Value);
-
-            UpdateArchiveStatusInDatabase(id, isArchived);
-
-            selectedRow.Cells["IsArchived"].Value = isArchived;
-        }
-
-        private void UpdateArchiveStatusInDatabase(int id, bool isArchived)
+        private void UpdateArchiveStatusInDatabase(int fileID, bool isArchived)
         {
             try
             {
@@ -210,25 +223,36 @@ namespace StudySyncSystem
                     using (SqlCommand cmd = new SqlCommand(query, updateConnection))
                     {
                         cmd.Parameters.AddWithValue("@IsArchived", isArchived);
-                        cmd.Parameters.AddWithValue("@FileID", id);
+                        cmd.Parameters.AddWithValue("@FileID", fileID);
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
-                            SetDataSource();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No rows were affected. Archive status not updated.");
+                            RemoveArchivedFilesFromGrid(fileID);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating file archive status: " + ex.Message);
+                MessageBox.Show("Error updating file archive status: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void RemoveArchivedFilesFromGrid(int fileID)
+        {
+            foreach (DataGridViewRow row in dgvViewFiles.Rows)
+            {
+                if (Convert.ToInt32(row.Cells["FileID"].Value) == fileID)
+                {
+                    dgvViewFiles.Rows.Remove(row);
+                    break;
+                }
+            }
+        }
+
+
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -246,7 +270,13 @@ namespace StudySyncSystem
         {
             archivedFilesForm = new frmArchivedFiles(loggedInUserID);
             archivedFilesForm.StartPosition = FormStartPosition.CenterScreen;
+            archivedFilesForm.ItemUnarchived += ArchivedFilesForm_ItemUnarchived;
             archivedFilesForm.Show();
+        }
+
+        private void ArchivedFilesForm_ItemUnarchived(object sender, EventArgs e)
+        {
+            SetDataSource();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -254,17 +284,21 @@ namespace StudySyncSystem
             Close();
         }
 
-        private void dgvViewFiles_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void dgvViewFiles_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            if (dgvViewFiles.CurrentCell.ColumnIndex == dgvViewFiles.Columns["IsArchived"].Index && e.Control is ComboBox)
+            foreach (DataGridViewRow row in dgvViewFiles.Rows)
             {
-                ((ComboBox)e.Control).SelectedValueChanged += ComboBoxIsArchived_SelectedValueChanged;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value == null || cell.Value == DBNull.Value)
+                    {
+                        if (cell.OwningColumn.Name == "IsArchived")
+                        {
+                            cell.Value = false;
+                        }
+                    }
+                }
             }
-        }
-
-        private void ComboBoxIsArchived_SelectedValueChanged(object sender, EventArgs e)
-        {
-            ToggleArchiveStatus("FileID", dgvViewFiles);
         }
     }
 }

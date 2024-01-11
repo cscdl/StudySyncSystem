@@ -120,6 +120,7 @@ namespace StudySyncSystem
             this.dgvViewFiles.Size = new System.Drawing.Size(676, 246);
             this.dgvViewFiles.TabIndex = 14;
             this.dgvViewFiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewFiles_CellContentClick);
+            this.dgvViewFiles.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvViewFiles_DataBindingComplete);
             // 
             // btnNew
             // 

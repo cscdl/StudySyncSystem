@@ -7,67 +7,81 @@ namespace StudySyncSystem
 {
     public partial class frmArchivedFiles : Form
     {
-        public event EventHandler FileUnarchived;
+        public event EventHandler ItemUnarchived;
         private int loggedInUserID;
+
 
         public frmArchivedFiles(int userID)
         {
             InitializeComponent();
             loggedInUserID = userID;
-            RetrieveArchivedFiles(userID);
+
+            dgvArchivedFiles.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+
+
+            RetrieveArchivedItems(userID);
+            ItemUnarchived += FrmArchivedFiles_ItemUnarchived;
+
         }
 
-        private void RetrieveArchivedFiles(int userID)
+
+
+        private void RetrieveArchivedItems(int userID)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
                 {
                     connection.Open();
-                    // Updated query to include CategoryID from tblFile
-                    string query = $"SELECT FileID, FileName, IsArchived, CategoryID FROM tblFile WHERE UserID = {userID} AND IsArchived = 1";
+                    string query = $"SELECT FileID, FileName, FilePath, IsArchived, CategoryID FROM tblFile WHERE UserID = {userID} AND IsArchived = 1";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable archivedFilesTable = new DataTable();
-                    adapter.Fill(archivedFilesTable);
-                    dgvArchivedFiles.DataSource = archivedFilesTable;
+                    DataTable archivedItemsTable = new DataTable();
+                    adapter.Fill(archivedItemsTable);
+                    dgvArchivedFiles.DataSource = archivedItemsTable;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error retrieving archived files: " + ex.Message);
+                MessageBox.Show("Error retrieving archived items: " + ex.Message);
             }
         }
 
-        private void UnarchiveFileInDatabase(int fileID)
+        private void UnarchiveItemInDatabase(int itemID)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
                 {
                     connection.Open();
-                    string query = "UPDATE tblFile SET IsArchived = 0 WHERE FileID = @FileID";
+                    string query = "UPDATE tblFile SET IsArchived = 0 WHERE FileID = @ItemID";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@FileID", fileID);
+                        cmd.Parameters.AddWithValue("@ItemID", itemID);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("File unarchived successfully!");
-                    RemoveUnarchivedFileFromGrid(fileID);
-                    OnFileUnarchived();
+
+                    MessageBox.Show("Item unarchived successfully!");
+                    RemoveUnarchivedItemFromGrid(itemID);
+                    OnItemUnarchived();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error unarchiving file: " + ex.Message);
+                MessageBox.Show("Error unarchiving item: " + ex.Message);
             }
         }
 
-        private void RemoveUnarchivedFileFromGrid(int fileID)
+        private void FrmArchivedFiles_ItemUnarchived(object sender, EventArgs e)
+        {
+            RetrieveArchivedItems(loggedInUserID);
+        }
+
+        private void RemoveUnarchivedItemFromGrid(int itemID)
         {
             foreach (DataGridViewRow row in dgvArchivedFiles.Rows)
             {
-                if (Convert.ToInt32(row.Cells["FileID"].Value) == fileID)
+                if (Convert.ToInt32(row.Cells["FileID"].Value) == itemID)
                 {
                     dgvArchivedFiles.Rows.Remove(row);
                     break;
@@ -75,9 +89,9 @@ namespace StudySyncSystem
             }
         }
 
-        protected virtual void OnFileUnarchived()
+        private void OnItemUnarchived()
         {
-            FileUnarchived?.Invoke(this, EventArgs.Empty);
+            ItemUnarchived?.Invoke(this, EventArgs.Empty);
         }
 
         private int GetColumnIndexByName(DataGridView dataGridView, string columnName)
@@ -92,18 +106,27 @@ namespace StudySyncSystem
             return -1;
         }
 
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void dgvArchivedFiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dgvArchivedFiles.Columns["Unarchive"].Index)
             {
                 int fileIDColumnIndex = GetColumnIndexByName(dgvArchivedFiles, "FileID");
+
                 if (fileIDColumnIndex != -1)
                 {
                     int fileID = Convert.ToInt32(dgvArchivedFiles.Rows[e.RowIndex].Cells[fileIDColumnIndex].Value);
+
                     DialogResult result = MessageBox.Show("Are you sure you want to unarchive this file?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                     if (result == DialogResult.Yes)
                     {
-                        UnarchiveFileInDatabase(fileID);
+                        UnarchiveItemInDatabase(fileID);
                     }
                 }
                 else
@@ -113,9 +136,5 @@ namespace StudySyncSystem
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

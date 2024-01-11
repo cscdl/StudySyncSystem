@@ -55,9 +55,9 @@ namespace StudySyncSystem
 
         private void btnViewFiles_Click(object sender, EventArgs e)
         {
-            frmViewTask viewTaskForm = new frmViewTask();
-            viewTaskForm.SetLoggedInUserID(loggedInUserID);
-            viewTaskForm.ShowDialog();
+            frmViewFiles viewFileForm = new frmViewFiles();
+            viewFileForm.SetLoggedInUserID(loggedInUserID);
+            viewFileForm.ShowDialog();
         }
 
 

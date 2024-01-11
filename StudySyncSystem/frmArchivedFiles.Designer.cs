@@ -36,6 +36,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvArchivedFiles = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.FileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unarchive = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchivedFiles)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +165,17 @@
             this.dgvArchivedFiles.TabIndex = 14;
             this.dgvArchivedFiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchivedFiles_CellContentClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(12, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 18);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "A R C H I V E D  T A S K S";
+            // 
             // FileID
             // 
             this.FileID.DataPropertyName = "FileID";
@@ -210,19 +221,10 @@
             // 
             // Unarchive
             // 
+            this.Unarchive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Unarchive.HeaderText = "Unarchive";
             this.Unarchive.Name = "Unarchive";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 18);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "A R C H I V E D  T A S K S";
+            this.Unarchive.Width = 62;
             // 
             // frmArchivedFiles
             // 

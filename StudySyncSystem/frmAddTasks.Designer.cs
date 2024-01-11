@@ -42,7 +42,6 @@ namespace StudySyncSystem
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -182,7 +181,6 @@ namespace StudySyncSystem
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(229)))), ((int)(((byte)(220)))));
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lblDate);
             this.panel2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(0, 5);
             this.panel2.Name = "panel2";
@@ -194,21 +192,11 @@ namespace StudySyncSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(31, 7);
+            this.label2.Location = new System.Drawing.Point(13, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 18);
+            this.label2.Size = new System.Drawing.Size(105, 18);
             this.label2.TabIndex = 35;
-            this.label2.Text = "CALENDAR DATE :";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(175, 7);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(104, 18);
-            this.lblDate.TabIndex = 35;
-            this.lblDate.Text = "CALENDAR DATE";
+            this.label2.Text = "CREATE A TASK :";
             // 
             // frmAddTasks
             // 
@@ -244,7 +232,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
     }

@@ -56,13 +56,10 @@ namespace StudySyncSystem
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Notify about successful unarchiving
                     MessageBox.Show("Task unarchived successfully!");
 
-                    // Remove the unarchived task from the DataGridView
                     RemoveUnarchivedTaskFromGrid(taskID);
 
-                    // Trigger the event to notify other forms
                     OnTaskUnarchived();
                 }
             }
@@ -74,7 +71,6 @@ namespace StudySyncSystem
 
         private void RemoveUnarchivedTaskFromGrid(int taskID)
         {
-            // Find and remove the row with the given taskID from the DataGridView
             foreach (DataGridViewRow row in dgvArchivedTasks.Rows)
             {
                 if (Convert.ToInt32(row.Cells["TaskID"].Value) == taskID)
