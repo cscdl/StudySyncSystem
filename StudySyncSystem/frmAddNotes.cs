@@ -29,6 +29,12 @@ namespace StudySyncSystem
             string title = txtTitle.Text;
             string content = richTxtNewNote.Text;
 
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+            {
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 connect.Open();

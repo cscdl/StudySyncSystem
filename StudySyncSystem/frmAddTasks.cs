@@ -60,6 +60,20 @@ namespace StudySyncSystem
         private void btnSave_Click(object sender, EventArgs e)
         {
             string title = txtTitle.Text;
+
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
+            else if (cbCategory.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             SaveTask();
         }
 

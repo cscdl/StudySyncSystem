@@ -106,6 +106,12 @@ namespace StudySyncSystem
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtFile.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 using (SqlConnection updateConnection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
                 {
                     updateConnection.Open();

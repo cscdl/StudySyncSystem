@@ -55,15 +55,17 @@ namespace StudySyncSystem
             Close(); 
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtTitle.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 connect.Open();
 
                 string query = "UPDATE tblNote SET NoteTitle = @NoteTitle, NoteContent = @NoteContent WHERE NoteID = @NoteID";
@@ -87,6 +89,11 @@ namespace StudySyncSystem
             {
                 connect.Close();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

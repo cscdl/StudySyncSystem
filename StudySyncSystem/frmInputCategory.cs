@@ -16,6 +16,13 @@ namespace StudySyncSystem
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             UserInput = txtInput.Text;
+
+            if (string.IsNullOrWhiteSpace(txtInput.Text))
+            {
+                MessageBox.Show("Please enter a valid input.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult = DialogResult.OK;
             Close();
         }

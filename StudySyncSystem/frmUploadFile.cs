@@ -77,6 +77,12 @@ namespace StudySyncSystem
             {
                 if (openFileDialog.FileNames.Length > 0)
                 {
+                    if (cbCategory.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Please select a category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     txtFile.Text = "";
 
                     foreach (var filePath in openFileDialog.FileNames)

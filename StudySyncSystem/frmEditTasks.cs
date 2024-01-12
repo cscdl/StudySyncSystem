@@ -108,6 +108,12 @@ namespace StudySyncSystem
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtTitle.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 connect.Open();
 
                
