@@ -168,9 +168,46 @@ namespace StudySyncSystem
 
             if (txtRegUsername.Text.ToLower().Contains("admin"))
             {
-                MessageBox.Show("Admin account registered successfully!");
-                ClearRegistrationFields();
+                try
+                {
+                    connect.Open();
+                    string query = "INSERT INTO tblUser (Username, Password, UserType) VALUES (@Username, @Password, @UserType); SELECT SCOPE_IDENTITY();";
+                    SqlCommand cmd = new SqlCommand(query, connect);
+                    cmd.Parameters.AddWithValue("@Username", txtRegUsername.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtRegPassword.Text);
+                    cmd.Parameters.AddWithValue("@UserType", "admin");
 
+                    int newUserID = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    string insertUserInfoQuery = "INSERT INTO tblUserInfo (FirstName, LastName, Address, PhoneNumber, Birthday, UserID) VALUES (@FirstName, @LastName, @Address, @PhoneNumber, @Birthday, @UserID)";
+                    SqlCommand userInfoCmd = new SqlCommand(insertUserInfoQuery, connect);
+                    userInfoCmd.Parameters.AddWithValue("@FirstName", txtRegFirstName.Text);
+                    userInfoCmd.Parameters.AddWithValue("@LastName", txtRegLastName.Text);
+                    userInfoCmd.Parameters.AddWithValue("@Address", txtRegAddress.Text);
+                    userInfoCmd.Parameters.AddWithValue("@PhoneNumber", txtRegPhoneNumber.Text);
+                    userInfoCmd.Parameters.AddWithValue("@Birthday", Convert.ToDateTime(dtpRegBirthday.Text));
+                    userInfoCmd.Parameters.AddWithValue("@UserID", newUserID);
+
+                    userInfoCmd.ExecuteNonQuery();
+
+                    DialogResult confirmationResult = MessageBox.Show("Please make sure the entered details are correct, as they cannot be edited later. Do you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (confirmationResult == DialogResult.No)
+                    {
+                        return;
+                    }
+
+                    MessageBox.Show("Admin account registered successfully!");
+                    ClearRegistrationFields();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error during registration: " + ex.Message);
+                }
+                finally
+                {
+                    connect.Close();
+                }
             }
             else
             {
@@ -181,7 +218,7 @@ namespace StudySyncSystem
                     SqlCommand cmd = new SqlCommand(query, connect);
                     cmd.Parameters.AddWithValue("@Username", txtRegUsername.Text);
                     cmd.Parameters.AddWithValue("@Password", txtRegPassword.Text);
-                    cmd.Parameters.AddWithValue("@UserType", "user"); 
+                    cmd.Parameters.AddWithValue("@UserType", "user");
 
                     int newUserID = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -205,7 +242,6 @@ namespace StudySyncSystem
 
                     MessageBox.Show("User registered successfully!");
                     ClearRegistrationFields();
-
                 }
                 catch (Exception ex)
                 {
@@ -216,6 +252,7 @@ namespace StudySyncSystem
                     connect.Close();
                 }
             }
+
 
         }
 
