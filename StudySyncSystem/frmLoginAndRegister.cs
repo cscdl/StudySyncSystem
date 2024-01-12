@@ -166,9 +166,11 @@ namespace StudySyncSystem
                 return;
             }
 
-            if (txtRegUsername.Text.ToLower() == "admin" && txtRegPassword.Text == "adminpw")
+            if (txtRegUsername.Text.ToLower().Contains("admin"))
             {
                 MessageBox.Show("Admin account registered successfully!");
+                ClearRegistrationFields();
+
             }
             else
             {
@@ -202,6 +204,8 @@ namespace StudySyncSystem
                     }
 
                     MessageBox.Show("User registered successfully!");
+                    ClearRegistrationFields();
+
                 }
                 catch (Exception ex)
                 {
@@ -213,6 +217,18 @@ namespace StudySyncSystem
                 }
             }
 
+        }
+
+        private void ClearRegistrationFields()
+        {
+            txtRegUsername.Text = "";
+            txtRegPassword.Text = "";
+            txtRegConfirmPassword.Text = "";
+            txtRegFirstName.Text = "";
+            txtRegLastName.Text = "";
+            txtRegAddress.Text = "";
+            txtRegPhoneNumber.Text = "";
+            dtpRegBirthday.Value = DateTime.Now;
         }
 
         private bool ContainsNumbers(string input)
