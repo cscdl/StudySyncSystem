@@ -160,6 +160,12 @@ namespace StudySyncSystem
                 return;
             }
 
+            if (IsUsernameAlreadyRegistered(regUsername))
+            {
+                MessageBox.Show("Username already exists. Please choose a different username.");
+                return;
+            }
+
             if (txtRegUsername.Text.ToLower() == "admin" && txtRegPassword.Text == "adminpw")
             {
                 MessageBox.Show("Admin account registered successfully!");
@@ -236,6 +242,29 @@ namespace StudySyncSystem
         {
             string pattern = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
             return Regex.IsMatch(password, pattern);
+        }
+
+        private bool IsUsernameAlreadyRegistered(string username)
+        {
+            try
+            {
+                using (SqlConnection checkConnection = new SqlConnection(@"Data Source=DSMARI;Initial Catalog=StudySyncDB;Integrated Security=True"))
+                {
+                    checkConnection.Open();
+
+                    using (SqlCommand checkUsernameCmd = new SqlCommand("SELECT COUNT(*) FROM tblUser WHERE Username = @Username", checkConnection))
+                    {
+                        checkUsernameCmd.Parameters.AddWithValue("@Username", username);
+                        int count = Convert.ToInt32(checkUsernameCmd.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error checking username: " + ex.Message);
+                return false;
+            }
         }
 
 
