@@ -59,6 +59,7 @@ namespace StudySyncSystem
             this.btnLogout = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tmrSideBar = new System.Windows.Forms.Timer(this.components);
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -76,11 +77,12 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.adminName);
+            this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.btnPicUser);
             this.panel1.Controls.Add(this.picBoxDashboard);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -93,8 +95,9 @@ namespace StudySyncSystem
             // adminName
             // 
             this.adminName.AutoSize = true;
+            this.adminName.BackColor = System.Drawing.Color.Transparent;
             this.adminName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminName.Location = new System.Drawing.Point(790, 19);
+            this.adminName.Location = new System.Drawing.Point(116, 6);
             this.adminName.Name = "adminName";
             this.adminName.Size = new System.Drawing.Size(13, 18);
             this.adminName.TabIndex = 44;
@@ -369,6 +372,14 @@ namespace StudySyncSystem
             this.tmrSideBar.Interval = 20;
             this.tmrSideBar.Tick += new System.EventHandler(this.tmrSideBar_Tick);
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.adminName);
+            this.panel10.Location = new System.Drawing.Point(657, 11);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(190, 32);
+            this.panel10.TabIndex = 45;
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,7 +393,6 @@ namespace StudySyncSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAdmin";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -399,6 +409,8 @@ namespace StudySyncSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -433,5 +445,6 @@ namespace StudySyncSystem
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button btnManageCategories;
         private System.Windows.Forms.Label adminName;
+        private System.Windows.Forms.Panel panel10;
     }
 }
