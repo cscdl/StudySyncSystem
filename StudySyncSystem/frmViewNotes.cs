@@ -43,14 +43,14 @@ namespace StudySyncSystem
 
         private void OpenAddNotesForm()
         {
-            int userID = GetLoggedInUserID();
             frmAddNotes addNotesForm = new frmAddNotes();
             addNotesForm.StartPosition = FormStartPosition.CenterScreen;
+            addNotesForm.SetLoggedInUserID(loggedInUserID);
 
             addNotesForm.DataSaved += FrmAddNotes_DataSaved;
-
             addNotesForm.Show();
         }
+
 
         private int GetLoggedInUserID()
         {

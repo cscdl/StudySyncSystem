@@ -86,6 +86,11 @@ namespace StudySyncSystem
             Close();
         }
 
+        public void SetLoggedInUserID(int userID)
+        {
+            loggedInUserID = userID;
+        }
+
         private void btnSavePdfFile_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
