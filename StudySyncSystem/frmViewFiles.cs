@@ -212,7 +212,21 @@ namespace StudySyncSystem
                     MessageBox.Show("Cell value is null. Unable to toggle archive status.");
                 }
             }
+            else if (e.ColumnIndex == dgvViewFiles.Columns["FilePath"].Index && e.RowIndex >= 0)
+            {
+                string filePath = dgvViewFiles.Rows[e.RowIndex].Cells["FilePath"].Value.ToString();
+
+                try
+                {
+                    System.Diagnostics.Process.Start(filePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
 
 
         private void UpdateArchiveStatusInDatabase(int fileID, bool isArchived)

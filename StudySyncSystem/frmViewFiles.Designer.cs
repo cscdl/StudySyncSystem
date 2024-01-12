@@ -43,7 +43,7 @@ namespace StudySyncSystem
             this.FileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilePath = new System.Windows.Forms.DataGridViewLinkColumn();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
@@ -223,6 +223,8 @@ namespace StudySyncSystem
             this.FilePath.DataPropertyName = "FilePath";
             this.FilePath.HeaderText = "File Path";
             this.FilePath.Name = "FilePath";
+            this.FilePath.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FilePath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CategoryID
             // 
@@ -274,7 +276,7 @@ namespace StudySyncSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn FileID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
+        private System.Windows.Forms.DataGridViewLinkColumn FilePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
     }
