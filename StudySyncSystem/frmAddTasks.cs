@@ -64,7 +64,7 @@ namespace StudySyncSystem
             if (string.IsNullOrWhiteSpace(title))
             {
                 MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
+                return;
             }
 
             else if (cbCategory.SelectedIndex == -1)
