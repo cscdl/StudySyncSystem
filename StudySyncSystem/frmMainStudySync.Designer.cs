@@ -104,6 +104,9 @@ namespace StudySyncSystem
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnlMain2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.btnViewUpcomingTasks = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDashboard)).BeginInit();
@@ -143,6 +146,8 @@ namespace StudySyncSystem
             this.panel56.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlMain2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            this.panel17.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -206,6 +211,7 @@ namespace StudySyncSystem
             this.pnlSideBar.Controls.Add(this.panel6);
             this.pnlSideBar.Controls.Add(this.panel4);
             this.pnlSideBar.Controls.Add(this.panel16);
+            this.pnlSideBar.Controls.Add(this.panel17);
             this.pnlSideBar.Controls.Add(this.panel7);
             this.pnlSideBar.Controls.Add(this.panel5);
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -235,7 +241,7 @@ namespace StudySyncSystem
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox3.Location = new System.Drawing.Point(11, 6);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -267,7 +273,7 @@ namespace StudySyncSystem
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -299,7 +305,7 @@ namespace StudySyncSystem
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(7, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(11, 5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -331,7 +337,7 @@ namespace StudySyncSystem
             // pictureBox15
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(7, 5);
+            this.pictureBox15.Location = new System.Drawing.Point(11, 5);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(20, 20);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -353,9 +359,9 @@ namespace StudySyncSystem
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(3, 176);
+            this.panel7.Location = new System.Drawing.Point(3, 214);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(190, 252);
+            this.panel7.Size = new System.Drawing.Size(190, 214);
             this.panel7.TabIndex = 6;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
@@ -931,6 +937,38 @@ namespace StudySyncSystem
             this.label8.Text = "C A L E N D A R";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
+            this.pictureBox16.Location = new System.Drawing.Point(11, 5);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 4;
+            this.pictureBox16.TabStop = false;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.pictureBox16);
+            this.panel17.Controls.Add(this.btnViewUpcomingTasks);
+            this.panel17.Location = new System.Drawing.Point(3, 176);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(190, 32);
+            this.panel17.TabIndex = 7;
+            // 
+            // btnViewUpcomingTasks
+            // 
+            this.btnViewUpcomingTasks.FlatAppearance.BorderSize = 0;
+            this.btnViewUpcomingTasks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewUpcomingTasks.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewUpcomingTasks.Location = new System.Drawing.Point(3, 3);
+            this.btnViewUpcomingTasks.Name = "btnViewUpcomingTasks";
+            this.btnViewUpcomingTasks.Size = new System.Drawing.Size(178, 25);
+            this.btnViewUpcomingTasks.TabIndex = 5;
+            this.btnViewUpcomingTasks.Text = "Upcoming Task";
+            this.btnViewUpcomingTasks.UseVisualStyleBackColor = true;
+            this.btnViewUpcomingTasks.Click += new System.EventHandler(this.btnViewUpcomingTasks_Click);
+            // 
             // frmMainStudySync
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -992,6 +1030,8 @@ namespace StudySyncSystem
             this.panel56.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlMain2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            this.panel17.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1072,5 +1112,8 @@ namespace StudySyncSystem
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Button btnCompletedTask;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.Button btnViewUpcomingTasks;
     }
 }

@@ -438,6 +438,14 @@ namespace StudySyncSystem
             loadform(userDash);
         }
 
+        private void btnViewUpcomingTasks_Click(object sender, EventArgs e)
+        {
+            int userID = loggedInUserID;
+
+            frmViewUpcomingTasks upcomingTasksForm = new frmViewUpcomingTasks(loggedInUserID);
+            upcomingTasksForm.Show();
+        }
+
 
         private void panel7_Paint(object sender, PaintEventArgs e)
         {

@@ -227,6 +227,12 @@
     <Compile Include="frmViewTask.Designer.cs">
       <DependentUpon>frmViewTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewUpcomingTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewUpcomingTasks.Designer.cs">
+      <DependentUpon>frmViewUpcomingTasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewUsersAndAdmins.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewTask.resx">
       <DependentUpon>frmViewTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewUpcomingTasks.resx">
+      <DependentUpon>frmViewUpcomingTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewUsersAndAdmins.resx">
       <DependentUpon>frmViewUsersAndAdmins.cs</DependentUpon>
