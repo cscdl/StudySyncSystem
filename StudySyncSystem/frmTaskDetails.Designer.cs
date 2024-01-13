@@ -1,6 +1,6 @@
 ﻿namespace StudySyncSystem
 {
-    partial class frmViewUpcomingTasks
+    partial class frmTaskDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnOverdue = new System.Windows.Forms.Button();
-            this.dgvUpcomingTasks = new System.Windows.Forms.DataGridView();
+            this.dgvTaskDetails = new System.Windows.Forms.DataGridView();
             this.TaskID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -42,21 +40,10 @@
             this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsArchived = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Priority = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUpcomingTasks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaskDetails)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 18);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "U P C O M I N G  T A S K S";
             // 
             // btnClose
             // 
@@ -74,34 +61,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.panel1.Controls.Add(this.btnOverdue);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.dgvUpcomingTasks);
+            this.panel1.Controls.Add(this.dgvTaskDetails);
             this.panel1.Location = new System.Drawing.Point(13, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 362);
             this.panel1.TabIndex = 26;
             // 
-            // btnOverdue
+            // dgvTaskDetails
             // 
-            this.btnOverdue.BackColor = System.Drawing.Color.Yellow;
-            this.btnOverdue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOverdue.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOverdue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.btnOverdue.Location = new System.Drawing.Point(555, 24);
-            this.btnOverdue.Name = "btnOverdue";
-            this.btnOverdue.Size = new System.Drawing.Size(135, 30);
-            this.btnOverdue.TabIndex = 28;
-            this.btnOverdue.Text = "View Overdue Tasks";
-            this.btnOverdue.UseVisualStyleBackColor = false;
-            // 
-            // dgvUpcomingTasks
-            // 
-            this.dgvUpcomingTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUpcomingTasks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
-            this.dgvUpcomingTasks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvUpcomingTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUpcomingTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvTaskDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTaskDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(20)))));
+            this.dgvTaskDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvTaskDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTaskDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskID,
             this.TaskTitle,
             this.TaskStatus,
@@ -110,12 +83,11 @@
             this.UserID,
             this.DateCreated,
             this.CategoryID,
-            this.IsArchived,
-            this.Priority});
-            this.dgvUpcomingTasks.Location = new System.Drawing.Point(14, 62);
-            this.dgvUpcomingTasks.Name = "dgvUpcomingTasks";
-            this.dgvUpcomingTasks.Size = new System.Drawing.Size(676, 246);
-            this.dgvUpcomingTasks.TabIndex = 14;
+            this.IsArchived});
+            this.dgvTaskDetails.Location = new System.Drawing.Point(14, 22);
+            this.dgvTaskDetails.Name = "dgvTaskDetails";
+            this.dgvTaskDetails.Size = new System.Drawing.Size(676, 286);
+            this.dgvTaskDetails.TabIndex = 14;
             // 
             // TaskID
             // 
@@ -181,13 +153,18 @@
             this.IsArchived.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.IsArchived.Visible = false;
             // 
-            // Priority
+            // label1
             // 
-            this.Priority.DataPropertyName = "Priority";
-            this.Priority.HeaderText = "Priority";
-            this.Priority.Name = "Priority";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 18);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "T A S K  D E T A I L S";
             // 
-            // frmViewUpcomingTasks
+            // frmTaskDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -195,22 +172,20 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmViewUpcomingTasks";
+            this.Name = "frmTaskDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmViewUpcomingTasks";
+            this.Text = "frmTaskDetails";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUpcomingTasks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaskDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvUpcomingTasks;
+        private System.Windows.Forms.DataGridView dgvTaskDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskTitle;
         private System.Windows.Forms.DataGridViewComboBoxColumn TaskStatus;
@@ -220,7 +195,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsArchived;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Priority;
-        private System.Windows.Forms.Button btnOverdue;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -119,6 +119,12 @@
     <Compile Include="frmManageCategory.Designer.cs">
       <DependentUpon>frmManageCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTaskDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaskDetails.Designer.cs">
+      <DependentUpon>frmTaskDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewActivityLogs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageCategory.resx">
       <DependentUpon>frmManageCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaskDetails.resx">
+      <DependentUpon>frmTaskDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewActivityLogs.resx">
       <DependentUpon>frmViewActivityLogs.cs</DependentUpon>
