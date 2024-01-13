@@ -19,7 +19,7 @@ namespace StudySyncSystem
 
         private void timerLoading_Tick(object sender, EventArgs e)
         {
-            if (progressBar1.Value < 2)
+            if (progressBar1.Value < 100)
             {
                 progressBar1.Value += 1;
 
